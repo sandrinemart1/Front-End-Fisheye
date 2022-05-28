@@ -1,0 +1,11 @@
+{
+  "name": "front-end-fisheye",
+  "version": "1.0.0",
+  "description": "photographer accomodation plattform",
+  "main": "index.js",
+  "scripts": {
+    "saas -watch./saas/main.scss:.public/css/style.css":
+  },
+  "author": "",
+  "license": "ISC"
+}

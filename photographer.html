@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisheyes-page-photographe</title>
+    <!-- feuilles de styles -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./sass/photographer.css">
+</head>
+<body class="Photographer-Page-Body">
+    <!-- <div id =`photographer-page.html?id=` + `${photographerJson.id}`> -->
+    <div class="page_photographer">
+    <header class="page_photographer-header">
+        <a href="/index.html">
+            <img src="assets/images/logo.png" class="logo" />
+        </a>
+    </header>
+    <main>
+        <!-- section présentation photographe -->
+        <section class ="page_photographer-informations">
+            
+                <div class="page_photographer_text">
+                    <h1 class="photographer_text--name">Mimi Keel</h1>  
+                    <p class="photographer_text--location">London,UK</p>
+                    <p class="photographer_text--tagline">Voir le beau dans le quotidien</p>
+                    
+                </div>
+                <button id="contact_button">Contactez-moi</button>
+
+                <picture class="photographer_section--banner">
+                        <img src="./assets/images/Photographers ID Photos/MimiKeel.jpg" alt=""/>
+                    </picture>
+        </section>
+                        
+        <!-- section dropdown             -->
+        <section class="dropdown">
+            <label for="dropdown">Trier par</label>
+            <div id ="dropdown">
+                <button id="dropDownPopularityButton" value="popularité">Popularité&ensp;
+                    <span id="chevron" ><i class="fa-solid fa-chevron-down"></i></span>
+                </button>
+                <div id="dropdown-button">
+                    <button id="date" value="date">Date&ensp;</button>
+                    <button id="titre" value="titre">Titre&ensp;</button>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- section medias -->
+        <section class="page_photographer-medias">
+            <a href="lightbox-background">
+                <article class="page_photographer-media">
+                    <img src="./assets/images/Mimi/Animals_Rainbow.jpg" alt="">
+                    <div class="img_attributes">
+                    <h3>Arc-en-ciel</h3>
+                    <span><i class="fa-solid fa-heart"></i></span>
+                </article>
+            </a>
+        </section>
+        
+        <!-- footer -->
+        <footer class="footer-infos">
+            
+        </footer>
+    </main>
+    <!-- formulaire -->
+    <div class="modal-background" id ="contact_modal">
+        <div class="modal" >
+            
+            
+            <span class="close closeModal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></span>
+            
+            <div class ="modal-header_text">
+                <h2 class="modal__title">Contactez-moi</h2>
+                <p>Nom du Photographe</p>
+            </div>
+        
+            <form name="contact" method ="GET" action=""
+            class="modal_form"id="form">
+                <div class="modal_form--formData">
+                    <label for ="first" class="modal_formaData--label">Prénom</label><br/>
+                    <input
+                        type="text"
+                        class="modal_form-input"
+                        id="first"
+                        name="first"
+                    />
+                </div>
+                <div class="modal_form--formData">
+                    <label for ="last" class="modal_formaData--label">Nom</label><br/>
+                    <input
+                        type="text"
+                        class="modal_form-input"
+                        id="last"
+                        name="last"
+                    />
+                </div>
+                <div class="modal_form--formData">
+                    <label for ="email" class="modal_formaData--label">Email</label><br/>
+                    <input
+                        type="email"
+                        class="modal_form-input"
+                        id="email"
+                        name="email"
+                    />
+                </div>
+            
+                <div class ="modal-button">
+                    <input id="button class="submitButton" type="submit"value="envoyer">
+                </div>
+            </form>
+            
+            
+        </div>
+    <!-- lightbox     -->
+        <div id="lightbox-background">
+            <div class="lightbox-body">
+                <div  class="lightbox">
+                    <button class="lightbox_chevron-previous"></button>
+                    <div class="lightbox_imgContainer">image</div>
+                    <div>
+                        <button class="lightbox_close"></button>
+                        <button class="lightbox_chevron-next"></button></div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <script type ="module"src ="./module/factories/_Photographer.js"></script>
+</body>
+</html>

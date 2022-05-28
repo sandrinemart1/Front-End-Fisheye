@@ -1,0 +1,151 @@
+@import "utils/variables";
+
+body {
+    font-family:$font-family;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+    max-width: 1440px;
+    background-color:$white ;
+    font-weight: 400;
+}
+
+a{
+    text-decoration: none;
+    outline: none;
+    color: black;
+}
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+}
+
+h1,h3 {
+    
+    font: size 2.2rem; ;
+    color: $bg-1st-color;
+    margin-right: 100px;
+
+}
+
+h3{
+    font-size:1.5rem;
+}
+.logo {
+    height: 50px;
+    margin-left: 100px;
+}
+
+.photographer_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;
+
+        
+    }
+
+/******************************************/
+.photographer_section--user{
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.photographer_section--banner{
+    display:block;
+}
+
+
+/*******************************************/
+.photographer_section--link{
+    text-decoration :none;
+    border: 3px, solid ,black;
+    border-radius: 2px;
+    transition : 0.2s;
+    
+}
+.photographer_section article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+   
+        h2 {
+            color:$bg-2nd-color;
+            font-size: 2.25rem;
+            line-height: 47px;
+            margin: 0;
+            }
+                
+            }
+            
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            box-sizing: border-box;
+        // position: absolute;
+        // left: -81%;
+        // right: -82%;
+        // top: -25%;
+        // bottom: -54%;
+        height:200px;
+        width: 200px;
+        border-radius: 50%;
+        }
+
+.photographer_section--text{
+    text-align: center;
+    .location{
+        font-size: 13px;
+        color: $bg-1st-color;
+        margin: 4px;
+
+        }
+    }
+    .tagline{
+        font-size: 10px;
+        margin: 4px;
+
+    }
+    
+    .price{
+        font-size: 9px;
+        color:$color-black-light;
+        margin: 4px;
+
+    }
+// section-text
+
+@media screen and(max-width:650px){
+    .tagline .price {
+    font-style: 15px;
+}
+}
+ //h2   
+
+@media  screen and (max-width: 1045px){
+    h2 {
+    font-size: 2rem;
+    }
+}
+//photographer section
+@media screen and (max-width: 845px ) {
+    .photographer_section{
+    grid-template-columns: 1fr 1fr;
+    gap:60px;
+    }
+ }
+ @media screen and(max-width: 650px){
+    .photographer_section{
+     grid-template-columns :1fr;
+    }
+ }

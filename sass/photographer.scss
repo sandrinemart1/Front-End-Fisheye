@@ -1,0 +1,218 @@
+@import "utils/variables";
+body {
+    font-family:$font-family;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+    max-width: 1440px;
+    background-color:$white ;
+    font-weight: 400;
+}
+a{
+    text-decoration: none;
+    outline: none;
+    color: black;
+}
+.logo {
+    height: 50px;
+    margin-left: 100px;
+    margin-top: 35px;
+}
+#contact_modal {
+    display: none;
+}
+main{
+    margin: 0 100px;
+}
+.page_photographer-informations{
+    width: 100%;
+    display:flex;
+    justify-content:space-around;
+    align-items: center;
+    background: #FAFAFA;
+    border-radius: 5px;
+    background-color: #FAFAFA;
+    height: 300px;
+
+}
+.page_photographer_text{
+    text-align: left;
+    h1 {
+        color:$bg-2nd-color;
+        font-size: 4rem;
+        font-weight: 200;
+        line-height: 47px;
+        margin: 0;
+    }
+    .photographer_text--location{
+        font-size: 24px;
+        line-height: 31px;
+        color: $bg-1st-color;
+        margin: 4px;
+
+    }
+    .photographer_text--tagline{
+        font-size: 18px;
+        line-height: 23px;
+        margin: 4px;
+
+    }
+}     
+#contact_button {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: $bg-1st-color;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.photographer_section--banner{
+    display:block;
+    img {
+        width: 100%;
+        object-fit: cover;
+        box-sizing: border-box;
+        height:200px;
+        width: 200px;
+        border-radius: 50%;
+
+    }
+}
+.dropdown {
+    display: inline-block;
+    position: relative;
+    margin-top: 50px;
+    label{
+        font-weight: 700;
+        font-size: 18px;
+
+    }
+}
+#dropdown{
+    position:absolute;
+    width:170px;
+    top:-20px;
+    left:185px;
+    
+    button{
+        background: $bg-1st-color;
+        padding:20px;
+        border-radius: 5px;
+        font-size: 18px;
+        color: $white;
+        width:100%;
+        text-align: left;
+        }
+    }
+    span{
+        color: $white;
+        display:inline-block;
+        transform: rotate(0);
+        &:hover{
+            transform:rotate(180deg);
+            transition:  3000ms ease;
+        }
+    
+
+    }
+    #dropdown-button{
+        display:none;
+        overflow: auto;
+        position:absolute;
+
+    }
+    .drop-down-open{
+        transform: rotate(180deg);
+        transition:  3000ms ease;
+    }
+    // https://blog.hubspot.com/website/html-dropdown
+  
+.page_photographer-medias{
+    max-width: 1500px;
+    display: grid;
+    grid-template-columns: 350px 350px 350px;
+    gap: 20px;
+    grid-auto-flow: row;
+    margin: 100px 20px ;
+    text-align: center;
+     img {
+        object-fit:cover ;
+        width: 350px;
+        height:300px;
+}
+.img_attributes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    color:$bg-1st-color;
+    // span{
+    //     display: block;
+    // }
+}}
+
+.modal {
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px;
+    margin: auto;
+}
+
+.modal header {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.modal header img {
+    cursor: pointer;
+}
+
+.modal header h2 {
+    font-size: 64px;
+    font-weight: normal;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form label {
+    color: #312E2E;
+    font-size: 36px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 26px;
+
+}
+
+form input {
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 5px;
+}
+#comments{
+    width: 100%;
+    height: 170px;
+    border: none;
+    border-radius:5px ;
+}
