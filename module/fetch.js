@@ -8,7 +8,8 @@ class Photographer{
         this.country = country,
         this.tagline = tagline,
         this.price = price,
-        this.portrait= portrait
+        this.portrait= portrait,
+        this.media = media
     }
 }
 class Media{

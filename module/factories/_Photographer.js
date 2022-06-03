@@ -46,7 +46,8 @@ class Photographer{
         this.country = country,
         this.tagline = tagline,
         this.price = price,
-        this.portrait= portrait
+        this.portrait= portrait,
+        this.media = media
     }
 }
 class Media{
@@ -75,8 +76,8 @@ async function myFetch(affichageMedias){
             console.log(data);
             const photographers = data.photographers;
             const media = data.media;
-            console.log(media);
-            console.log(photographers)
+            // console.log(media);
+            // console.log(photographers)
 //recuperer les photographes dans un array photographersJson
             // const photographerJson = [];
             for(let photographer of data.photographers){
@@ -94,11 +95,11 @@ async function myFetch(affichageMedias){
             // console.log(photographerJson.portrait);
                 }
                 
-                
+ affichageMedias(photographersJson)               
                 //recuperer les medias dans un array mediasJson
                 //  const mediasJson =[];
                 //  for(let media of data.media){
-                    media.forEach((media)=>{
+                    media.forEach((media)=>{ 
                         const mediaJson = new Media(
                             media.date, 
                             media.id, 
@@ -119,23 +120,28 @@ async function myFetch(affichageMedias){
                     
                 })
             }
-            
 
-                async function getData(){
-                const data = await myFetch()
-                console.log(data);
-                }
+// function filterID(mediasJson){
+//     if (photographerJson.id == mediaJson.photographerId)
+// }
+let string = window.location.href;
+let url = new URL(string);
+let login = url.searchParams.get('id');
+console.log(login);
 
+// function affichageMedias(data){
+//     console.log('merci');
+// }
 
-
-function affichageMedias(photographersJson,mediasJson){
+function affichageMedias(photographersJson){
     photographersJson.forEach(photographerJson =>{
 const pagePhotograph = document.createElement('div');
     pagePhotograph.className ='page_photographer';
-    pagePhotograph.id =' mediaJson.photographerId ';
+    pagePhotograph.id =' photographer.id ';
+    pagePhotograph.setAttribute('href', `${string}?id=` + `${photographerJson.id}`)
 const sectionPhotograph =document.createElement('section');
     sectionPhotograph.className='page_photographer-informations';
-const pagePhotographText =document.createElement('div');
+const pagePhotographText = document.createElement('div');
     pagePhotographText.className='page_photographer_text';
 const h1 = document.createElement( 'h1' );
     h1.className ='photographer_text--name';
@@ -149,6 +155,7 @@ const tagline =document.createElement('p');
     tagline.innerHTML= photographerJson.tagline;
 const contactButton =document.createElement('button');
     contactButton.id='contact_button';
+    contactButton.innerHTML="Contactez moi"
 const picture = document.createElement('picture');
     picture.className ='photographer_section--banner';
 
@@ -162,10 +169,11 @@ const sectionMediasPhotograph = document.createElement('section');
 const bannerMediasPhotograph = document.createElement('article');
     bannerMediasPhotograph.className ='page_photographer-media';
 const imgPhotograph = document.createElement('img');
-      imgPhotograph.setAttribute('src','mediaJson.image')
 
+let photographHTML= document.querySelector('.Photographer-Page-Body');
+photographHTML.appendChild(pagePhotograph);
 pagePhotograph.appendChild(sectionPhotograph);
-pagePhotograph.appendChild(sectionMediasPhotograph);
+// pagePhotograph.appendChild(sectionMediasPhotograph);
 sectionPhotograph.appendChild(pagePhotographText);
 
 pagePhotographText.appendChild(h1);
@@ -175,23 +183,20 @@ pagePhotographText.appendChild(tagline);
 sectionPhotograph.appendChild(contactButton);
 sectionPhotograph.appendChild(picture);
 picture.appendChild(img);
-bannerMediasPhotograph.appendChild(imgPhotograph);
+// bannerMediasPhotograph.appendChild(imgPhotograph);
     })
 }
 myFetch(affichageMedias);
 
-async function displayDataPage(photographers, ){
-    const pagePhotgrapher = document.querySelector(".pagePhotograph");
-    photographers.forEach((photographer)=>{
+// async function displayDataPage(photographers, ){
+//     const pagePhotgrapher = document.querySelector(".pagePhotograph");
+//     photographers.forEach((photographer)=>{
         
-    })
-}
+//     })
+// }
 // myFetch(affichageMedias)
 // sectionMediasPhotograph.appendChild(pageMediasPhotograph);
-let string = window.location.href;
-let url = new URL(string);
-let login = url.searchParams.get('id');
-console.log(login);
+
   
 
 //////dropdown//////////
