@@ -54,10 +54,7 @@ async function displayData(photographers) {
 
  //recuperation et mise en place de 2 const une pour photographes, une pour media
 
-const array = window.location.search;
-// console.log("photographers""media",array);
-// const photographers = urlParams.get('photographers');
-// const media = urlParams.get('media'); 
+
 
 //creer une class avec les donnees de chq photographe
 // function getPhotographer(photographers) {

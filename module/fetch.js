@@ -78,22 +78,15 @@ affichage(photographersJson)
                 })
                 }
                 
-                async function getData(){
-                const data = await myFetch()
-                console.log(data);
-                }
+                // async function getData(){
+                // const data = await myFetch()
+                // console.log(data);
+                // }
                 // getData();
 
 //recuperer uniquement les photographes
 //injecter les données dans un tableau
-async function getPhotographers() {
-    // Penser à remplacer par les données récupérées dans le json
-    const photographersJson = []
 
-    // et bien retourner le tableau photographers seulement une fois
-    return ({
-        photographers: [...photographers, ...photographers, ...photographers]})
-}
 
 export { myFetch}
 export{photographersJson , mediasJson}

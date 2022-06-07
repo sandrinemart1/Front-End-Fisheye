@@ -1,4 +1,5 @@
 @import "utils/variables";
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 body {
     font-family:$font-family;
     margin: 0;
@@ -15,8 +16,7 @@ a{
 }
 .logo {
     height: 50px;
-    margin-left: 100px;
-    margin-top: 35px;
+    margin:43px 100px;
 }
 #contact_modal {
     display: none;
@@ -25,30 +25,33 @@ main{
     margin: 0 100px;
 }
 .page_photographer-informations{
-    width: 100%;
+    width: 1240px;
     display:flex;
     justify-content:space-around;
     align-items: center;
-    background: #FAFAFA;
     border-radius: 5px;
     background-color: #FAFAFA;
-    height: 300px;
+    height: 313px;
+    padding:0 50px;
 
 }
 .page_photographer_text{
     text-align: left;
+
     h1 {
         color:$bg-2nd-color;
         font-size: 4rem;
         font-weight: 200;
-        line-height: 47px;
+        line-height: 83px;
         margin: 0;
+        
     }
     .photographer_text--location{
         font-size: 24px;
         line-height: 31px;
         color: $bg-1st-color;
         margin: 4px;
+
 
     }
     .photographer_text--tagline{
@@ -61,6 +64,7 @@ main{
 #contact_button {
     font-size: 20px;
     font-weight: 700;
+    line-height: 26px;
     color: white;
     padding: 11px;
     width: 170px;
@@ -69,6 +73,9 @@ main{
     background-color: $bg-1st-color;
     border-radius: 5px;
     cursor: pointer;
+//     display: flex;
+//     align-items: center;
+//     text-align: center;
 }
 
 .photographer_section--banner{
@@ -99,36 +106,59 @@ main{
     top:-20px;
     left:185px;
     
+
+    border-style: none;
     button{
         background: $bg-1st-color;
         padding:20px;
-        border-radius: 5px;
+
         font-size: 18px;
         color: $white;
         width:100%;
         text-align: left;
+        
+        
+
         }
     }
+    #dropDownPopularityButton{
+        display:flex;
+        justify-content: space-between;
+        border-top-left-radius:5px ;
+        border-top-right-radius: 5px;
+        
+    
     span{
         color: $white;
-        display:inline-block;
+        display:block;
+        margin-left: 20px;
         transform: rotate(0);
         &:hover{
             transform:rotate(180deg);
             transition:  3000ms ease;
         }
-    
+    }
 
     }
     #dropdown-button{
         display:none;
         overflow: auto;
         position:absolute;
+        border-style: none;
+        width: 170px;
+        #titre{
+        border-bottom-left-radius:5px ;
+        border-bottom-right-radius: 5px;
+        box-shadow: inset 0 2px 0 white;
+        }
+        #date{
+            box-shadow: inset 0 2px 0 white;
+        }
 
     }
     .drop-down-open{
         transform: rotate(180deg);
-        transition:  3000ms ease;
+        transition:  300ms ease ;
     }
     // https://blog.hubspot.com/website/html-dropdown
   
@@ -141,7 +171,7 @@ main{
     margin: 100px 20px ;
     text-align: center;
      img {
-        object-fit:cover ;
+        object-fit:cover;
         width: 350px;
         height:300px;
 }
@@ -149,8 +179,18 @@ main{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 24px;
     color:$bg-1st-color;
+    h3{
+    font-size: 24px;
+    line-height: 31px;
+    width: 300px;
+    text-align: left;
+    }
+    p{
+        font-size: 16px;
+        font-family: 'Roboto', sans-serif;
+    }
+
     // span{
     //     display: block;
     // }

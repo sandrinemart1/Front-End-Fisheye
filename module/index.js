@@ -18,7 +18,7 @@ function affichage(photographersJson){
     article.className ='photographer_section--user';
     const anchor = document.createElement('a') ;
     // anchor.setAttribute('href', '../photographer-page/${photographerJson.id})
-    anchor.setAttribute('href', '../photographer-page.html?id=' + `${photographerJson.id}`)
+    anchor.setAttribute('href', '../photographer.html?id=' + `${photographerJson.id}`)
     anchor.className ='photographer_section--link';
     const imgBanner = document.createElement('div');
     imgBanner.className ='photographer_section--banner';

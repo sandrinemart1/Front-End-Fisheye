@@ -264,5 +264,76 @@ import { photographersJson } from "../fetch.js";
 
 // }
 // createEl()
+
+function affichageMedias(photographersJson){
+    photographersJson.forEach(photographerJson =>{
+// const photographerPageBody = document.createElement('body');
+//     photographerPageBody.className ='Photographer-Page-Body';
+// const header = document.createElement('header');
+//     header.className ='page_photographer-header';
+// const linkLogo = document.createElement('a');
+//     linkLogo.setAttribute('href','/index.html');
+// const imgLogo = document.createElement('img');
+//     imgLogo.setAttribute('src','assets/images/logo.png');
+//     imgLogo.classList.add('logo');
+
+const pagePhotograph = document.createElement('div');
+    pagePhotograph.className ='page_photographer';
+    pagePhotograph.id =' photographer.id ';
+    pagePhotograph.setAttribute('href', `${string}?id=` + `${photographerJson.id}`)
+const sectionPhotograph =document.createElement('section');
+    sectionPhotograph.className='page_photographer-informations';
+const pagePhotographText = document.createElement('div');
+    pagePhotographText.className='page_photographer_text';
+const h1 = document.createElement( 'h1' );
+    h1.className ='photographer_text--name';
+    h1.classList.add('h1');
+    h1.innerHTML =`${photographerJson.name}`;
+const location =document.createElement('p');
+    location.className = 'photographer_text--location';
+    location.innerHTML= photographerJson.city+ ", " + photographerJson.country;
+const tagline =document.createElement('p');
+    tagline.className= "photographer_text--tagline";
+    tagline.innerHTML= photographerJson.tagline;
+const contactButton =document.createElement('button');
+    contactButton.id='contact_button';
+    contactButton.innerHTML="Contactez moi"
+const picture = document.createElement('picture');
+    picture.className ='photographer_section--banner';
+
+const img = document.createElement( 'img' );
+    img.setAttribute('src', `../../assets/images/Photographers ID Photos/${photographerJson.portrait}`);
+    img.setAttribute('alt',`portrait du photographe ${photographerJson.name}`)
+    img.setAttribute('width', '350');
+    img.setAttribute('height', '300');
+const sectionMediasPhotograph = document.createElement('section');
+    sectionMediasPhotograph.className ='page_photographer-medias';
+const bannerMediasPhotograph = document.createElement('article');
+    bannerMediasPhotograph.className ='page_photographer-media';
+const imgPhotograph = document.createElement('img');
+
+let photographHTML= document.querySelector('.Photographer-Page-Body');
+photographHTML.appendChild(pagePhotograph);
+// let urlPhotograph =`${string}+?id=`+`${photographerJson.id}`;
+// const doc = document.implementation.createHTMLDocument('urlPhotograph');
+// doc.appendChild(photographerPageBody);
+// photographerPageBody.appendChild(header);
+header.appendChild(linkLogo);
+linkLogo.appendChild(imgLogo);
+photographerPageBody.appendChild(pagePhotograph);
+pagePhotograph.appendChild(sectionPhotograph);
+// pagePhotograph.appendChild(sectionMediasPhotograph);
+sectionPhotograph.appendChild(pagePhotographText);
+
+pagePhotographText.appendChild(h1);
+pagePhotographText.appendChild(location);
+pagePhotographText.appendChild(tagline);
+
+sectionPhotograph.appendChild(contactButton);
+sectionPhotograph.appendChild(picture);
+picture.appendChild(img);
+// bannerMediasPhotograph.appendChild(imgPhotograph);
+    })
+}
 export{ createCardDOM}
 // export {getPhotographer}

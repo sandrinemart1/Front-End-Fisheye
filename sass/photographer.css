@@ -1,5 +1,6 @@
 /*font*/
 /*colors*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
@@ -18,8 +19,7 @@ a {
 
 .logo {
   height: 50px;
-  margin-left: 100px;
-  margin-top: 35px;
+  margin: 43px 100px;
 }
 
 #contact_modal {
@@ -31,7 +31,7 @@ main {
 }
 
 .page_photographer-informations {
-  width: 100%;
+  width: 1240px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -40,10 +40,10 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #FAFAFA;
   border-radius: 5px;
   background-color: #FAFAFA;
-  height: 300px;
+  height: 313px;
+  padding: 0 50px;
 }
 
 .page_photographer_text {
@@ -54,7 +54,7 @@ main {
   color: #D3573C;
   font-size: 4rem;
   font-weight: 200;
-  line-height: 47px;
+  line-height: 83px;
   margin: 0;
 }
 
@@ -74,6 +74,7 @@ main {
 #contact_button {
   font-size: 20px;
   font-weight: 700;
+  line-height: 26px;
   color: white;
   padding: 11px;
   width: 170px;
@@ -115,40 +116,69 @@ main {
   width: 170px;
   top: -20px;
   left: 185px;
+  border-style: none;
 }
 
 #dropdown button {
   background: #901C1C;
   padding: 20px;
-  border-radius: 5px;
   font-size: 18px;
   color: #FFFFFF;
   width: 100%;
   text-align: left;
 }
 
-span {
+#dropDownPopularityButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#dropDownPopularityButton span {
   color: #FFFFFF;
-  display: inline-block;
+  display: block;
+  margin-left: 20px;
   -webkit-transform: rotate(0);
           transform: rotate(0);
+}
+
+#dropDownPopularityButton span:hover {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transition: 3000ms ease;
+  transition: 3000ms ease;
 }
 
 #dropdown-button {
   display: none;
   overflow: auto;
   position: absolute;
+  border-style: none;
+  width: 170px;
+}
+
+#dropdown-button #titre {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -webkit-box-shadow: inset 0 2px 0 white;
+          box-shadow: inset 0 2px 0 white;
+}
+
+#dropdown-button #date {
+  -webkit-box-shadow: inset 0 2px 0 white;
+          box-shadow: inset 0 2px 0 white;
 }
 
 .drop-down-open {
-  display: block;
-}
-
-.drop-down-open span {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
-  -webkit-transition: 500ms ease;
-  transition: 500ms ease;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
 }
 
 .page_photographer-medias {
@@ -180,8 +210,19 @@ span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 24px;
   color: #901C1C;
+}
+
+.page_photographer-medias .img_attributes h3 {
+  font-size: 24px;
+  line-height: 31px;
+  width: 300px;
+  text-align: left;
+}
+
+.page_photographer-medias .img_attributes p {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .modal {
