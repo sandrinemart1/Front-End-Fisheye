@@ -8,10 +8,10 @@ function affichage(photographersJson){
   let banner = document.querySelector("ul");
   let photographer;
   //exercice Ahmed
-  for(photographer of photographersJson){
-    console.log(photographer.name);
-    banner.innerHTML+=`<li>${photographer.name}</li>`;
-  }
+  // for(photographer of photographersJson){
+  //   console.log(photographer.name);
+  //   banner.innerHTML+=`<li>${photographer.name}</li>`;
+  // }
 //INJECTION DES DATA PHOTOGRAPHER DANS PAGE ACCUEIL
   photographersJson.forEach(photographerJson=> {
     const article = document.createElement( 'article' );

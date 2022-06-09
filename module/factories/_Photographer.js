@@ -29,27 +29,7 @@ class Media{
         this.title= title
     }
 }
- function createCardImage(){
-    let articleMedia = document.querySelector('.page_photographer-media');
-    let imageMedia = document.createElement('img');
-    articleMedia.appendChild(imageMedia);
-    imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaJson.image}` );
-    let imageAttributes = document.createElement('div');
-    imageAttributes.className = "img_attributes"
-    articleMedia.appendChild(imageAttributes);
-    let imageTitle = document.querySelector('h3')
-    // imageTitle.innerText = mediaJson.title;
-    imageAttributes.appendChild(imageTitle);
-    let imageLike = document.createElement('p');
-    imageAttributes.appendChild(imageLike);
-    let span = document.createElement('span')
-    imageAttributes.appendChild(span);
-    let imageHeart = document.createElement('i');
-    imageHeart.className= "fa-solid fa-heart";
-    span.appendChild(imageHeart);
-    
-   
-}
+
 const photographersJson = [];
 const mediasJson =[];
 //donner url à chq page photographe et filtrer le images en fct id du photographe
@@ -114,11 +94,31 @@ async function myFetch(affichageMedias){
                             media.title);
                             
                             mediasJson.push(mediaJson);
-                            console.log(mediaJson);
+                            console.log(mediaJson.photographerId);
                             
                             let mediaPhotographer= mediasJson.filter((mediaJson)=> mediaJson.photographerId == login);
-                            
-                            console.log(mediaPhotographer)
+                            mediaPhotographer.forEach((mediaPhotographer) => {
+                                let articleMedia = document.querySelector('.page_photographer-media');
+                                let imageMedia = document.createElement('img');
+                                articleMedia.appendChild(imageMedia);
+                                imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaJson.image}` );
+                                let imageAttributes = document.createElement('div');
+                                imageAttributes.className = "img_attributes";
+                                articleMedia.appendChild(imageAttributes);
+                                let imageTitle = document.querySelector('h3');
+                                imageTitle.innerHTML = mediaJson.title;
+                                imageAttributes.appendChild(imageTitle);
+                                let imageLike = document.createElement('p');
+                                imageLike.textContent =mediaJson.likes;
+                                imageAttributes.appendChild(imageLike);
+                                let span = document.createElement('span')
+                                imageAttributes.appendChild(span);
+                                let imageHeart = document.createElement('i');
+                                imageHeart.className= "fa-solid fa-heart";
+                                span.appendChild(imageHeart); 
+                            })
+                         console.log(mediaPhotographer) ;
+
                         })
                         
                     }else{
@@ -149,14 +149,59 @@ function affichageMedias(photographersJson){
             document.querySelector('.photographer_text--location').textContent = photographer.city+ ", " + photographer.country;
             document.querySelector(".photographer_text--tagline").textContent= photographer.tagline;
             document.querySelector('.photographer_section--banner >img').src =` ../../assets/images/Photographers ID Photos/${photographer.portrait}`;
-            // document.querySelector('.page_photographer-media >img').src =`../../assets/images/${firstName}/`;
         }
-       
-  
-
-
     })
 }
+// function createCardImage(){
+//     let articleMedia = document.querySelector('.page_photographer-media');
+//     let imageMedia = document.createElement('img');
+//     articleMedia.appendChild(imageMedia);
+//     imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaJson.image}` );
+//     let imageAttributes = document.createElement('div');
+//     imageAttributes.className = "img_attributes"
+//     articleMedia.appendChild(imageAttributes);
+//     let imageTitle = document.querySelector('h3')
+//     // imageTitle.innerText = mediaJson.title;
+//     imageAttributes.appendChild(imageTitle);
+//     let imageLike = document.createElement('p');
+//     imageLike.textContent = mediaJson.likes
+//     imageAttributes.appendChild(imageLike);
+//     let span = document.createElement('span')
+//     imageAttributes.appendChild(span);
+//     let imageHeart = document.createElement('i');
+//     imageHeart.className= "fa-solid fa-heart";
+//     span.appendChild(imageHeart);
+    
+   
+// }
+// affichageMedias(mediasJson) 
+//     mediasJson.forEach(mediaJson => {
+//         if(mediaJson.photographerId == login){
+//             document.querySelector('page_photographer-media > img').src =`../../assets/images/${firstName}/${mediaJson.image}` ;
+//             document.querySelector('h3').textContent =mediaJson.title;
+//             document.querySelector('page_photographer-media >p').textContent = mediaJson.likes;
+        
+//         }
+//         })
+
+            // let articleMedia = document.querySelector('.page_photographer-media');
+            // let imageMedia = document.createElement('img');
+            // articleMedia.appendChild(imageMedia);
+            // imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaJson.image}` )
+            // let imageAttributes = document.createElement('div');
+            // imageAttributes.className = "img_attributes";
+            // articleMedia.appendChild(imageAttributes);
+            // let imageTitle = document.querySelector('h3');
+            // imageTitle.innerHTML = mediaJson.title;
+            // imageAttributes.appendChild(imageTitle);
+            // let imageLike = document.createElement('p');
+            // imageLike.textContent =mediaJson.likes;
+            // imageAttributes.appendChild(imageLike);
+            // let span = document.createElement('span')
+            // imageAttributes.appendChild(span);
+            // let imageHeart = document.createElement('i');
+            // imageHeart.className= "fa-solid fa-heart";
+            // span.appendChild(imageHeart); 
 myFetch(affichageMedias);
 
 
