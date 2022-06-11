@@ -1,7 +1,34 @@
 
-//fetch.js        *****************************************
-// import{ Element, createCardDOM}from './factories/home-page-elements.js'
 //fonction pour recuperer les donnees
+function createCardImage(){
+    let sectionMedia = document.querySelector('.page_photographer-medias');
+    let linkMedia = document.createElement('a');
+    sectionMedia.appendChild(linkMedia);
+    let articleMedia =document.createElement('article');
+    articleMedia.className='page_photographer-media';
+    linkMedia.appendChild(articleMedia);
+    let imageMedia = document.createElement('img');
+    articleMedia.appendChild(imageMedia);
+    // console.log(imageMedia)
+    imageMedia.setAttribute('src',`../../assets/images/${firstName}/mediaId.image` );
+    let imageAttributes = document.createElement('div');
+    imageAttributes.className = "img_attributes";
+    articleMedia.appendChild(imageAttributes);
+    let imageTitle =document.createElement('h3');
+    imageTitle.textContent = mediaJson.title;
+    imageAttributes.appendChild(imageTitle);
+    let imageLike = document.createElement('p');
+    imageLike.textContent =mediaJson.likes;
+    imageAttributes.appendChild(imageLike);
+    let span = document.createElement('span')
+    imageAttributes.appendChild(span);
+    let imageHeart = document.createElement('i');
+    imageHeart.className= "fa-solid fa-heart";
+    span.appendChild(imageHeart);
+    
+   
+  }
+  
 class Photographer{
     constructor( name, id, city, country, tagline,price,portrait,media){
         this.name =name,
@@ -29,7 +56,7 @@ const mediasJson =[];
 let photographerJson;
 async function myFetch(affichage){
     const response = await fetch("../../data/photographers.json")
-    .then( async(response)=>{
+    .then( async(response) => {
         if (response.ok){
             const data=await  response.json()
             console.log(data);
