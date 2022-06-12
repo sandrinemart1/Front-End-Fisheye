@@ -160,6 +160,9 @@ main{
         transform: rotate(180deg);
         transition:  300ms ease ;
     }
+    .drop-down-close{
+        display: block;
+    }
     // https://blog.hubspot.com/website/html-dropdown
   
 .page_photographer-medias{
@@ -191,9 +194,12 @@ main{
         font-family: 'Roboto', sans-serif;
     }
 
-    // span{
-    //     display: block;
-    // }
+    span{
+        display: block;
+        &:hover{
+            cursor: pointer;
+        }
+    }
 }}
 
 .modal {

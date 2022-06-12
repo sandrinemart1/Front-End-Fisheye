@@ -39,6 +39,7 @@ function myFetch2() {
     .then(async (response) => {
       if (response.ok) {
         const data = await response.json()
+        console.log(data)
         getData(data);
       } else {
         console.log('erreur')
@@ -60,7 +61,7 @@ function myFetch2() {
       for (let mediaId of media) {
         if (photographer.id == mediaId.photographerId) {
           mediaList.push(mediaId)
-          console.log(mediaId.image);
+          console.log(mediaList);
         }
       }
     }
@@ -95,7 +96,7 @@ function myFetch2() {
     let splitName =fullName.split(' ');
     let firstName1= splitName[0];
     firstName  =  firstName1.replace('-',' ');
-    // console.log(firstName);
+    console.log(firstName);
     return firstName
   }
 
@@ -120,28 +121,51 @@ class FactoryMedia{
     }
   }
 }
-// console.log(photographersJson,"aaaa")
-// console.log(photographersJson[0],'zzzzz')
-// let banner = document.querySelector("ul");
-// let photographer;
-// exercice Ahmed
-// for(photographer of photographersJson){
-//   console.log(photographer.name);
-//   banner.innerHTML+=`<li>${photographer.name}</li>`;
-// }
+
 
 const factory= new FactoryMedia()
 // creer une carte pour chq media image
 class Image{
   createImage(mediaId){
-    // console.log(photographer,"aaaa")
-    let articleMedia = document.querySelector(".page_photographer-media");
-    articleMedia .setAttribute('id',mediaId.id);
+
+    let sectionMedia = document.querySelector('.page_photographer-medias');
+    let linkMedia = document.createElement('a');
+    sectionMedia.appendChild(linkMedia);
+    let articleMedia =document.createElement('article');
+    articleMedia.className='page_photographer-media';
+    linkMedia.appendChild(articleMedia);
     let imageMedia = document.createElement('img');
     articleMedia.appendChild(imageMedia);
+    // console.log(imageMedia)
     imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.image}` );
+    let imageAttributes = document.createElement('div');
+    imageAttributes.className = "img_attributes";
+    articleMedia.appendChild(imageAttributes);
+    let imageTitle =document.createElement('h3');
+    imageTitle.textContent = mediaId.title;
+    imageAttributes.appendChild(imageTitle);
+    let imageLike = document.createElement('p');
+    imageLike.textContent =mediaId.likes;
+    imageAttributes.appendChild(imageLike);
+    let span = document.createElement('span')
+    imageAttributes.appendChild(span);
+    let imageHeart = document.createElement('i');
+    imageHeart.className= "fa-solid fa-heart";
+    span.appendChild(imageHeart); 
+  }
+}
+//creer une image pour video
+class Video{
+  createVideo(mediaId) {
+    let articleMedia = document.querySelector(".page_photographer-media");
+    articleMedia .setAttribute('id',mediaId.id);
+    let imageMedia = document.createElement('video');
+    articleMedia.appendChild(imageMedia);
+    imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.video}` );
+    imageMedia.setAttribute('controls',true)
     imageMedia.setAttribute('width', '350')
     imageMedia.setAttribute('height', '300')
+    imageMedia.style = "object-fit: cover";
     let imageAttributes = document.createElement('div');
     imageAttributes.className = "img_attributes";
     articleMedia.appendChild(imageAttributes);
@@ -157,12 +181,8 @@ class Image{
     imageHeart.className= "fa-solid fa-heart";
     span.appendChild(imageHeart); 
     console.log(imageMedia)
-  }
-}
-//creer une image pour video
-class Video{
-  createVideo(mediaId) {
-    let articleMedia = document.getElementById('mediaId.id');
+    
+
   }
 }
 
@@ -173,44 +193,36 @@ function SeparateCardImage(media){
   media.forEach(mediaId =>{
     let sectionMedia = document.querySelector('.page_photographer-medias');
     // sectionMedia.innerHTML =``
-    createCardImage(mediaId)
+   
     if(mediaId.image !== undefined){
         let card = factory.createMedia('image');
         card.createImage(mediaId)
     }else{
-       let card = factory.createVideo('video');
+       let card = factory.createMedia('video');
        card.createVideo(mediaId)
     }
   })
 }
 
-function createCardImage(media){
+
   
-//   // let banner = document.querySelector("ul");
-//   // let photographer;
-//   // exercice Ahmed
-//   // for(photographer of photographersJson){
-//   //   console.log(photographer.name);
-//   //   banner.innerHTML+=`<li>${photographer.name}</li>`;
-//   console.log(media)
-//   for(mediaId of media) {
-//    let sectionMedia = document.querySelector('.page_photographer-medias');
-//    let linkMedia = document.createElement('a');
-//    sectionMedia.appendChild(linkMedia);
-//    document.querySelector('.page_photographer-media>img').src=`../../assets/images/${firstName}/mediaId.image` ;
-//   let articleMedia =document.createElement('article');
-//   articleMedia.id = mediaId.id
-//   articleMedia.className='page_photographer-media';
-//   linkMedia.appendChild(articleMedia);
-//   let imageMedia = document.createElement('img');
-//   articleMedia.appendChild(imageMedia);
-//   // console.log(imageMedia)
-//   imageMedia.setAttribute('src',`../../assets/images/${firstName}/mediaId.image` );
-//   let imageAttributes = document.createElement('div');
 
-
-
-  }
 
  
+//////dropdown//////////
+let dropDownPopularityButton =document.querySelector("#dropDownPopularityButton");
+let dropDownDiv = document.querySelector("#dropdown-button");
+let chevron = document.getElementById("chevron")
+let date = document.getElementById("date");
+let titre = document.getElementById("titre");
+let arrowDown = document.querySelector("#chevron i");
+console.log(arrowDown);
 
+dropDownPopularityButton.addEventListener("click" ,dropDownOpen)
+//si chevron position initiale
+function dropDownOpen(){
+ dropDownDiv.style.display=" block";
+ chevron.classList.add('drop-down-open');
+
+ //si chevron rotate, au click => dropDownDiv.style.display="none";   tooglesur 2 element
+}
