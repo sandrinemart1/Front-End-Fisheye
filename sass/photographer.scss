@@ -105,20 +105,14 @@ main{
     width:170px;
     top:-20px;
     left:185px;
-    
-
     border-style: none;
     button{
         background: $bg-1st-color;
         padding:20px;
-
         font-size: 18px;
         color: $white;
         width:100%;
         text-align: left;
-        
-        
-
         }
     }
     #dropDownPopularityButton{
@@ -126,14 +120,12 @@ main{
         justify-content: space-between;
         border-top-left-radius:5px ;
         border-top-right-radius: 5px;
-        
-    
     span{
         color: $white;
         display:block;
         margin-left: 20px;
         transform: rotate(0);
-        &:hover{
+        &:focus{
             transform:rotate(180deg);
             transition:  3000ms ease;
         }
@@ -160,19 +152,21 @@ main{
         transform: rotate(180deg);
         transition:  300ms ease ;
     }
-    .drop-down-close{
-        display: block;
-    }
+
     // https://blog.hubspot.com/website/html-dropdown
-  
 .page_photographer-medias{
-    max-width: 1500px;
+    width: 1240px;
+    padding: 0 50px;
+}  
+.page_photographer-media-attributes{
+    width:100%;
     display: grid;
     grid-template-columns: 350px 350px 350px;
     gap: 20px;
     grid-auto-flow: row;
+    justify-content: space-between;
     margin: 100px 20px ;
-    text-align: center;
+    // text-align: center;
      .image-Media {
         object-fit:cover;
         width: 350px;
@@ -261,4 +255,31 @@ form input {
     height: 170px;
     border: none;
     border-radius:5px ;
+}
+.infos {
+    position: fixed;
+    bottom: 0;
+    right: 2.5rem;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 375px;
+    height:89px;
+    padding: 1.4rem 2.5rem 1.2rem;
+    border-radius:5px;
+    box-sizing: border-box;
+    background-color: $bg-medium;
+    font-size: 24px;
+
+    &_likes{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 500;
+        line-height: 31px;
+
+    // margin-left: 76px;
+    
+
+    }
 }

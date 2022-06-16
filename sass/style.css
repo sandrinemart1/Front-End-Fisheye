@@ -46,6 +46,7 @@ h3 {
 #logo {
   height: 50px;
   margin-left: 100px;
+  border-radius: 0;
 }
 
 .photographer_section {

@@ -1,3 +1,30 @@
+function displayPhotographer() {
+
+  document.querySelector('.photographer_text--name').textContent = photographer.name;
+  document.querySelector('.photographer_text--location').textContent = photographer.city+ ", " + photographer.country;
+  document.querySelector(".photographer_text--tagline").innerHTML= photographer.tagline;
+  document.querySelector('.photographer_section--banner >img').src =` ../../assets/images/Photographers ID Photos/${photographer.portrait}`;
+  displayFooter()
+  }
+  //creer la zone info en footer
+  function displayFooter(){
+    for(let i =0 ; i<photographer.media.length; i ++){
+      let eachLikes = photographer.media[i].likes;
+      console.log(eachLikes)
+      let likesSum = 0;
+      for(let i =0 ; i<photographer.media.length; i ++){ 
+        likesSum +=photographer.media[i].likes
+  console.log(likesSum)
+        document.querySelector('.infos_likes--count').textContent=likesSum;
+     }
+   };
+  
+  document.querySelector('.infos_price').textContent = `${
+  photographer.price}€/j`;
+   
+  }
+
+
 
 function affichePhotographers(photographersJson){
     for(let i =0; i<photographersJson.length;i++){

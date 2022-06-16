@@ -147,7 +147,7 @@ main {
           transform: rotate(0);
 }
 
-#dropDownPopularityButton span:hover {
+#dropDownPopularityButton span:focus {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
   -webkit-transition: 3000ms ease;
@@ -182,25 +182,32 @@ main {
 }
 
 .page_photographer-medias {
-  max-width: 1500px;
+  width: 1240px;
+  padding: 0 50px;
+}
+
+.page_photographer-media-attributes {
+  width: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 350px 350px 350px;
       grid-template-columns: 350px 350px 350px;
   gap: 20px;
   grid-auto-flow: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin: 100px 20px;
-  text-align: center;
 }
 
-.page_photographer-medias img {
+.page_photographer-media-attributes .image-Media {
   -o-object-fit: cover;
      object-fit: cover;
   width: 350px;
   height: 300px;
 }
 
-.page_photographer-medias .img_attributes {
+.page_photographer-media-attributes .img_attributes {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -213,16 +220,24 @@ main {
   color: #901C1C;
 }
 
-.page_photographer-medias .img_attributes h3 {
+.page_photographer-media-attributes .img_attributes h3 {
   font-size: 24px;
   line-height: 31px;
   width: 300px;
   text-align: left;
 }
 
-.page_photographer-medias .img_attributes p {
+.page_photographer-media-attributes .img_attributes p {
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
+}
+
+.page_photographer-media-attributes .img_attributes span {
+  display: block;
+}
+
+.page_photographer-media-attributes .img_attributes span:hover {
+  cursor: pointer;
 }
 
 .modal {
@@ -309,5 +324,42 @@ form input {
   height: 170px;
   border: none;
   border-radius: 5px;
+}
+
+.infos {
+  position: fixed;
+  bottom: 0;
+  right: 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 375px;
+  height: 89px;
+  padding: 1.4rem 2.5rem 1.2rem;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #DB8876;
+  font-size: 24px;
+}
+
+.infos_likes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 500;
+  line-height: 31px;
 }
 /*# sourceMappingURL=photographer.css.map */

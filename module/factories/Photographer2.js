@@ -50,7 +50,7 @@ function myFetch2() {
   function getData(data) {
     const photographers = data.photographers
     const media = data.media
-     //recuperer les medias dans le photographe correspondant  
+    //recuperer les medias dans le photographe correspondant  
     for (let photographer of photographers) {
       let mediaList = []  
       
@@ -60,8 +60,8 @@ function myFetch2() {
       })
       for (let mediaId of media) {
         if (photographer.id == mediaId.photographerId) {
-          mediaList.push(mediaId)
-          console.log(mediaList);
+          mediaList.push(mediaId);
+          // console.log(mediaList);
         }
       }
     }
@@ -86,6 +86,7 @@ function myFetch2() {
         firstName(photographers[i])
         displayPhotographer(photographers[i])
         SeparateCardImage(photographers[i].media)
+        displayFooter(photographer[i] ,photographer[i.media])
         return photographer
       }
     }
@@ -98,14 +99,47 @@ function myFetch2() {
     firstName  =  firstName1.replace('-',' ');
     console.log(firstName);
     return firstName
+    
   }
 
 // creer entête de la page de chq photographe
 function displayPhotographer() {
-  document.querySelector('.photographer_text--name').textContent=photographer.name;
+  for(let i =0 ; i<photographer.media.length; i ++){
+   let eachLikes = photographer.media[i].likes;
+   console.log(eachLikes)
+let array =[0];
+
+  };
+
+  document.querySelector('.photographer_text--name').textContent = photographer.name;
   document.querySelector('.photographer_text--location').textContent = photographer.city+ ", " + photographer.country;
   document.querySelector(".photographer_text--tagline").innerHTML= photographer.tagline;
   document.querySelector('.photographer_section--banner >img').src =` ../../assets/images/Photographers ID Photos/${photographer.portrait}`;
+}
+//creer la zone info en footer
+function displayFooter(){
+let likesSum
+
+document.querySelector('.infos_likes--count').textContent=likesSum;
+document.querySelector('.infos_price').textContent = `${
+photographer.price}€/j`;
+;
+// let footer = document.createElement("footer");
+//     footer.className='infos';
+//     let footerDiv= document.createElement('div')
+//     footerDiv.className='infos_likes';
+//     footer.appendChild(footerDiv)
+//     let likesCount = document.createElement('p')
+//     likesCount.textContent=mediaId.likes;
+//     footerDiv.appendChild(likesCount)
+//     let imageHeart2 = document.createElement('i');
+//     imageHeart2.className= "fa-solid fa-heart"; 
+//     footerDiv.appendChild(imageHeart2)
+//     let footerPrice = document.createElement('p')
+//     footerPrice.className="infos_price"
+//     footerPrice.textContent = photographer.price;
+//     footer.appendChild(footerPrice);
+//     sectionMedia.appendChild(footer)  
 }
 //creer un constructor conditionnel
 class FactoryMedia{
@@ -129,17 +163,26 @@ class Image{
   createImage(mediaId){
 
     let sectionMedia = document.querySelector('.page_photographer-medias');
-    let linkMedia = document.createElement('a');
-    sectionMedia.appendChild(linkMedia);
+    let mediaAndAttributes=document.querySelector('.page_photographer-media-attributes');
+    sectionMedia.appendChild(mediaAndAttributes);
     let articleMedia =document.createElement('article');
     articleMedia.className='page_photographer-media';
-    linkMedia.appendChild(articleMedia);
+    articleMedia .setAttribute('id',mediaId.id);
+    mediaAndAttributes.appendChild(articleMedia);
+
+    let linkMedia = document.createElement('a');
+    linkMedia.setAttribute=('id',`${mediaId.title}-${mediaId}`)
+    console.log(linkMedia)
+    articleMedia.appendChild(linkMedia);
     let imageMedia = document.createElement('img');
-    articleMedia.appendChild(imageMedia);
-    // console.log(imageMedia)
+    imageMedia.className ='image-Media'
+    linkMedia.appendChild(imageMedia);
     imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.image}` );
+    // imageMedia.setAttribute('width', '350')
+    // imageMedia.setAttribute('height', '300')
     let imageAttributes = document.createElement('div');
     imageAttributes.className = "img_attributes";
+    imageAttributes.classList.add ('img_attributes')
     articleMedia.appendChild(imageAttributes);
     let imageTitle =document.createElement('h3');
     imageTitle.textContent = mediaId.title;
@@ -151,23 +194,35 @@ class Image{
     imageAttributes.appendChild(span);
     let imageHeart = document.createElement('i');
     imageHeart.className= "fa-solid fa-heart";
-    span.appendChild(imageHeart); 
+    span.appendChild(imageHeart);
+
   }
 }
 //creer une image pour video
 class Video{
   createVideo(mediaId) {
-    let articleMedia = document.querySelector(".page_photographer-media");
+    console.log(mediaId.likes)
+
+    let sectionMedia = document.querySelector('.page_photographer-medias');
+    let mediaAndAttributes=document.querySelector('.page_photographer-media-attributes');
+    sectionMedia.appendChild(mediaAndAttributes);
+  //creation de 1 article par media
+    let articleMedia =document.createElement('article');
+    articleMedia.className='page_photographer-media';
     articleMedia .setAttribute('id',mediaId.id);
+    mediaAndAttributes.appendChild(articleMedia);
+    // avec un lien contenant une image
+    let linkMedia = document.createElement('a');
+    articleMedia.appendChild(linkMedia);
     let imageMedia = document.createElement('video');
-    articleMedia.appendChild(imageMedia);
+    linkMedia.appendChild(imageMedia);
     imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.video}` );
     imageMedia.setAttribute('controls',true)
-    imageMedia.setAttribute('width', '350')
-    imageMedia.setAttribute('height', '300')
-    imageMedia.style = "object-fit: cover";
+    imageMedia.className ='image-Media'
+    //avec un bandeau contenant des infos
     let imageAttributes = document.createElement('div');
     imageAttributes.className = "img_attributes";
+    imageAttributes.classList.add ('img_attributes')
     articleMedia.appendChild(imageAttributes);
     let imageTitle =document.createElement('h3');
     imageTitle.textContent = mediaId.title;
@@ -179,8 +234,7 @@ class Video{
     imageAttributes.appendChild(span);
     let imageHeart = document.createElement('i');
     imageHeart.className= "fa-solid fa-heart";
-    span.appendChild(imageHeart); 
-    console.log(imageMedia)
+    span.appendChild(imageHeart);
     
 
   }
@@ -189,25 +243,68 @@ class Video{
 //separer les videos des photos
 
 function SeparateCardImage(media){
-
+  // sectionMedia.innerHTML =''
   media.forEach(mediaId =>{
-    let sectionMedia = document.querySelector('.page_photographer-medias');
-    // sectionMedia.innerHTML =``
-   
+  //  createDOM(mediaId)
     if(mediaId.image !== undefined){
         let card = factory.createMedia('image');
-        card.createImage(mediaId)
-    }else{
-       let card = factory.createMedia('video');
-       card.createVideo(mediaId)
+       card.createImage(mediaId);
+      }else{
+        let card = factory.createMedia('video');
+        card.createVideo(mediaId);
     }
   })
 }
+//  function createDOM(mediaId){
+// //conteneur de chq image/video
+//     let sectionMedia = document.querySelector('.page_photographer-medias');
+//     let mediaAndAttributes=document.createElement('div');
+//     mediaAndAttributes.className=".page_photographer-media-attributes";
+//     sectionMedia.appendChild(mediaAndAttributes);
+//     let articleMedia =document.createElement('article');
+//     articleMedia.className='page_photographer-media';
+//     articleMedia .setAttribute('id',mediaId.id);
+//     mediaAndAttributes.appendChild(articleMedia);
+    // let linkMedia = document.createElement('a');
+    // articleMedia.appendChild(linkMedia);
+    // let imageMedia = document.querySelector('img');
+    // imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.image}` );
+    // imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.video}` );
+    // linkMedia.appendChild(imageMedia);
+    // console.log(imageMedia);
+//attributs de chaque photo/video
+//     let imageAttributes = document.createElement('div');
+//     imageAttributes.className = "img_attributes";
+//     imageAttributes.classList.add ('img_attributes')
+//     articleMedia.appendChild(imageAttributes);
+//     let imageTitle =document.createElement('h3');
+//     imageTitle.textContent = mediaId.title;
+//     imageAttributes.appendChild(imageTitle);
+//     // let imageLike = document.createElement('p');
+//     // imageLike.textContent =mediaId.likes;
+//     // imageAttributes.appendChild(imageLike);
+//     // let span = document.createElement('span')
+//     // imageAttributes.appendChild(span);
+//     // let imageHeart = document.createElement('i');
+//     // imageHeart.className= "fa-solid fa-heart";
+//     // span.appendChild(imageHeart);
+//     likes(mediaId) 
+//  }
+function likes(mediaId){
+ let heart = document.querySelector('.img_attributes  span i') ;
+//  console.log(heart);
+ let implementator =document.querySelector('.img_attributes p')
+ let numberLikes = implementator.innerHTML;
+//  console.log(numberLikes++)
+
+//  console.log(numberLikes++);
+heart.addEventListener('click',()=>{
+  const addLikes= numberLikes ++;
+  numberLikes.insert(addLikes);
+});
 
 
-  
-
-
+}
  
 //////dropdown//////////
 let dropDownPopularityButton =document.querySelector("#dropDownPopularityButton");
