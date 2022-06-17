@@ -277,9 +277,9 @@ form input {
         align-items: center;
         font-weight: 500;
         line-height: 31px;
-
-    // margin-left: 76px;
-    
-
+        margin-left: 76px;
+        &--count{
+            margin-right: 10px;
+        }
     }
 }

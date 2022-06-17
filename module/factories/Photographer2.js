@@ -86,7 +86,8 @@ function myFetch2() {
         firstName(photographers[i])
         displayPhotographer(photographers[i])
         SeparateCardImage(photographers[i].media)
-        displayFooter(photographer[i] ,photographer[i].media)
+        displayFooter(photographer[i])
+        likeAdd(photographers[i].media)
         return photographer
       }
     }
@@ -97,7 +98,7 @@ function myFetch2() {
     let splitName =fullName.split(' ');
     let firstName1= splitName[0];
     firstName  =  firstName1.replace('-',' ');
-    console.log(firstName);
+    // console.log(firstName);
     return firstName
     
   }
@@ -115,11 +116,11 @@ function displayPhotographer() {
   function displayFooter(){
     for(let i =0 ; i<photographer.media.length; i ++){
       let eachLikes = photographer.media[i].likes;
-      console.log(eachLikes)
+      // console.log(eachLikes)
       let likesSum = 0;
       for(let i =0 ; i<photographer.media.length; i ++){ 
         likesSum +=photographer.media[i].likes
-  console.log(likesSum)
+  // console.log(likesSum)
         document.querySelector('.infos_likes--count').textContent=likesSum;
      }
    };
@@ -160,14 +161,12 @@ class Image{
 
     let linkMedia = document.createElement('a');
     linkMedia.setAttribute=('id',`${mediaId.title}-${mediaId}`)
-    console.log(linkMedia)
+    // console.log(linkMedia)
     articleMedia.appendChild(linkMedia);
     let imageMedia = document.createElement('img');
     imageMedia.className ='image-Media'
     linkMedia.appendChild(imageMedia);
     imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.image}` );
-    // imageMedia.setAttribute('width', '350')
-    // imageMedia.setAttribute('height', '300')
     let imageAttributes = document.createElement('div');
     imageAttributes.className = "img_attributes";
     imageAttributes.classList.add ('img_attributes')
@@ -177,6 +176,7 @@ class Image{
     imageAttributes.appendChild(imageTitle);
     let imageLike = document.createElement('p');
     imageLike.textContent =mediaId.likes;
+    imageLike.setAttribute('id',mediaId.likes)
     imageAttributes.appendChild(imageLike);
     let span = document.createElement('span')
     imageAttributes.appendChild(span);
@@ -189,7 +189,6 @@ class Image{
 //creer une image pour video
 class Video{
   createVideo(mediaId) {
-    console.log(mediaId.likes)
 
     let sectionMedia = document.querySelector('.page_photographer-medias');
     let mediaAndAttributes=document.querySelector('.page_photographer-media-attributes');
@@ -216,6 +215,7 @@ class Video{
     imageTitle.textContent = mediaId.title;
     imageAttributes.appendChild(imageTitle);
     let imageLike = document.createElement('p');
+    imageLike.setAttribute('id',mediaId.likes)
     imageLike.textContent =mediaId.likes;
     imageAttributes.appendChild(imageLike);
     let span = document.createElement('span')
@@ -234,6 +234,7 @@ function SeparateCardImage(media){
   // sectionMedia.innerHTML =''
   media.forEach(mediaId =>{
   //  createDOM(mediaId)
+  const heart = document.querySelector('.img_attributes')
     if(mediaId.image !== undefined){
         let card = factory.createMedia('image');
        card.createImage(mediaId);
@@ -243,57 +244,57 @@ function SeparateCardImage(media){
     }
   })
 }
-//  function createDOM(mediaId){
-// //conteneur de chq image/video
-//     let sectionMedia = document.querySelector('.page_photographer-medias');
-//     let mediaAndAttributes=document.createElement('div');
-//     mediaAndAttributes.className=".page_photographer-media-attributes";
-//     sectionMedia.appendChild(mediaAndAttributes);
-//     let articleMedia =document.createElement('article');
-//     articleMedia.className='page_photographer-media';
-//     articleMedia .setAttribute('id',mediaId.id);
-//     mediaAndAttributes.appendChild(articleMedia);
-    // let linkMedia = document.createElement('a');
-    // articleMedia.appendChild(linkMedia);
-    // let imageMedia = document.querySelector('img');
-    // imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.image}` );
-    // imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.video}` );
-    // linkMedia.appendChild(imageMedia);
-    // console.log(imageMedia);
-//attributs de chaque photo/video
-//     let imageAttributes = document.createElement('div');
-//     imageAttributes.className = "img_attributes";
-//     imageAttributes.classList.add ('img_attributes')
-//     articleMedia.appendChild(imageAttributes);
-//     let imageTitle =document.createElement('h3');
-//     imageTitle.textContent = mediaId.title;
-//     imageAttributes.appendChild(imageTitle);
-//     // let imageLike = document.createElement('p');
-//     // imageLike.textContent =mediaId.likes;
-//     // imageAttributes.appendChild(imageLike);
-//     // let span = document.createElement('span')
-//     // imageAttributes.appendChild(span);
-//     // let imageHeart = document.createElement('i');
-//     // imageHeart.className= "fa-solid fa-heart";
-//     // span.appendChild(imageHeart);
-//     likes(mediaId) 
-//  }
-function likes(mediaId){
- let heart = document.querySelector('.img_attributes  span i') ;
-//  console.log(heart);
- let implementator =document.querySelector('.img_attributes p')
- let numberLikes = implementator.innerHTML;
-//  console.log(numberLikes++)
 
-//  console.log(numberLikes++);
-heart.addEventListener('click',()=>{
-  const addLikes= numberLikes ++;
-  numberLikes.insert(addLikes);
-});
+{/* <table id="outside">
+  <tr><td id="t1">un</td></tr>
+  <tr><td id="t2">deux</td></tr>
+</table> */
+ // Fonction pour changer le contenu de t2
+// function modifyText() {
+//   const t2 = document.querySelector("#t2");
+//   if (t2.firstChild.nodeValue == "trois") {
+//     t2.firstChild.nodeValue = "deux";
+//   } else {
+//     t2.firstChild.nodeValue = "trois";
+//   }
+// }
 
+// // Ajouter un écouteur d'évènements à la table
+// const el = document.querySelector("#outside");
+// el.addEventListener("click", modifyText, false);
+// Dans ce code, modifyText() est un écouteur pour les évènements click enregistré en utilisant addEventListener(). Un clic n'importe où sur la table se propagera jusqu'au gestionnaire et exécutera modifyText()}
 
-}
+// const likesSum =document.querySelector('.infos_likes--count')
+// const EventTarget = function (){
+//   this.listeners
+// console.log('salut')
+
+};
+
+function likeAdd(e){
+{
+document.addEventListener('click',(e) => {console.log(e.target)}) 
+document.addEventListener('click',(e)=> {
+const likesSum = document.querySelector('.infos_likes--count')    
+const heart = document.querySelector('.img_attributes span i')
+const likeP = document.querySelector('.img_attributes p')
+console.log(heart)
+console.log(likeP)
+// console.log(likesSum)
+// heart.addEventListener("click",incrementLike,false)
+
+       if (e.target == heart){
+        likeP.innerHTML ++
+        likesSum.innerHTML ++
+       }
+      })
  
+  }
+}
+
+
+
+likeAdd();
 //////dropdown//////////
 let dropDownPopularityButton =document.querySelector("#dropDownPopularityButton");
 let dropDownDiv = document.querySelector("#dropdown-button");

@@ -1,28 +1,38 @@
-function displayPhotographer() {
-
-  document.querySelector('.photographer_text--name').textContent = photographer.name;
-  document.querySelector('.photographer_text--location').textContent = photographer.city+ ", " + photographer.country;
-  document.querySelector(".photographer_text--tagline").innerHTML= photographer.tagline;
-  document.querySelector('.photographer_section--banner >img').src =` ../../assets/images/Photographers ID Photos/${photographer.portrait}`;
-  displayFooter()
-  }
-  //creer la zone info en footer
-  function displayFooter(){
-    for(let i =0 ; i<photographer.media.length; i ++){
-      let eachLikes = photographer.media[i].likes;
-      console.log(eachLikes)
-      let likesSum = 0;
-      for(let i =0 ; i<photographer.media.length; i ++){ 
-        likesSum +=photographer.media[i].likes
-  console.log(likesSum)
-        document.querySelector('.infos_likes--count').textContent=likesSum;
-     }
-   };
-  
-  document.querySelector('.infos_price').textContent = `${
-  photographer.price}€/j`;
-   
-  }
+//  function createDOM(mediaId){
+// //conteneur de chq image/video
+//     let sectionMedia = document.querySelector('.page_photographer-medias');
+//     let mediaAndAttributes=document.createElement('div');
+//     mediaAndAttributes.className=".page_photographer-media-attributes";
+//     sectionMedia.appendChild(mediaAndAttributes);
+//     let articleMedia =document.createElement('article');
+//     articleMedia.className='page_photographer-media';
+//     articleMedia .setAttribute('id',mediaId.id);
+//     mediaAndAttributes.appendChild(articleMedia);
+    // let linkMedia = document.createElement('a');
+    // articleMedia.appendChild(linkMedia);
+    // let imageMedia = document.querySelector('img');
+    // imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.image}` );
+    // imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.video}` );
+    // linkMedia.appendChild(imageMedia);
+    // console.log(imageMedia);
+//attributs de chaque photo/video
+//     let imageAttributes = document.createElement('div');
+//     imageAttributes.className = "img_attributes";
+//     imageAttributes.classList.add ('img_attributes')
+//     articleMedia.appendChild(imageAttributes);
+//     let imageTitle =document.createElement('h3');
+//     imageTitle.textContent = mediaId.title;
+//     imageAttributes.appendChild(imageTitle);
+//     // let imageLike = document.createElement('p');
+//     // imageLike.textContent =mediaId.likes;
+//     // imageAttributes.appendChild(imageLike);
+//     // let span = document.createElement('span')
+//     // imageAttributes.appendChild(span);
+//     // let imageHeart = document.createElement('i');
+//     // imageHeart.className= "fa-solid fa-heart";
+//     // span.appendChild(imageHeart);
+//     likes(mediaId) 
+//  }
 
 
 

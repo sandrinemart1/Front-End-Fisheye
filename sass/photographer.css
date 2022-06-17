@@ -361,5 +361,10 @@ form input {
           align-items: center;
   font-weight: 500;
   line-height: 31px;
+  margin-left: 76px;
+}
+
+.infos_likes--count {
+  margin-right: 10px;
 }
 /*# sourceMappingURL=photographer.css.map */
