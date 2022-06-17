@@ -86,7 +86,7 @@ function myFetch2() {
         firstName(photographers[i])
         displayPhotographer(photographers[i])
         SeparateCardImage(photographers[i].media)
-        displayFooter(photographer[i] ,photographer[i.media])
+        displayFooter(photographer[i] ,photographer[i].media)
         return photographer
       }
     }
@@ -104,43 +104,31 @@ function myFetch2() {
 
 // creer entête de la page de chq photographe
 function displayPhotographer() {
-  for(let i =0 ; i<photographer.media.length; i ++){
-   let eachLikes = photographer.media[i].likes;
-   console.log(eachLikes)
-let array =[0];
-
-  };
 
   document.querySelector('.photographer_text--name').textContent = photographer.name;
   document.querySelector('.photographer_text--location').textContent = photographer.city+ ", " + photographer.country;
   document.querySelector(".photographer_text--tagline").innerHTML= photographer.tagline;
   document.querySelector('.photographer_section--banner >img').src =` ../../assets/images/Photographers ID Photos/${photographer.portrait}`;
-}
-//creer la zone info en footer
-function displayFooter(){
-let likesSum
+  displayFooter()
+  }
+  //creer la zone info en footer
+  function displayFooter(){
+    for(let i =0 ; i<photographer.media.length; i ++){
+      let eachLikes = photographer.media[i].likes;
+      console.log(eachLikes)
+      let likesSum = 0;
+      for(let i =0 ; i<photographer.media.length; i ++){ 
+        likesSum +=photographer.media[i].likes
+  console.log(likesSum)
+        document.querySelector('.infos_likes--count').textContent=likesSum;
+     }
+   };
+  
+  document.querySelector('.infos_price').textContent = `${
+  photographer.price}€/j`;
+   
+  } 
 
-document.querySelector('.infos_likes--count').textContent=likesSum;
-document.querySelector('.infos_price').textContent = `${
-photographer.price}€/j`;
-;
-// let footer = document.createElement("footer");
-//     footer.className='infos';
-//     let footerDiv= document.createElement('div')
-//     footerDiv.className='infos_likes';
-//     footer.appendChild(footerDiv)
-//     let likesCount = document.createElement('p')
-//     likesCount.textContent=mediaId.likes;
-//     footerDiv.appendChild(likesCount)
-//     let imageHeart2 = document.createElement('i');
-//     imageHeart2.className= "fa-solid fa-heart"; 
-//     footerDiv.appendChild(imageHeart2)
-//     let footerPrice = document.createElement('p')
-//     footerPrice.className="infos_price"
-//     footerPrice.textContent = photographer.price;
-//     footer.appendChild(footerPrice);
-//     sectionMedia.appendChild(footer)  
-}
 //creer un constructor conditionnel
 class FactoryMedia{
   constructor() {
