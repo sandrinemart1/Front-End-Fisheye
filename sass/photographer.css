@@ -143,15 +143,6 @@ main {
   color: #FFFFFF;
   display: block;
   margin-left: 20px;
-  -webkit-transform: rotate(0);
-          transform: rotate(0);
-}
-
-#dropDownPopularityButton span:focus {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-  -webkit-transition: 3000ms ease;
-  transition: 3000ms ease;
 }
 
 #dropdown-button {
@@ -175,10 +166,27 @@ main {
 }
 
 .drop-down-open {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+.drop-down-open:hover {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
-  -webkit-transition: 300ms ease;
-  transition: 300ms ease;
+  -webkit-transition: 0.4s ease-in-out backwards;
+  transition: 0.4s ease-in-out backwards;
+}
+
+.drop-down-close {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.drop-down-close:focus, .drop-down-close:hover {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: 0.4s ease-in-out backwards;
+  transition: 0.4s ease-in-out backwards;
 }
 
 .page_photographer-medias {
@@ -207,7 +215,7 @@ main {
   height: 300px;
 }
 
-.page_photographer-media-attributes .img_attributes {
+.img_attributes {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -220,24 +228,39 @@ main {
   color: #901C1C;
 }
 
-.page_photographer-media-attributes .img_attributes h3 {
+.img_attributes h3 {
   font-size: 24px;
   line-height: 31px;
   width: 300px;
   text-align: left;
 }
 
-.page_photographer-media-attributes .img_attributes p {
+.img_attributes p {
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
 }
 
-.page_photographer-media-attributes .img_attributes span {
+.img_attributes span {
   display: block;
 }
 
-.page_photographer-media-attributes .img_attributes span:hover {
+.img_attributes span:hover {
   cursor: pointer;
+}
+
+.clicked {
+  color: #DB8876;
+  -webkit-transform: rotate(0turn);
+          transform: rotate(0turn);
+}
+
+.clicked:focus, .clicked:hover {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transition: -webkit-transform 0.4s ease-in-out;
+  transition: -webkit-transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
 }
 
 .modal {

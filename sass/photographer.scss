@@ -33,7 +33,6 @@ main{
     background-color: #FAFAFA;
     height: 313px;
     padding:0 50px;
-
 }
 .page_photographer_text{
     text-align: left;
@@ -43,22 +42,18 @@ main{
         font-size: 4rem;
         font-weight: 200;
         line-height: 83px;
-        margin: 0;
-        
+        margin: 0;        
     }
     .photographer_text--location{
         font-size: 24px;
         line-height: 31px;
         color: $bg-1st-color;
         margin: 4px;
-
-
     }
     .photographer_text--tagline{
         font-size: 18px;
         line-height: 23px;
         margin: 4px;
-
     }
 }     
 #contact_button {
@@ -87,7 +82,6 @@ main{
         height:200px;
         width: 200px;
         border-radius: 50%;
-
     }
 }
 .dropdown {
@@ -115,44 +109,50 @@ main{
         text-align: left;
         }
     }
-    #dropDownPopularityButton{
-        display:flex;
-        justify-content: space-between;
-        border-top-left-radius:5px ;
-        border-top-right-radius: 5px;
-    span{
-        color: $white;
-        display:block;
-        margin-left: 20px;
-        transform: rotate(0);
-        &:focus{
-            transform:rotate(180deg);
-            transition:  3000ms ease;
-        }
+#dropDownPopularityButton{
+    display:flex;
+    justify-content: space-between;
+    border-top-left-radius:5px ;
+    border-top-right-radius: 5px;
+span{
+    // transform: rotate(0turn);
+    color: $white;
+    display:block;
+    margin-left: 20px;
     }
+}
 
+
+#dropdown-button{
+    display:none;
+    overflow: auto;
+    position:absolute;
+    border-style: none;
+    width: 170px;
+    #titre{
+    border-bottom-left-radius:5px ;
+    border-bottom-right-radius: 5px;
+    box-shadow: inset 0 2px 0 white;
     }
-    #dropdown-button{
-        display:none;
-        overflow: auto;
-        position:absolute;
-        border-style: none;
-        width: 170px;
-        #titre{
-        border-bottom-left-radius:5px ;
-        border-bottom-right-radius: 5px;
+    #date{
         box-shadow: inset 0 2px 0 white;
-        }
-        #date{
-            box-shadow: inset 0 2px 0 white;
-        }
-
-    }
-    .drop-down-open{
-        transform: rotate(180deg);
-        transition:  300ms ease ;
     }
 
+}
+.drop-down-open{
+    transform: rotate(0deg);
+    &:hover {
+    transform: rotate(180deg);
+    transition: 0.4s ease-in-out backwards;
+    }
+}
+.drop-down-close{
+    transform: rotate(180deg);
+    &:focus, &:hover {
+    transform: rotate(0deg);
+    transition: 0.4s ease-in-out backwards;
+    }
+}
     // https://blog.hubspot.com/website/html-dropdown
 .page_photographer-medias{
     width: 1240px;
@@ -171,6 +171,7 @@ main{
         object-fit:cover;
         width: 350px;
         height:300px;
+     }
 }
 .img_attributes{
     display: flex;
@@ -194,8 +195,15 @@ main{
             cursor: pointer;
         }
     }
-}}
-
+ } 
+.clicked {
+    color:#DB8876;
+    transform: rotate(0turn);
+    &:focus, &:hover {
+    transform: rotate(180deg);
+    transition: transform 0.4s ease-in-out;
+    }
+}
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -241,7 +249,6 @@ form div {
     width: 100%;
     align-items: self-start;
     margin-bottom: 26px;
-
 }
 
 form input {

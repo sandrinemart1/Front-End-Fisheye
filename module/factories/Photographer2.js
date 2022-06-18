@@ -87,7 +87,7 @@ function myFetch2() {
         displayPhotographer(photographers[i])
         SeparateCardImage(photographers[i].media)
         displayFooter(photographer[i])
-        likeAdd(photographers[i].media)
+        // likeAdd(photographers[i].media)
         return photographer
       }
     }
@@ -183,6 +183,7 @@ class Image{
     let imageHeart = document.createElement('i');
     imageHeart.className= "fa-solid fa-heart";
     span.appendChild(imageHeart);
+    likeAdd()
 
   }
 }
@@ -223,7 +224,7 @@ class Video{
     let imageHeart = document.createElement('i');
     imageHeart.className= "fa-solid fa-heart";
     span.appendChild(imageHeart);
-    
+    likeAdd()
 
   }
 }
@@ -233,68 +234,47 @@ class Video{
 function SeparateCardImage(media){
   // sectionMedia.innerHTML =''
   media.forEach(mediaId =>{
-  //  createDOM(mediaId)
-  const heart = document.querySelector('.img_attributes')
+    //  createDOM(mediaId)
     if(mediaId.image !== undefined){
         let card = factory.createMedia('image');
        card.createImage(mediaId);
       }else{
         let card = factory.createMedia('video');
         card.createVideo(mediaId);
+        likeAdd(mediaId)
     }
   })
 }
 
-{/* <table id="outside">
-  <tr><td id="t1">un</td></tr>
-  <tr><td id="t2">deux</td></tr>
-</table> */
- // Fonction pour changer le contenu de t2
-// function modifyText() {
-//   const t2 = document.querySelector("#t2");
-//   if (t2.firstChild.nodeValue == "trois") {
-//     t2.firstChild.nodeValue = "deux";
-//   } else {
-//     t2.firstChild.nodeValue = "trois";
-//   }
-// }
-
-// // Ajouter un écouteur d'évènements à la table
-// const el = document.querySelector("#outside");
-// el.addEventListener("click", modifyText, false);
-// Dans ce code, modifyText() est un écouteur pour les évènements click enregistré en utilisant addEventListener(). Un clic n'importe où sur la table se propagera jusqu'au gestionnaire et exécutera modifyText()}
-
-// const likesSum =document.querySelector('.infos_likes--count')
-// const EventTarget = function (){
-//   this.listeners
-// console.log('salut')
-
-};
-
-function likeAdd(e){
-{
-document.addEventListener('click',(e) => {console.log(e.target)}) 
+function likeAdd(mediaId){
+// for(media of photographer.media){
+document.addEventListener('click',(e) => {console.log(e.target)})
 document.addEventListener('click',(e)=> {
 const likesSum = document.querySelector('.infos_likes--count')    
-const heart = document.querySelector('.img_attributes span i')
-const likeP = document.querySelector('.img_attributes p')
+let heart = document.querySelector('.img_attributes span i')
+let heartParent = heart.parentNode;
+console.log(heartParent)
+let iconeHeart = document.querySelector('span i')
+console.log(iconeHeart)
+let likeP = document.querySelector('.img_attributes p')
 console.log(heart)
 console.log(likeP)
-// console.log(likesSum)
-// heart.addEventListener("click",incrementLike,false)
 
-       if (e.target == heart){
+       if (e.target == heart && heartParent.className !=='clicked' ){
+        
         likeP.innerHTML ++
         likesSum.innerHTML ++
-       }
-      })
+        // heart.style.color = '#DB8876';
+// pour ne cliquer qu 'une seule fois par image'
+        heartParent.className='clicked';
+      }
+    })
  
   }
-}
 
 
 
-likeAdd();
+
 //////dropdown//////////
 let dropDownPopularityButton =document.querySelector("#dropDownPopularityButton");
 let dropDownDiv = document.querySelector("#dropdown-button");
@@ -307,8 +287,13 @@ console.log(arrowDown);
 dropDownPopularityButton.addEventListener("click" ,dropDownOpen)
 //si chevron position initiale
 function dropDownOpen(){
+  if(chevron.className !=='drop-down-open'){
  dropDownDiv.style.display=" block";
- chevron.classList.add('drop-down-open');
-
- //si chevron rotate, au click => dropDownDiv.style.display="none";   tooglesur 2 element
+ chevron.className='drop-down-open';
+  }else{
+    dropDownDiv.style.display=" none";
+    chevron.className='drop-down-close';
+  }
 }
+ //si chevron rotate, au click => dropDownDiv.style.display="none";   tooglesur 2 element
+
