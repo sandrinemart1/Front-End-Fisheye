@@ -18,9 +18,7 @@ a{
     height: 50px;
     margin:43px 100px;
 }
-#contact_modal {
-    display: none;
-}
+
 main{
     margin: 0 100px;
 }
@@ -141,18 +139,18 @@ span{
 }
 .drop-down-open{
     transform: rotate(0deg);
-    &:hover {
-    transform: rotate(180deg);
-    transition: 0.4s ease-in-out backwards;
+    // &:focus, &:hover  {
+        transform: rotate(180deg);
+        transition: 0.4s ease-in-out ;
     }
-}
+// }
 .drop-down-close{
     transform: rotate(180deg);
-    &:focus, &:hover {
+    // &:focus, &:hover {
     transform: rotate(0deg);
-    transition: 0.4s ease-in-out backwards;
+    transition: 0.4s ease-in-out ;
     }
-}
+// }
     // https://blog.hubspot.com/website/html-dropdown
 .page_photographer-medias{
     width: 1240px;
@@ -204,6 +202,9 @@ span{
     transition: transform 0.4s ease-in-out;
     }
 }
+#contact_modal{
+    // display:none
+}
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -216,20 +217,20 @@ span{
     margin: auto;
 }
 
-.modal header {
+.modal-header_text {
     justify-content: space-between;
     width: 100%;
+    h2,p{
+        font-size: 64px;
+        font-weight: normal;
+        text-align: left;
+    }
 }
 
 .modal header img {
     cursor: pointer;
 }
 
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
-}
 
 form {
     display: flex;
@@ -256,6 +257,15 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+#button{
+    width: 170px;
+    height:69px;
+    border-radius: 5px;
+    background-color: $bg-1st-color;
+    color:white;
+    font-size: 18px;
+
 }
 #comments{
     width: 100%;

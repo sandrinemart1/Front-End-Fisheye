@@ -1,3 +1,5 @@
+// import{ dropDownOpen }
+
 //fonction pour recuperer les donnees
 class Photographer{
     constructor( name, id, city, country, tagline,price,portrait,media){
@@ -178,12 +180,14 @@ class Image{
     imageLike.textContent =mediaId.likes;
     imageLike.setAttribute('id',mediaId.likes)
     imageAttributes.appendChild(imageLike);
-    let span = document.createElement('span')
+    let span = document.createElement('span');
+    span.setAttribute('id','spanHeart${mediaId.id');
     imageAttributes.appendChild(span);
     let imageHeart = document.createElement('i');
     imageHeart.className= "fa-solid fa-heart";
     span.appendChild(imageHeart);
-    likeAdd()
+    span.addEventListener('click',()=>console.log(span))
+    // likeAdd()
 
   }
 }
@@ -220,11 +224,13 @@ class Video{
     imageLike.textContent =mediaId.likes;
     imageAttributes.appendChild(imageLike);
     let span = document.createElement('span')
+    span.setAttribute('id','spanHeart${mediaId.id')
     imageAttributes.appendChild(span);
     let imageHeart = document.createElement('i');
     imageHeart.className= "fa-solid fa-heart";
     span.appendChild(imageHeart);
-    likeAdd()
+    span.addEventListener('click',()=>likeAdd())
+    // likeAdd()
 
   }
 }
@@ -241,37 +247,46 @@ function SeparateCardImage(media){
       }else{
         let card = factory.createMedia('video');
         card.createVideo(mediaId);
-        likeAdd(mediaId)
+        
     }
   })
 }
 
-function likeAdd(mediaId){
+// function likeAdd(mediaId){
 // for(media of photographer.media){
-document.addEventListener('click',(e) => {console.log(e.target)})
+// document.addEventListener('click',(e) => {console.log(e.target)})
 document.addEventListener('click',(e)=> {
 const likesSum = document.querySelector('.infos_likes--count')    
-let heart = document.querySelector('.img_attributes span i')
+// let heart = document.querySelector('.img_attributes span i')
+let heart =e.target
+// console.log(e.target)
 let heartParent = heart.parentNode;
-console.log(heartParent)
+console.log(heartParent.parentNode)
 let iconeHeart = document.querySelector('span i')
-console.log(iconeHeart)
-let likeP = document.querySelector('.img_attributes p')
-console.log(heart)
+// console.log(iconeHeart)
+let likeP = heartParent.parentNode.querySelector('p')
+// console.log(heart)
 console.log(likeP)
 
        if (e.target == heart && heartParent.className !=='clicked' ){
         
         likeP.innerHTML ++
         likesSum.innerHTML ++
-        // heart.style.color = '#DB8876';
 // pour ne cliquer qu 'une seule fois par image'
         heartParent.className='clicked';
       }
     })
  
-  }
+  // }
+//////modale////
 
+let modal = document.querySelector('#contact_modal')
+
+let contactButton = document.querySelector('#contact_button')
+contactButton.addEventListener('click',modalOpen)
+function modalOpen(){
+  modal.style.display = 'block'
+}
 
 
 
@@ -295,5 +310,5 @@ function dropDownOpen(){
     chevron.className='drop-down-close';
   }
 }
- //si chevron rotate, au click => dropDownDiv.style.display="none";   tooglesur 2 element
+
 

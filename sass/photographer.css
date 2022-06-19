@@ -22,10 +22,6 @@ a {
   margin: 43px 100px;
 }
 
-#contact_modal {
-  display: none;
-}
-
 main {
   margin: 0 100px;
 }
@@ -168,25 +164,19 @@ main {
 .drop-down-open {
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
-}
-
-.drop-down-open:hover {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
-  -webkit-transition: 0.4s ease-in-out backwards;
-  transition: 0.4s ease-in-out backwards;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 
 .drop-down-close {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
-}
-
-.drop-down-close:focus, .drop-down-close:hover {
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
-  -webkit-transition: 0.4s ease-in-out backwards;
-  transition: 0.4s ease-in-out backwards;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 
 .page_photographer-medias {
@@ -263,6 +253,10 @@ main {
   transition: transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
 }
 
+#contact_modal {
+  display: none;
+}
+
 .modal {
   border-radius: 5px;
   background-color: #DB8876;
@@ -284,21 +278,21 @@ main {
   margin: auto;
 }
 
-.modal header {
+.modal-header_text {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 100%;
 }
 
-.modal header img {
-  cursor: pointer;
-}
-
-.modal header h2 {
+.modal-header_text h2, .modal-header_text p {
   font-size: 64px;
   font-weight: normal;
-  text-align: center;
+  text-align: left;
+}
+
+.modal header img {
+  cursor: pointer;
 }
 
 form {
@@ -340,6 +334,15 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+}
+
+#button {
+  width: 170px;
+  height: 69px;
+  border-radius: 5px;
+  background-color: #901C1C;
+  color: white;
+  font-size: 18px;
 }
 
 #comments {
