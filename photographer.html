@@ -20,7 +20,7 @@
             <img src="assets/images/logo.png" class ="logo" />
         </a>
     </header>
-    <main>
+    <main class='Photographer-Page-Main'>
         <!-- section présentation photographe -->
         <section class ="page_photographer-informations">
             
@@ -69,7 +69,7 @@
         </section>
         
         <!-- footer -->
-        <footer class="footer-infos">
+        <footer class="footer-infos" id ="footer">
             
         </footer>
     </main>
@@ -78,15 +78,22 @@
         <div class="modal" >
             
             
-            <span class="close closeModal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></span>
             
-            <div class ="modal-header_text">
-                <h2 class="modal__title">Contactez-moi</h2>
-                <p>Nom du Photographe</p>
+            <div class ="modal-header">
+                <div class="modal-header_text">
+                    <h2 class="modal__title">Contactez-moi</h2>
+                    <span class="close closeModal"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+                <p>nom</p>
             </div>
         
-            <form name="contact" method ="GET" action=""
-            class="modal_form"id="form">
+            <form  
+            name="contact" 
+            method ="GET" 
+            action=""
+            class="modal_form" 
+            id="form"
+            >
                 <div class="modal_form--formData">
                     <label for ="first" class="modal_formaData--label">Prénom</label><br/>
                     <input
@@ -94,7 +101,9 @@
                         class="modal_form-input"
                         id="first"
                         name="first"
+                        required
                     />
+                    <span class="error-msg" id="message-firstName"></span>
                 </div>
                 <div class="modal_form--formData">
                     <label for ="last" class="modal_formaData--label">Nom</label><br/>
@@ -103,7 +112,9 @@
                         class="modal_form-input"
                         id="last"
                         name="last"
+                        required
                     />
+                    <span class="error-msg" id="message-lastName"></span>
                 </div>
                 <div class="modal_form--formData">
                     <label for ="email" class="modal_formaData--label">Email</label><br/>
@@ -112,11 +123,25 @@
                         class="modal_form-input"
                         id="email"
                         name="email"
+                        required
                     />
+                    <span class="error-msg" id="message-email"></span>
+                </div>
+                <div class="modal_form--formData">
+                    <label for ="message" class="modal_formaData--label">Message</label><br/>
+                    <textarea
+                        type="text"
+                        class="modal_form-input"
+                        id="message"
+                        name="message"
+                        required
+                    ></textarea>
+                    <span class="error-msg"></span>
                 </div>
             
                 <div class ="modal-button">
-                    <input id="button" class="submitButton" type="submit"value="Envoyer">
+                    <input id="submit-button" class="submitButton" type="submit"value="Envoyer">
+                    <span class="error-msg" id="message-validation"></span>
                 </div>
             </form>
             
@@ -138,7 +163,7 @@
         
     </div>
 </div>
-<footer class="infos">
+<footer class="infos" id="infos">
     <div class="infos_likes">
         <p class="infos_likes--count"></p>
         <span class="infos_likes--icon">

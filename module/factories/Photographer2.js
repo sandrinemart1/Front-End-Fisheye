@@ -1,6 +1,9 @@
-// import{ dropDownOpen }
+// import{ dropDownOpen }from'./dropdown.js'
+import{displayModal}from './contactForm.js'
+import{closeModal}from './contactForm.js'
 
-//fonction pour recuperer les donnees
+
+// fonction pour recuperer les donnees
 class Photographer{
     constructor( name, id, city, country, tagline,price,portrait,media){
         this.name =name,
@@ -107,12 +110,15 @@ function myFetch2() {
 
 // creer entête de la page de chq photographe
 function displayPhotographer() {
-
+//bandeau entête page photographe
   document.querySelector('.photographer_text--name').textContent = photographer.name;
   document.querySelector('.photographer_text--location').textContent = photographer.city+ ", " + photographer.country;
   document.querySelector(".photographer_text--tagline").innerHTML= photographer.tagline;
   document.querySelector('.photographer_section--banner >img').src =` ../../assets/images/Photographers ID Photos/${photographer.portrait}`;
+  //enregistrer le nom du photographesur la modale
+  document.querySelector('.modal-header p').innerHTML = photographer.name;
   displayFooter()
+  
   }
   //creer la zone info en footer
   function displayFooter(){
@@ -228,9 +234,7 @@ class Video{
     imageAttributes.appendChild(span);
     let imageHeart = document.createElement('i');
     imageHeart.className= "fa-solid fa-heart";
-    span.appendChild(imageHeart);
-    span.addEventListener('click',()=>likeAdd())
-    // likeAdd()
+    span.appendChild(imageHeart)
 
   }
 }
@@ -257,36 +261,49 @@ function SeparateCardImage(media){
 // document.addEventListener('click',(e) => {console.log(e.target)})
 document.addEventListener('click',(e)=> {
 const likesSum = document.querySelector('.infos_likes--count')    
-// let heart = document.querySelector('.img_attributes span i')
+
 let heart =e.target
-// console.log(e.target)
+console.log(e.target.tagName)
+
 let heartParent = heart.parentNode;
 console.log(heartParent.parentNode)
-let iconeHeart = document.querySelector('span i')
-// console.log(iconeHeart)
-let likeP = heartParent.parentNode.querySelector('p')
-// console.log(heart)
-console.log(likeP)
 
-       if (e.target == heart && heartParent.className !=='clicked' ){
+let likeP = heartParent.parentNode.querySelector('p')
+// console.log(heartParent.parentNode)
+
+
+       if (e.target.tagName == 'I' && heartParent.className !=='clicked' ){
         
-        likeP.innerHTML ++
-        likesSum.innerHTML ++
+        likeP.textContent ++
+        likesSum.textContent++
 // pour ne cliquer qu 'une seule fois par image'
         heartParent.className='clicked';
       }
     })
- 
-  // }
+
 //////modale////
+// const mainPage = document.querySelector('.Photographer-Page-Main')
+// console.log(mainPage)
+// const modal = document.querySelector("#contact_modal");
+// const modalButton =document.querySelector("#contact_button");
+// const modalCross = document.querySelector('.modal-header_text span i')
+// const footerInfos = document.querySelector('#infos')
+// console.log(footerInfos)
 
-let modal = document.querySelector('#contact_modal')
+// modalButton.addEventListener('click',displayModal)
+// function displayModal() {
+// modal.style.display = "block";
+// mainPage.style.display ='none';
+// footerInfos.style.display ='none';
+// }
 
-let contactButton = document.querySelector('#contact_button')
-contactButton.addEventListener('click',modalOpen)
-function modalOpen(){
-  modal.style.display = 'block'
-}
+// modalCross.addEventListener('click', closeModal)
+// function closeModal() {
+//   modal.style.display = "none";
+//   mainPage.style.display ='block';
+//   footerInfos.style.display='block';
+// }
+
 
 
 
@@ -311,4 +328,4 @@ function dropDownOpen(){
   }
 }
 
-
+export{getPhotographer}

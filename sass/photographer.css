@@ -22,6 +22,10 @@ a {
   margin: 43px 100px;
 }
 
+.page_photographer {
+  margin: 0 auto;
+}
+
 main {
   margin: 0 100px;
 }
@@ -245,8 +249,8 @@ main {
 }
 
 .clicked:focus, .clicked:hover {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
   -webkit-transition: -webkit-transform 0.4s ease-in-out;
   transition: -webkit-transform 0.4s ease-in-out;
   transition: transform 0.4s ease-in-out;
@@ -274,25 +278,76 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 35px;
+  padding: 25px 35px;
   margin: auto;
 }
 
-.modal-header_text {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+.modal-header {
   width: 100%;
 }
 
-.modal-header_text h2, .modal-header_text p {
+.modal-header p {
   font-size: 64px;
   font-weight: normal;
   text-align: left;
+  letter-spacing: -3px;
+  margin: 10px 0px;
 }
 
-.modal header img {
-  cursor: pointer;
+.modal-header_text h2 {
+  font-size: 64px;
+  font-weight: normal;
+  text-align: left;
+  margin: 10px 0px;
+  letter-spacing: -2px;
+}
+
+.modal-header_text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  margin: 0px;
+  width: 100%;
+}
+
+.modal-header_text span {
+  display: block;
+  width: 42px;
+  color: #FFFFFF;
+  font-size: 58px;
+}
+
+.modal-header_text .modal_title {
+  position: absolute;
+  left: 0px;
+}
+
+.appear {
+  display: block;
+  position: absolute;
+  top: 60%;
+  left: -9%;
+  width: 100%;
+}
+
+.error-msg {
+  font-size: 18px;
+  text-align: right;
+  margin-top: 10px;
+}
+
+.input-error {
+  border: #901C1C dashed 0.15rem;
+}
+
+.input-ok {
+  border: #525252 solid 0.15rem;
 }
 
 form {
@@ -307,6 +362,7 @@ form {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  margin-top: 35px;
 }
 
 form label {
@@ -329,14 +385,20 @@ form div {
   margin-bottom: 26px;
 }
 
-form input {
+form input, textarea {
   width: 100%;
   height: 68px;
   border: none;
   border-radius: 5px;
+  font-size: 25px;
+  outline: none;
 }
 
-#button {
+form textarea {
+  height: 170px;
+}
+
+#submit-button {
   width: 170px;
   height: 69px;
   border-radius: 5px;
