@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr-FR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,165 +13,183 @@
     <link rel="stylesheet" href="./sass/photographer.css">
 </head>
 <body class="Photographer-Page-Body">
-    <!-- <div id =`photographer-page.html?id=` + `${photographerJson.id}`> -->
-    <div class="page_photographer">
-    <header class="page_photographer-header">
-        <a href="/index.html">
-            <img src="assets/images/logo.png" class ="logo" />
-        </a>
-    </header>
-    <main class='Photographer-Page-Main'>
-        <!-- section présentation photographe -->
-        <section class ="page_photographer-informations">
-            
-                <div class="page_photographer_text">
-                    <h1 class="photographer_text--name">Mimi Keel</h1>  
-                    <p class="photographer_text--location">London,UK</p>
-                    <p class="photographer_text--tagline">Voir le beau dans le quotidien</p>
-                    
-                </div>
-                <button id="contact_button">Contactez-moi</button>
-
-                <picture class="photographer_section--banner">
-                        <img src="./assets/images/Photographers ID Photos/MimiKeel.jpg" alt=""/>
-                    </picture>
-        </section>
+    
+    <div class="page_photographer"   >
+        <!-- header -->
+        <header class="page_photographer-header">
+            <a href="/index.html"aria-label="Page d'accueil de Fisheye">
+                <img src="assets/images/logo.png" class ="logo" alt="logo-Fisheye-Aller à la page d'accueil"/>
+            </a>
+        </header>
+        <!-- corps de page -->
+        <main class='Photographer-Page-Main' id='Photographer-Page-Main'>
+            <!-- section présentation photographe -->
+            <section class ="page_photographer-informations">
+                    <div class="page_photographer_text">
+                        <h1 class="photographer_text--name">Mimi Keel</h1>  
+                        <p class="photographer_text--location">London,UK</p>
+                        <p class="photographer_text--tagline">Voir le beau dans le quotidien</p>
                         
-        <!-- section dropdown             -->
-        <section class="dropdown">
-            <label for="dropdown">Trier par</label>
-            <div id ="dropdown">
-                <button id="dropDownPopularityButton" value="popularité">Popularité
-                    <span id="chevron" ><i class="fa-solid fa-chevron-down"></i></span>
-                </button>
-                <div id="dropdown-button">
-                    <button id="date" value="date">Date</button>
-                    <button id="titre" value="titre">Titre</button>
+                    </div>
+                    <button id="contact_button">Contactez-moi</button>
+                    <picture class="photographer_section--banner">
+                            <img src="./assets/images/Photographers ID Photos/MimiKeel.jpg" alt=""/>
+                        </picture>
+            </section>
+                            
+            <!-- section dropdown             -->
+            <section class="dropdown">
+                <label for="dropdown">Trier par</label>
+                <div id ="dropdown">
+                    <button id="dropDownPopularityButton" value="popularité">Popularité
+                        <span id="chevron" ><i class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+                    <div id="dropdown-button">
+                        <button id="date" value="date">Date</button>
+                        <button id="titre" value="titre">Titre</button>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        
-        <!-- section medias -->
-        <section class="page_photographer-medias">
-            <div class="page_photographer-media-attributes">
-                <!-- <article class="page_photographer-media" id=" ">
-                    <a href="lightbox-background" >
-                        <img class='image-media'src="./assets/images/Mimi/Animals_Rainbow.jpg" alt="">
-                    </a>
-                    <div class="img_attributes">
-                        <h3 id ="Animals_Rainbow.jpg">Arc-en-ciel</h3>
-                        <p id="59">11</p>
-                        <span><i class="fa-solid fa-heart"></i></span>
-                </article> -->
             
-        </div>
-        </section>
-        
-        <!-- footer -->
-        <footer class="footer-infos" id ="footer">
-            
-        </footer>
-    </main>
-    <!-- formulaire -->
-    <div class="modal-background" id ="contact_modal">
-        <div class="modal" >
-            
-            
-            
-            <div class ="modal-header">
-                <div class="modal-header_text">
-                    <h2 class="modal__title">Contactez-moi</h2>
-                    <span class="close closeModal"><i class="fa-solid fa-xmark"></i></span>
-                </div>
-                <p>nom</p>
+            <!-- section medias -->
+            <section class="page_photographer-medias">
+                <div class="page_photographer-media-attributes">
+                    <!-- <article class="page_photographer-media" id=" ">
+                        <a href="lightbox-background" >
+                            <img class='image-media'src="./assets/images/Mimi/Animals_Rainbow.jpg" alt="">
+                        </a>
+                        <div class="img_attributes">
+                            <h3 id ="Animals_Rainbow.jpg">Arc-en-ciel</h3>
+                            <p id="59">11</p>
+                            <span><i class="fa-solid fa-heart"></i></span>
+                    </article> -->                
             </div>
-        
-            <form  
-            name="contact" 
-            method ="GET" 
-            action=""
-            class="modal_form" 
-            id="form"
-            >
-                <div class="modal_form--formData">
-                    <label for ="first" class="modal_formaData--label">Prénom</label><br/>
-                    <input
-                        type="text"
-                        class="modal_form-input"
-                        id="first"
-                        name="first"
-                        required
-                    />
-                    <span class="error-msg" id="message-firstName"></span>
-                </div>
-                <div class="modal_form--formData">
-                    <label for ="last" class="modal_formaData--label">Nom</label><br/>
-                    <input
-                        type="text"
-                        class="modal_form-input"
-                        id="last"
-                        name="last"
-                        required
-                    />
-                    <span class="error-msg" id="message-lastName"></span>
-                </div>
-                <div class="modal_form--formData">
-                    <label for ="email" class="modal_formaData--label">Email</label><br/>
-                    <input
-                        type="email"
-                        class="modal_form-input"
-                        id="email"
-                        name="email"
-                        required
-                    />
-                    <span class="error-msg" id="message-email"></span>
-                </div>
-                <div class="modal_form--formData">
-                    <label for ="message" class="modal_formaData--label">Message</label><br/>
-                    <textarea
-                        type="text"
-                        class="modal_form-input"
-                        id="message"
-                        name="message"
-                        required
-                    ></textarea>
-                    <span class="error-msg"></span>
+            </section>
+            
+            <!-- footer -->
+            <footer class="footer-infos" id ="footer">    
+            </footer>
+        </main>
+        <!-- formulaire  modale-->
+        <div class="modal-background" id ="contact_modal">
+            <div class="modal" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="form">
+                <div class ="modal-header">
+                    <div class="modal-header_text">
+                        <h2 class="modal__title">Contactez-moi</h2>
+                        <span class="close closeModal"id="closeModal" aria-labelledby="close" tabindex="0"><i class="fa-solid fa-xmark"></i></span>
+                    </div>
+                    <p>nom</p>
                 </div>
             
-                <div class ="modal-button">
-                    <input id="submit-button" class="submitButton" type="submit"value="Envoyer">
-                    <span class="error-msg" id="message-validation"></span>
-                </div>
-            </form>
-            
-            
+                <form  
+                name="contact" 
+                method ="GET" 
+                action=""
+                class="modal_form" 
+                id="form"
+                aria-label="formulaire de contact"
+                >
+                    <div class="modal_form--formData">
+                        <label for ="firstname" class="modal_formaData--label">Prénom</label><br/>
+                        <input
+                            type="text"
+                            class="modal_form-input"
+                            id="firstname"
+                            name="firstname"
+                            tabindex="0"
+                            aria-labelledby="message-firstname"
+                            aria-required="true"
+                            required
+                        />
+                        <span class="error-msg" id="message-firstName">Veuillez saisir votre prénom(2 lettres minimum) </span>
+                    </div>
+                    <div class="modal_form--formData">
+                        <label for ="lastname" class="modal_formaData--label">Nom</label><br/>
+                        <input
+                            type="text"
+                            class="modal_form-input"
+                            id="lastname"
+                            name="lastname"
+                            tabindex="0"
+                            tabindex="0" 
+                            aria-labelledby="message-lastname"
+                            aria-required="true"
+                            required
+                        />
+                        <span class="error-msg" id="message-lastName">Veuillez saisir votre nom (minimum 2 caractères)</span>
+                    </div>
+                    <div class="modal_form--formData">
+                        <label for ="email" class="modal_formaData--label">Email</label><br/>
+                        <input
+                            type="email"
+                            class="modal_form-input"
+                            id="email"
+                            name="email"
+                            aria-labelledby="message-email"
+                            tabindex="0"
+                            aria-required="true"
+                            required
+                        />
+                        <span class="error-msg" id="message-email">Veillez saisir une adresse email correcte : exemple@gmail.com</span>
+                    </div>
+                    <div class="modal_form--formData">
+                        <label for ="message" class="modal_formaData--label">Message</label><br/>
+                        <textarea
+                            type="text"
+                            class="modal_form-input"
+                            id="message"
+                            name="message"
+                            tabindex="0"
+                            aria-required="true"
+                            aria-labelledby="message-message"
+                            required
+                        ></textarea>
+                        <span class="error-msg"
+                        id="message-message">Veuillez saisir votre message></span>
+                    </div>
+                
+                    <div class ="modal-button">
+                        <input 
+                        id="submit-button" 
+                        class="submitButton" 
+                        type="submit"
+                        value="Envoyer"
+                        aria-label="soumettre">
+                        <span class="error-msg" id="message-validation"></span>
+                    </div>
+                </form >            
+            </div>
         </div>
-    <!-- lightbox     -->
+        <!-- lightbox     -->
         <div id="lightbox-background">
-            <div class="lightbox-body">
+            <div class="lightbox-modal">
                 <div  class="lightbox">
                     <button class="lightbox_chevron-previous"></button>
-                    <div class="lightbox_imgContainer">image</div>
-                    <div>
+                    <p>image précédente</p>
+                    <div class="lightbox_imgContainer">
+                        <ul class="lightbox-img--single"></ul>
                         <button class="lightbox_close"></button>
-                        <button class="lightbox_chevron-next"></button></div>
+                        <p>fermer la lightbox</p>
+                    </div>
+                    <button class="lightbox_chevron-next"></button>
+                    <p>image suivante</p>
+                </div>
+
                 </div>
             </div>
         </div>
 
-        
     </div>
-</div>
-<footer class="infos" id="infos">
-    <div class="infos_likes">
-        <p class="infos_likes--count"></p>
-        <span class="infos_likes--icon">
-        <i class="fa-solid fa-heart"></i>
-        </span>
-    </div>
-    <p class="infos_price"></p>
-</footer>
+    <footer class="infos" id="infos">
+        <div class="infos_likes">
+            <p class="infos_likes--count"></p>
+            <span class="infos_likes--icon">
+            <i class="fa-solid fa-heart"></i>
+            </span>
+        </div>
+        <p class="infos_price"></p>
+    </footer>
 
     <script type ="module"src ="./module/factories/Photographer2.js"></script>
 </body>

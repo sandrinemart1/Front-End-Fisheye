@@ -304,6 +304,7 @@ let likeP = heartParent.parentNode.querySelector('p')
 //   footerInfos.style.display='block';
 // }
 
+//////lightbox//////
 
 
 

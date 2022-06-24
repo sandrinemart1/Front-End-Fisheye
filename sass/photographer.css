@@ -1,7 +1,7 @@
 /*font*/
 /*colors*/
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-/* //modale de contact */
+/* modale de contact */
 #contact_modal {
   display: none;
 }
@@ -73,6 +73,7 @@
   left: 0px;
 }
 
+/* style pour apparition modale */
 .appear {
   display: block;
   position: absolute;
@@ -81,6 +82,7 @@
   width: 100%;
 }
 
+/* style pour message error */
 .error-msg {
   font-size: 18px;
   text-align: right;
@@ -157,6 +159,55 @@ form textarea {
   height: 170px;
   border: none;
   border-radius: 5px;
+}
+
+#lightbox-background {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  background-color: #FFFFFF;
+}
+
+#lightbox-background .lightbox-modal {
+  margin: 1rem auto;
+  max-width: 1253px;
+  max-height: 1024px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#lightbox-background .lightbox {
+  background-color: #E5E5E5;
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr auto;
+      grid-template-columns: auto 1fr auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  padding: 1rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {

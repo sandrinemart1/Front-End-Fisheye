@@ -1,0 +1,30 @@
+#lightbox-background{
+    display: none;
+    position:fixed;
+    top:0; left:0; right:0; bottom:0;
+    width: auto;
+    height:auto;
+    background-color: $white;
+    .lightbox-modal{
+        margin: 1rem auto;
+        max-width: 1253px;
+        max-height: 1024px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+    .lightbox{
+        background-color: $bg-3d-color;
+        position: relative;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+
+}

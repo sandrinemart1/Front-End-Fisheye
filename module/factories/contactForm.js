@@ -2,13 +2,15 @@ import{getPhotographer} from './Photographer2.js'
 
 const mainPage = document.querySelector('.Photographer-Page-Main')
 const pageHeader =document.querySelector('.page_photographer-header')
-// console.log(pageHeader)
+
 const modal = document.querySelector("#contact_modal");
+const modalDiv = document.querySelector('.modal');
+// console.log(modalDiv);
 const modalButton =document.querySelector("#contact_button");
 const modalCross = document.querySelector('.modal-header_text span i')
 const footerInfos = document.querySelector('.infos')
 const msgAll = document.querySelectorAll('.error-msg');
-console.log(msgAll[3])
+// console.log(msgAll[3])
 
 // creation message prénom
 const msgFirstName = document.getElementById('message-firstName')
@@ -20,34 +22,51 @@ const msgEmail = document.getElementById('message-email')
 const msgValid = document.getElementById('message-validation')  
 //div avec input
 const divInput = document.querySelectorAll('modal_form--formData')
-console.log(divInput)
-const inputFirstName = document.getElementById('first')
-const inputLastName = document.getElementById('last')
+// console.log(divInput)
+const inputFirstName = document.getElementById('firstname')
+const inputLastName = document.getElementById('lastname')
 const inputEmail = document.getElementById('email')
 const submit = document.getElementById('submit-button')
 
-
+//ouverture et fermeture de la modale
 
 
 modalButton.addEventListener('click',displayModal)
 function displayModal() {
-// modal.classList.add('appear');
 modal.style.display = "block";
+modal.setAttribute('aria-hidden', 'false')
 pageHeader.style.display ='none';
-// pageHeader.style.opacity='0.5';
+pageHeader.setAttribute('aria-hidden', 'true')
 mainPage.style.display ='none';
-// mainPage.style.opacity ='0.5';
+mainPage.setAttribute('aria-hidden', 'true')
 footerInfos.style.display ='none';
+footerInfos.setAttribute('aria-hidden','true')
+firstName.focus()
+modalDiv.setAttribute('tabindex','0')
 }
 
 modalCross.addEventListener('click', closeModal)
 function closeModal() {
   modal.style.display = "none";
+  modal.setAttribute('aria-hidden', 'true')
   pageHeader.style.display ='block';
+  pageHeader.setAttribute('aria-hidden', 'false')
   mainPage.style.display ='block';
+  mainPage.setAttribute('aria-hidden', 'false')
   footerInfos.style.display='flex';
+  footerInfos.setAttribute('aria-hidden','false')
+  modalButton.focus();
+  modalDiv.setAttribute('tabindex','-1')
 }
-
+//fermeture clavier
+modal.addEventListener('keydown', closeOnKey)
+function closeOnKey(e) {
+  let keyname = e.key
+  console.log(e.key)
+  if (keyname == 'Escape') {
+    closeModal()
+  }
+}
 //Regex pour definir2 caracteres min +zero chiffre + autorise prénoms composés//
 const nameReGex =
   /^[a-zA-ZéèïîÉÈÎ][a-zA-Zéèêàçîï]+([-'\s][a-zA-ZéèïîÉÈÎ][a-zA-Zéèêàçîï]+)?$/;
@@ -57,9 +76,9 @@ const eMailRegex = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
 //variables pour les inputs  et variables mises en false pour submit final
   let form = document.querySelector('#form')
   console.log(form)
-  let firstName = document.querySelector('#first')
+  let firstName = document.querySelector('#firstname')
   let validFirst = false;
-  let lastName = document.querySelector('#last');
+  let lastName = document.querySelector('#lastname');
   let validLast= false;
   let eMail = document.querySelector('#email');
   let validMail = false;
@@ -167,7 +186,11 @@ const eMailRegex = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
       {
       msgAll[4].textContent ="Merci de nous avoir confié votre demande";
       submit.classList.add('input-ok')
-
+      console.log('Prénom : ' + firstName.value)
+      console.log('Nom : ' + lastName.value)
+      console.log('email : ' + eMail.value)
+      console.log('message : ' + message.value)
+      closeModal()
  
     } else {
       if (!validFirst) {
