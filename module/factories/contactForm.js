@@ -6,7 +6,7 @@ const pageHeader =document.querySelector('.page_photographer-header')
 const modal = document.querySelector("#contact_modal");
 const modalButton =document.querySelector("#contact_button");
 const modalCross = document.querySelector('.modal-header_text span i')
-const footerInfos = document.querySelector('#infos')
+const footerInfos = document.querySelector('.infos')
 const msgAll = document.querySelectorAll('.error-msg');
 console.log(msgAll[3])
 
@@ -45,7 +45,7 @@ function closeModal() {
   modal.style.display = "none";
   pageHeader.style.display ='block';
   mainPage.style.display ='block';
-  footerInfos.style.display='block';
+  footerInfos.style.display='flex';
 }
 
 //Regex pour definir2 caracteres min +zero chiffre + autorise prénoms composés//

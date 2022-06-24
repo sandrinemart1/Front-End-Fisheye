@@ -1,0 +1,121 @@
+/* modale de contact */
+#contact_modal{
+    display:none;
+}
+.modal {
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding:25px 35px;
+    margin: auto;
+}
+.modal-header{
+    width: 100%;
+    p{
+        font-size: 64px;
+        font-weight: normal;
+        text-align: left;
+        letter-spacing: -3px;
+
+        margin:10px 0px;
+    }
+}
+.modal-header_text {
+    h2{
+        font-size: 64px;
+        font-weight: normal;
+        text-align: left;
+        margin:10px 0px;
+        letter-spacing: -2px;
+    }
+}
+.modal-header_text{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin:0px;
+    width: 100%;
+    span{
+        display: block;
+        width:42px;
+        color: $white;        
+        font-size:58px;
+    
+    }
+    .modal_title{
+        position: absolute;
+        left:0px;
+    }
+}
+ /* style pour apparition modale */
+.appear{
+    display:block;
+    position:absolute;
+    top: 60%;
+    left: -9%;
+    width: 100%;
+}
+/* style pour message error */
+.error-msg{
+    font-size:18px;
+    text-align: right;
+    margin-top:10px;
+}
+.input-error {
+    border: $bg-1st-color dashed 0.15rem;
+  }
+.input-ok{
+    border:$color-3rd-dark solid 0.15rem;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 35px;
+}
+
+form label {
+    color: #312E2E;
+    font-size: 36px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 26px;
+}
+
+form input,textarea{
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 5px;
+    font-size: 25px;
+    outline: none;
+}
+form textarea{
+    height:170px;
+}
+#submit-button{
+    width: 170px;
+    height:69px;
+    border-radius: 5px;
+    background-color: $bg-1st-color;
+    color:white;
+    font-size: 18px;
+
+}
+#comments{
+    width: 100%;
+    height: 170px;
+    border: none;
+    border-radius:5px ;
+}
