@@ -80,6 +80,7 @@ main{
     img {
         width: 100%;
         object-fit: cover;
+        object-position: center top;
         box-sizing: border-box;
         height:200px;
         width: 200px;
@@ -173,6 +174,7 @@ span{
         object-fit:cover;
         width: 350px;
         height:300px;
+        object-position: center top;
      }
 }
 .img_attributes{

@@ -17,7 +17,7 @@ function affichage(photographersJson){
     const article = document.createElement( 'article' );
     article.className ='photographer_section--user';
     const anchor = document.createElement('a') ;
-    // anchor.setAttribute('href', '../photographer-page/${photographerJson.id})
+    //creation du lien url pour chaque photographe
     anchor.setAttribute('href', '../photographer.html?id=' + `${photographerJson.id}`)
     anchor.className ='photographer_section--link';
     const imgBanner = document.createElement('div');
@@ -69,25 +69,4 @@ function affichage(photographersJson){
   
   myFetch(affichage)
   
-  // let cardDOMBanner= document.querySelector(".photographer_section"); 
-  // const article = document.createElement( 'article' );
-  // article.className ='photographer_section--user'; 
-  // cardDOMBanner.appendChild(article);
-  
-  // const paragraph = document.createElement('div');
-  // paragraph.className ='photographer_section--text';
-  // article.appendChild(paragraph);
-  // const location =document.createElement('p');
-  // location.className = 'location';
-  // paragraph.appendChild(location);
-  // location.innerHTML= photographer.city+ "," + photographer.country;
-  // const tagline =document.createElement('p');
-  // paragraph.appendChild(tagline);
-  // tagline.className= "tagline";
-  // tagline.innerHTML+= photographer.tagline;
-  
-  // const price=document.createElement('p');
-  // paragraph.appendChild(price);
-  // price.className = 'price';
-  // price.innerHTML=`${photographer.price}€/jour`;
 

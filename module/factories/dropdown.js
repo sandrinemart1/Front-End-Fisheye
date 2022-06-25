@@ -1,15 +1,16 @@
 //////dropdown//////////
-let dropDownPopularityButton =document.querySelector("#dropDownPopularityButton");
-let dropDownDiv = document.querySelector("#dropdown-button");
-let chevron = document.getElementById("chevron")
-let date = document.getElementById("date");
-let titre = document.getElementById("titre");
-let arrowDown = document.querySelector("#chevron i");
-console.log(arrowDown);
 
-dropDownPopularityButton.addEventListener("click" ,dropDownOpen)
+
+// dropDownPopularityButton.addEventListener("click" ,dropDownOpen)
 //si chevron position initiale
 function dropDownOpen(){
+  let dropDownPopularityButton =document.querySelector("#dropDownPopularityButton");
+  let dropDownDiv = document.querySelector("#dropdown-button");
+  let chevron = document.getElementById("chevron")
+  let date = document.getElementById("date");
+  let titre = document.getElementById("titre");
+  let arrowDown = document.querySelector("#chevron i");
+
   if(chevron.className !=='drop-down-open'){
  dropDownDiv.style.display=" block";
  chevron.className='drop-down-open';
@@ -18,4 +19,4 @@ function dropDownOpen(){
     chevron.className='drop-down-close';
   }
 }
-// export{dropDownOpen}
+export{dropDownOpen}

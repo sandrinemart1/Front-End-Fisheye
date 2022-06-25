@@ -75,7 +75,7 @@ const eMailRegex = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
 
 //variables pour les inputs  et variables mises en false pour submit final
   let form = document.querySelector('#form')
-  console.log(form)
+  // console.log(form)
   let firstName = document.querySelector('#firstname')
   let validFirst = false;
   let lastName = document.querySelector('#lastname');
@@ -88,7 +88,7 @@ const eMailRegex = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
   let msgcss = document.querySelector('.error-msg')
   let msgParent =msgcss.parentNode;
   let msg = msgParent.querySelector('span');
-  console.log(msg);
+  // console.log(msg);
 
 //validation du premiers input, prénom 
   firstName.addEventListener('blur',validFirstName)
@@ -139,7 +139,7 @@ const eMailRegex = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
       eMail.classList.add('input-error')
       return false;
     } else if ( eMailRegex .test(eMail.value) == false) {
-      msgAll[2].textContent  = "l'email n 'est pas au bon format";
+      msgAll[2].textContent  = "l'email n'est pas au bon format";
       eMail.classList.add('input-error')
       return false;
     } else {    

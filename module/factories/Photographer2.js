@@ -1,4 +1,4 @@
-// import{ dropDownOpen }from'./dropdown.js'
+import{ dropDownOpen }from'./dropdown.js'
 import{displayModal}from './contactForm.js'
 import{closeModal}from './contactForm.js'
 
@@ -37,7 +37,7 @@ const mediasJson =[];
 let string = window.location.href;
 let url = new URL(string);
 let login = url.searchParams.get('id');
-console.log(login);
+// console.log(login);
 
 function myFetch2() {
     fetch("../../data/photographers.json")
@@ -66,7 +66,7 @@ function myFetch2() {
       for (let mediaId of media) {
         if (photographer.id == mediaId.photographerId) {
           mediaList.push(mediaId);
-          // console.log(mediaList);
+          // console.log(mediaId.id);
         }
       }
     }
@@ -152,7 +152,8 @@ class FactoryMedia{
     }
   }
 }
-
+let ul = document.querySelector('.lightbox_Container--img');
+console.log(ul)
 
 const factory= new FactoryMedia()
 // creer une carte pour chq media image
@@ -168,6 +169,7 @@ class Image{
     mediaAndAttributes.appendChild(articleMedia);
 
     let linkMedia = document.createElement('a');
+    linkMedia.className ="media_link";
     linkMedia.setAttribute=('id',`${mediaId.title}-${mediaId}`)
     // console.log(linkMedia)
     articleMedia.appendChild(linkMedia);
@@ -175,6 +177,7 @@ class Image{
     imageMedia.className ='image-Media'
     linkMedia.appendChild(imageMedia);
     imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.image}` );
+    imageMedia.setAttribute('alt',"");
     let imageAttributes = document.createElement('div');
     imageAttributes.className = "img_attributes";
     imageAttributes.classList.add ('img_attributes')
@@ -193,8 +196,75 @@ class Image{
     imageHeart.className= "fa-solid fa-heart";
     span.appendChild(imageHeart);
     span.addEventListener('click',()=>console.log(span))
-    // likeAdd()
+    
+ linkMedia.addEventListener('click',(e) => lightboxOpen(e))
+  }
+  //creer une image pour chq media pour la lightbox
+  createImageLightbox(mediaId){
+    // let lightboxContainer =document.createElement('div');
+    // lightboxContainer.className ='lightbox-modal';
+    // lightboxContainer.setAttribute('aria-modal',"true");
+    // lightboxContainer.setAttribute('id',"lightbox-library");
+    // lightboxContainer.setAttribute('aria-label',"lightbox media en gros plan");
+    // lightboxContainer.setAttribute('tabindex',"-1");
+    // let lightbox = document.createElement('div');
+    // lightbox.className = "lightbox";
+    // lightbox.setAttribute('id',"lightbox");
+    // lightboxContainer.appendChild(lightbox);
+    // let chevronPrevious = document.createElement('button');
+    // chevronPrevious.className ="lightbox_chevron-previous";
+    // chevronPrevious.setAttribute('id',"lightbox_chevron-previous");
+    // chevronPrevious.setAttribute('aria-labelledby','previous');
+    // chevronPrevious.setAttribute('tabindex',"0");
+    // lightbox.appendChild(chevronPrevious);
+    // let previousAria = document.createElement('p')
+    // previousAria.className ="previous";
+    // previousAria.setAttribute('id',"previous");
+    // previousAria.setAttribute('aria-hidden',"true")
+    // lightbox.appendChild(previousAria);
+    // let lightboxContainerImg = document.createElement('div');
+    // lightboxContainerImg.className ='lightbox_Container';
+    // lightboxContainerImg.setAttribute('id',"lightbox_Container");
+    // lightboxContainerImg.setAttribute('aria-hidden', "true");
+    // lightbox.appendChild(lightboxContainerImg)
+    // let ul = document.createElement('ul');
+    // ul.className ="lightbox_Container--img"
+    let li = document.createElement('li');
+    li.style.display='none';
+    li.className ='lightbox_object';
+    li.setAttribute('id',`object${mediaId.id}`);
+    li.setAttribute('aria-hidden',"true")
+    ul.appendChild(li);
+    let figure = document.createElement('figure')
+    figure.className="lightbox_figure";
+    figure.setAttribute('aria-labelledby',`image${mediaId.id}`)
+    figure.setAttribute('tabindex',"0");
+    li.appendChild(figure);
 
+    let image = document.createElement('img');
+    image.className ="image_lightbox"
+    image.setAttribute('src',`../../assets/images/${firstName}/${mediaId.image}`)
+    image.setAttribute('alt',"")
+    image.setAttribute('id',`image${mediaId.id}`)
+    image.setAttribute('width',"auto");
+    image.setAttribute('height',"900");
+    figure.appendChild(image);
+    let figcaption = document.createElement('figcaption')
+    figcaption.className='title_image';
+    figcaption.setAttribute('aria-hidden',"true");
+    figcaption.innerText = mediaId.title;
+    figure.appendChild(figcaption);
+    // let chevronNext = document.createElement('button');
+    // chevronNext.className="lightbox_chevron-next";
+    // chevronNext.setAttribute('id',"lightbox_chevron-next")
+    // chevronNext.setAttribute('aria-labelledby',"next")
+    // chevronNext.setAttribute('tabindex',"0");
+    // lightbox.appendChild(chevronNext);
+    // let nextAria = document.createElement('p');
+    // nextAria.className="next";
+    // nextAria.setAttribute('id',"next");
+    // nextAria.setAttribute('aria-hidden',"true");
+    // lightbox.appendChild(nextAria)
   }
 }
 //creer une image pour video
@@ -236,7 +306,38 @@ class Video{
     imageHeart.className= "fa-solid fa-heart";
     span.appendChild(imageHeart)
 
+    linkMedia.addEventListener('click',(e) => lightboxOpen(e))
   }
+  // creer une image pour chq video
+  createVideoLightbox(mediaId){
+    let li = document.createElement('li');
+    li.style.display='none';
+    li.className ='lightbox_object';
+    li.setAttribute('id',`object${mediaId.id}`);
+    li.setAttribute('aria-hidden',"true")
+    ul.appendChild(li);
+    let figure = document.createElement('figure')
+    figure.className="lightbox_figure";
+    figure.setAttribute('aria-labelledby',`video${mediaId.id}`)
+    figure.setAttribute('tabindex',"0");
+    li.appendChild(figure);
+
+    let image = document.createElement('img');
+    image.className ="image_lightbox"
+    image.setAttribute('src',`../../assets/images/${firstName}/${mediaId.video}`)
+    image.setAttribute('alt',"")
+    image.setAttribute('id',`image${mediaId.id}`)
+    image.setAttribute('width',"auto");
+    image.setAttribute('height',"900");
+    image.setAttribute('controls',true)
+    figure.appendChild(image);
+    let figcaption = document.createElement('figcaption')
+    figcaption.className='title_video';
+    figcaption.setAttribute('aria-hidden',"true");
+    figcaption.innerText = mediaId.title;
+    figure.appendChild(figcaption);
+  }
+
 }
 
 //separer les videos des photos
@@ -248,12 +349,29 @@ function SeparateCardImage(media){
     if(mediaId.image !== undefined){
         let card = factory.createMedia('image');
        card.createImage(mediaId);
+       card.createImageLightbox(mediaId);
       }else{
         let card = factory.createMedia('video');
         card.createVideo(mediaId);
         
     }
   })
+let allObjects = document.querySelectorAll('.lightbox_object')
+console.log(allObjects);
+let objects= Array.from(allObjects)
+// console.log(objects)
+objects.forEach((object) =>{
+  object.classList.add(`${objects.indexOf(object)}`)
+  console.log(object)
+})
+let allMedias = document.querySelectorAll('.media_link')
+console.log(allMedias);
+let medias = Array.from(allMedias)
+// console.log(medias)
+medias.forEach((media) => {
+  media.classList.add(`${medias.indexOf(media)}`)
+  console.log(media)
+})
 }
 
 // function likeAdd(mediaId){
@@ -263,10 +381,10 @@ document.addEventListener('click',(e)=> {
 const likesSum = document.querySelector('.infos_likes--count')    
 
 let heart =e.target
-console.log(e.target.tagName)
+// console.log(e.target.tagName)
 
 let heartParent = heart.parentNode;
-console.log(heartParent.parentNode)
+// console.log(heartParent.parentNode)
 
 let likeP = heartParent.parentNode.querySelector('p')
 // console.log(heartParent.parentNode)
@@ -305,6 +423,67 @@ let likeP = heartParent.parentNode.querySelector('p')
 // }
 
 //////lightbox//////
+let lightBoxBg=document.querySelector('#lightbox-background');
+const mainPage = document.querySelector('.Photographer-Page-Main');
+let lightboxContainer =document.querySelector(".lightbox-modal")
+let buttonClose =document.querySelector(".lightbox_close");
+
+console.log(buttonClose);
+
+// ouvrir la lightbox
+function lightboxOpen(e){
+  e.preventDefault()
+  lightBoxBg.style.display = 'flex'
+  lightBoxBg.setAttribute('aria-hidden', 'false')
+  mainPage.setAttribute('aria-hidden', 'true')
+  mainPage.setAttribute('tabindex', '-1')
+  lightboxContainer.setAttribute('tabindex', '0')
+  let picture = window.event.target;
+  let id = findId(picture)
+
+  function findId(picture) {
+    if(picture.tagName =='IMG'){
+      let parent = picture.parentNode;
+      let id =parent.parentNode.id ;
+      console.log(id);
+      return id;
+    }
+  }
+  let firstObject = document.getElementById(`object${id}`)
+  // console.log(firstObject)
+  //trouver la position du 1er  media agrandi
+  findPosition(firstObject)
+  firstObject.style.display = 'flex'
+  firstObject.setAttribute('aria-hidden', 'false')
+  lightboxContainer.focus()
+}
+
+function findPosition(firstObject){
+  let firstClassName =firstObject.className;
+  let i = firstClassName.lastIndexOf('-')
+  let position =firstClassName.substring(i+1)
+  console.log(firstClassName)
+  console.log(firstObject)
+  console.log(position)
+  
+}
+//navigation droite et gauche
+function goToNext(){
+  let allObjects = document.querySelectorAll('.lightbox_object')
+  
+}
+function goToPrevious(){
+
+}
+//fermer la lightbox
+buttonClose.addEventListener("click", closeLightbox)
+function closeLightbox(){
+  lightBoxBg.setAttribute('aria-hidden', 'true')
+  mainPage.setAttribute('aria-hidden', 'false')
+  mainPage.setAttribute('tabindex', '0')
+  lightboxContainer.setAttribute('tabindex', '-1')
+}
+
 
 
 
@@ -318,15 +497,15 @@ let arrowDown = document.querySelector("#chevron i");
 console.log(arrowDown);
 
 dropDownPopularityButton.addEventListener("click" ,dropDownOpen)
-//si chevron position initiale
-function dropDownOpen(){
-  if(chevron.className !=='drop-down-open'){
- dropDownDiv.style.display=" block";
- chevron.className='drop-down-open';
-  }else{
-    dropDownDiv.style.display=" none";
-    chevron.className='drop-down-close';
-  }
-}
+
+// function dropDownOpen(){
+//   if(chevron.className !=='drop-down-open'){
+//  dropDownDiv.style.display=" block";
+//  chevron.className='drop-down-open';
+//   }else{
+//     dropDownDiv.style.display=" none";
+//     chevron.className='drop-down-close';
+//   }
+// }
 
 export{getPhotographer}

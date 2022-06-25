@@ -5,10 +5,11 @@
     width: auto;
     height:auto;
     background-color: $white;
+    overflow: auto;
     .lightbox-modal{
-        margin: 1rem auto;
+        margin: 20px auto;
         max-width: 1253px;
-        max-height: 1024px;
+        max-height: 100vh;
         position: relative;
         display: flex;
         justify-content: center;
@@ -22,9 +23,50 @@
         grid-template-columns: auto 1fr auto;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        padding: 1rem;
+        padding: 22px;
+        margin-top: 40px;
         box-sizing: border-box;
     }
+}
+.image_lightbox{
+    // object-fit: cover;
+}
+.lightbox_chevron-previous,
+.lightbox_chevron-next
+{
+     font-size: 42px;
+     height:42px;
+     color: $bg-1st-color;
+     border:none;
+}
+.lightbox_close{
+    font-size: 45px;
+    position:absolute;
+    top:18%;
+    right:15px;
+    color: $bg-1st-color;
+    border:none;
 
 }
+.title_image{
+   color:$bg-1st-color;
+   font-size: 24px; 
+   font-weight: 400;
+}
+//cacher les slides par defaut
+.mySlides{
+    display:none
+}
+//boutons droite gauche
+.previous, .next{
+    cursor: pointer;
+    position: absolute;
+    top:50%;
+} //leger box-shadow
+img.hover-shadow {
+    transition: 0.3s;
+  }
+  
+  .hover-shadow:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }

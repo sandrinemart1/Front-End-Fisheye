@@ -171,12 +171,13 @@ form textarea {
   width: auto;
   height: auto;
   background-color: #FFFFFF;
+  overflow: auto;
 }
 
 #lightbox-background .lightbox-modal {
-  margin: 1rem auto;
+  margin: 20px auto;
   max-width: 1253px;
-  max-height: 1024px;
+  max-height: 100vh;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -204,10 +205,53 @@ form textarea {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100vh;
-  padding: 1rem;
+  padding: 22px;
+  margin-top: 40px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+.lightbox_chevron-previous,
+.lightbox_chevron-next {
+  font-size: 42px;
+  height: 42px;
+  color: #901C1C;
+  border: none;
+}
+
+.lightbox_close {
+  font-size: 45px;
+  position: absolute;
+  top: 18%;
+  right: 15px;
+  color: #901C1C;
+  border: none;
+}
+
+.title_image {
+  color: #901C1C;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.mySlides {
+  display: none;
+}
+
+.previous, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+}
+
+img.hover-shadow {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 body {
@@ -302,6 +346,8 @@ main {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: center top;
+     object-position: center top;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   height: 200px;
@@ -416,6 +462,8 @@ main {
      object-fit: cover;
   width: 350px;
   height: 300px;
+  -o-object-position: center top;
+     object-position: center top;
 }
 
 .img_attributes {
