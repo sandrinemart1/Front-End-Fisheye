@@ -80,12 +80,15 @@ main{
     img {
         width: 100%;
         object-fit: cover;
-        object-position: center top;
+        // object-position: center top;
         box-sizing: border-box;
         height:200px;
         width: 200px;
         border-radius: 50%;
     }
+}
+.improved-image{
+    object-position: center top;
 }
 .dropdown {
     display: inline-block;
@@ -170,11 +173,10 @@ span{
     justify-content: space-between;
     margin: 100px 20px ;
     // text-align: center;
-     .image-Media {
+     .image-media {
         object-fit:cover;
         width: 350px;
         height:300px;
-        object-position: center top;
      }
 }
 .img_attributes{

@@ -2,9 +2,10 @@
     display: none;
     position:fixed;
     top:0; left:0; right:0; bottom:0;
-    width: auto;
-    height:auto;
+    width: 100%;
+    height:100%;
     background-color: $white;
+    z-index: 10;
     overflow: auto;
     .lightbox-modal{
         margin: 20px auto;
@@ -15,58 +16,79 @@
         justify-content: center;
         align-items: center;
         box-sizing: border-box;
+        animation: lightboxOpen 0.5s;
     }
     .lightbox{
-        background-color: $bg-3d-color;
         position: relative;
         display: grid;
         grid-template-columns: auto 1fr auto;
+        height: 100vh;
+        padding: 22px;
         justify-content: center;
         align-items: center;
         padding: 22px;
         margin-top: 40px;
+        min-height: 100vh;
         box-sizing: border-box;
     }
 }
+.lightbox_Container ul{
+    list-style-type: none;
+}
 .image_lightbox{
-    // object-fit: cover;
+    object-fit: cover;
+    object-position:center top;
+    animation: lightboxOpen 0.5s;
+    min-height: 100vh;
+}
+.video-lightbox{
+    width:1050px ;
+    height:900px;
+    min-height: 100vh;
 }
 .lightbox_chevron-previous,
-.lightbox_chevron-next
-{
-     font-size: 42px;
-     height:42px;
-     color: $bg-1st-color;
-     border:none;
+.lightbox_chevron-next{
+    background: url(../../assets/favicon.png/arrow.svg)center center/42px 42px no-repeat;
+     width: 42px;
+     height:100%;
+     position: fixed;
+     top:0;
+     right:8%;
+     margin-top: -21px;
+
+}
+.lightbox_chevron-previous{
+    right: auto;
+    left:8%;
+    transform: rotate(180deg);
 }
 .lightbox_close{
-    font-size: 45px;
-    position:absolute;
-    top:18%;
+    background: url(../../assets/favicon.png/cross.svg)center center /100% 100%;
+    width:45px;
+    height: 45px;
+    position:fixed;
+    top:15px;
     right:15px;
-    color: $bg-1st-color;
+    z-index:12;
+}
+button{
     border:none;
-
+    z-index: 11;
+    opacity: .8;
+    cursor: pointer;
+    text-indent: -3000px;
+    transition:.3s;
+    &:hover{
+        opacity: 1;
+    }
 }
 .title_image{
    color:$bg-1st-color;
    font-size: 24px; 
    font-weight: 400;
 }
-//cacher les slides par defaut
-.mySlides{
-    display:none
+
+@keyframes .lightboxOpen{
+    from{opacity: 0;}
+    to{opacity: 1;}
 }
-//boutons droite gauche
-.previous, .next{
-    cursor: pointer;
-    position: absolute;
-    top:50%;
-} //leger box-shadow
-img.hover-shadow {
-    transition: 0.3s;
-  }
-  
-  .hover-shadow:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }

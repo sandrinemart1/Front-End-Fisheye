@@ -33,13 +33,15 @@ const submit = document.getElementById('submit-button')
 
 modalButton.addEventListener('click',displayModal)
 function displayModal() {
-modal.style.display = "block";
+mainPage.style.position = "relative"
+modal.classList.add = "appear";
+console.log(mainPage)
 modal.setAttribute('aria-hidden', 'false')
-pageHeader.style.display ='none';
+pageHeader.style.opacity ='0.4';
 pageHeader.setAttribute('aria-hidden', 'true')
-mainPage.style.display ='none';
+mainPage.style.opacity ='0.4';
 mainPage.setAttribute('aria-hidden', 'true')
-footerInfos.style.display ='none';
+footerInfos.style.opacity='0.4';
 footerInfos.setAttribute('aria-hidden','true')
 firstName.focus()
 modalDiv.setAttribute('tabindex','0')

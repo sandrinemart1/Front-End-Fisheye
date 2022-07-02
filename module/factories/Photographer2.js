@@ -153,7 +153,7 @@ class FactoryMedia{
   }
 }
 let ul = document.querySelector('.lightbox_Container--img');
-console.log(ul)
+// console.log(ul)
 
 const factory= new FactoryMedia()
 // creer une carte pour chq media image
@@ -174,7 +174,10 @@ class Image{
     // console.log(linkMedia)
     articleMedia.appendChild(linkMedia);
     let imageMedia = document.createElement('img');
-    imageMedia.className ='image-Media'
+    imageMedia.className ='image-media'
+    if(photographer.id == 82|| photographer.id == 925){
+      imageMedia.classList.add('improved-image')
+    }
     linkMedia.appendChild(imageMedia);
     imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.image}` );
     imageMedia.setAttribute('alt',"");
@@ -198,74 +201,10 @@ class Image{
     span.addEventListener('click',()=>console.log(span))
     
  linkMedia.addEventListener('click',(e) => lightboxOpen(e))
+// linkMedia.addEventListener('click',(e) => Lightbox.init)
   }
-  //creer une image pour chq media pour la lightbox
-  createImageLightbox(mediaId){
-    // let lightboxContainer =document.createElement('div');
-    // lightboxContainer.className ='lightbox-modal';
-    // lightboxContainer.setAttribute('aria-modal',"true");
-    // lightboxContainer.setAttribute('id',"lightbox-library");
-    // lightboxContainer.setAttribute('aria-label',"lightbox media en gros plan");
-    // lightboxContainer.setAttribute('tabindex',"-1");
-    // let lightbox = document.createElement('div');
-    // lightbox.className = "lightbox";
-    // lightbox.setAttribute('id',"lightbox");
-    // lightboxContainer.appendChild(lightbox);
-    // let chevronPrevious = document.createElement('button');
-    // chevronPrevious.className ="lightbox_chevron-previous";
-    // chevronPrevious.setAttribute('id',"lightbox_chevron-previous");
-    // chevronPrevious.setAttribute('aria-labelledby','previous');
-    // chevronPrevious.setAttribute('tabindex',"0");
-    // lightbox.appendChild(chevronPrevious);
-    // let previousAria = document.createElement('p')
-    // previousAria.className ="previous";
-    // previousAria.setAttribute('id',"previous");
-    // previousAria.setAttribute('aria-hidden',"true")
-    // lightbox.appendChild(previousAria);
-    // let lightboxContainerImg = document.createElement('div');
-    // lightboxContainerImg.className ='lightbox_Container';
-    // lightboxContainerImg.setAttribute('id',"lightbox_Container");
-    // lightboxContainerImg.setAttribute('aria-hidden', "true");
-    // lightbox.appendChild(lightboxContainerImg)
-    // let ul = document.createElement('ul');
-    // ul.className ="lightbox_Container--img"
-    let li = document.createElement('li');
-    li.style.display='none';
-    li.className ='lightbox_object';
-    li.setAttribute('id',`object${mediaId.id}`);
-    li.setAttribute('aria-hidden',"true")
-    ul.appendChild(li);
-    let figure = document.createElement('figure')
-    figure.className="lightbox_figure";
-    figure.setAttribute('aria-labelledby',`image${mediaId.id}`)
-    figure.setAttribute('tabindex',"0");
-    li.appendChild(figure);
 
-    let image = document.createElement('img');
-    image.className ="image_lightbox"
-    image.setAttribute('src',`../../assets/images/${firstName}/${mediaId.image}`)
-    image.setAttribute('alt',"")
-    image.setAttribute('id',`image${mediaId.id}`)
-    image.setAttribute('width',"auto");
-    image.setAttribute('height',"900");
-    figure.appendChild(image);
-    let figcaption = document.createElement('figcaption')
-    figcaption.className='title_image';
-    figcaption.setAttribute('aria-hidden',"true");
-    figcaption.innerText = mediaId.title;
-    figure.appendChild(figcaption);
-    // let chevronNext = document.createElement('button');
-    // chevronNext.className="lightbox_chevron-next";
-    // chevronNext.setAttribute('id',"lightbox_chevron-next")
-    // chevronNext.setAttribute('aria-labelledby',"next")
-    // chevronNext.setAttribute('tabindex',"0");
-    // lightbox.appendChild(chevronNext);
-    // let nextAria = document.createElement('p');
-    // nextAria.className="next";
-    // nextAria.setAttribute('id',"next");
-    // nextAria.setAttribute('aria-hidden',"true");
-    // lightbox.appendChild(nextAria)
-  }
+
 }
 //creer une image pour video
 class Video{
@@ -285,8 +224,8 @@ class Video{
     let imageMedia = document.createElement('video');
     linkMedia.appendChild(imageMedia);
     imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.video}` );
-    imageMedia.setAttribute('controls',true)
-    imageMedia.className ='image-Media'
+    // imageMedia.setAttribute('controls',true)
+    imageMedia.className ='image-media'
     //avec un bandeau contenant des infos
     let imageAttributes = document.createElement('div');
     imageAttributes.className = "img_attributes";
@@ -306,36 +245,8 @@ class Video{
     imageHeart.className= "fa-solid fa-heart";
     span.appendChild(imageHeart)
 
-    linkMedia.addEventListener('click',(e) => lightboxOpen(e))
-  }
-  // creer une image pour chq video
-  createVideoLightbox(mediaId){
-    let li = document.createElement('li');
-    li.style.display='none';
-    li.className ='lightbox_object';
-    li.setAttribute('id',`object${mediaId.id}`);
-    li.setAttribute('aria-hidden',"true")
-    ul.appendChild(li);
-    let figure = document.createElement('figure')
-    figure.className="lightbox_figure";
-    figure.setAttribute('aria-labelledby',`video${mediaId.id}`)
-    figure.setAttribute('tabindex',"0");
-    li.appendChild(figure);
-
-    let image = document.createElement('img');
-    image.className ="image_lightbox"
-    image.setAttribute('src',`../../assets/images/${firstName}/${mediaId.video}`)
-    image.setAttribute('alt',"")
-    image.setAttribute('id',`image${mediaId.id}`)
-    image.setAttribute('width',"auto");
-    image.setAttribute('height',"900");
-    image.setAttribute('controls',true)
-    figure.appendChild(image);
-    let figcaption = document.createElement('figcaption')
-    figcaption.className='title_video';
-    figcaption.setAttribute('aria-hidden',"true");
-    figcaption.innerText = mediaId.title;
-    figure.appendChild(figcaption);
+   linkMedia.addEventListener('click',(e) => lightboxOpen(e))
+  // linkMedia.addEventListener('click',(e) => Lightbox.init)
   }
 
 }
@@ -349,7 +260,7 @@ function SeparateCardImage(media){
     if(mediaId.image !== undefined){
         let card = factory.createMedia('image');
        card.createImage(mediaId);
-       card.createImageLightbox(mediaId);
+      
       }else{
         let card = factory.createMedia('video');
         card.createVideo(mediaId);
@@ -359,39 +270,35 @@ function SeparateCardImage(media){
 let allObjects = document.querySelectorAll('.lightbox_object')
 console.log(allObjects);
 let objects= Array.from(allObjects)
-// console.log(objects)
+console.log(objects)
 objects.forEach((object) =>{
   object.classList.add(`${objects.indexOf(object)}`)
-  console.log(object)
+  object.setAttribute('number',`${objects.indexOf(object)}` )
+  object.setAttribute('data-id',`${objects.indexOf(object)}` )
+  console.log(object.parentNode)
 })
-let allMedias = document.querySelectorAll('.media_link')
-console.log(allMedias);
+let allMedias = document.querySelectorAll('.page_photographer-media')
+// console.log(allMedias);
 let medias = Array.from(allMedias)
-// console.log(medias)
+console.log(medias)
 medias.forEach((media) => {
   media.classList.add(`${medias.indexOf(media)}`)
-  console.log(media)
+  media.setAttribute('number',`${medias.indexOf(media)}` )
+  console.log(media.getAttribute('number'))
+ 
 })
 }
 
-// function likeAdd(mediaId){
-// for(media of photographer.media){
-// document.addEventListener('click',(e) => {console.log(e.target)})
 document.addEventListener('click',(e)=> {
 const likesSum = document.querySelector('.infos_likes--count')    
-
 let heart =e.target
 // console.log(e.target.tagName)
-
 let heartParent = heart.parentNode;
 // console.log(heartParent.parentNode)
 
 let likeP = heartParent.parentNode.querySelector('p')
 // console.log(heartParent.parentNode)
-
-
-       if (e.target.tagName == 'I' && heartParent.className !=='clicked' ){
-        
+       if (e.target.tagName == 'I' && heartParent.className !=='clicked' ){        
         likeP.textContent ++
         likesSum.textContent++
 // pour ne cliquer qu 'une seule fois par image'
@@ -399,90 +306,173 @@ let likeP = heartParent.parentNode.querySelector('p')
       }
     })
 
-//////modale////
-// const mainPage = document.querySelector('.Photographer-Page-Main')
-// console.log(mainPage)
-// const modal = document.querySelector("#contact_modal");
-// const modalButton =document.querySelector("#contact_button");
-// const modalCross = document.querySelector('.modal-header_text span i')
-// const footerInfos = document.querySelector('#infos')
-// console.log(footerInfos)
-
-// modalButton.addEventListener('click',displayModal)
-// function displayModal() {
-// modal.style.display = "block";
-// mainPage.style.display ='none';
-// footerInfos.style.display ='none';
-// }
-
-// modalCross.addEventListener('click', closeModal)
-// function closeModal() {
-//   modal.style.display = "none";
-//   mainPage.style.display ='block';
-//   footerInfos.style.display='block';
-// }
 
 //////lightbox//////
 let lightBoxBg=document.querySelector('#lightbox-background');
 const mainPage = document.querySelector('.Photographer-Page-Main');
 let lightboxContainer =document.querySelector(".lightbox-modal")
 let buttonClose =document.querySelector(".lightbox_close");
-
+const footerInfos = document.querySelector('.infos')
 console.log(buttonClose);
+let next = document.querySelector('.lightbox_chevron-next')
+let previous = document.querySelector('.lightbox_chevron-previous')
 
+// console.log(picture)
 // ouvrir la lightbox
 function lightboxOpen(e){
-  e.preventDefault()
-  lightBoxBg.style.display = 'flex'
-  lightBoxBg.setAttribute('aria-hidden', 'false')
-  mainPage.setAttribute('aria-hidden', 'true')
-  mainPage.setAttribute('tabindex', '-1')
-  lightboxContainer.setAttribute('tabindex', '0')
-  let picture = window.event.target;
-  let id = findId(picture)
-
+  let nodeListArticle = document.querySelectorAll('.page_photographer-media')
+  let articles = Array.from(nodeListArticle)
+  articles.forEach(article =>{
+    e.preventDefault()
+    lightBoxBg.style.display = 'flex'
+    lightBoxBg.setAttribute('aria-hidden', 'false')
+    mainPage.setAttribute('aria-hidden', 'true')
+    mainPage.setAttribute('tabindex', '-1')
+    footerInfos.style.display ='none';
+    footerInfos.setAttribute('aria-hidden','true')
+    lightboxContainer.setAttribute('tabindex', '0')
+    let picture = window.event.target;
+    // console.log(picture);
+    let id = findId(picture)
+    // let firstObject= document.getElementById(`image${mediaId.id}`)
+    let firstObject = document.getElementsByTagName('li[number]')
+    console.log(firstObject)
+  })
+  
+  
+  
   function findId(picture) {
     if(picture.tagName =='IMG'){
-      let parent = picture.parentNode;
-      let id =parent.parentNode.id ;
-      console.log(id);
-      return id;
+      document.querySelector("#src").src = picture.src;
+      let divMedia = picture.parentNode
+      let divMedia2 = divMedia.parentNode
+      let idDivMedia2 = divMedia2.getAttribute('id')
+      // let id = idDivMedia2.replace('divMedia2.id', 'number')
+      console.log(idDivMedia2)
+    }
+    if(picture.tagName =='VIDEO'){
+      document.querySelector("#video").src = picture.src;
+      console.log(picture.src)
     }
   }
-  let firstObject = document.getElementById(`object${id}`)
-  // console.log(firstObject)
-  //trouver la position du 1er  media agrandi
-  findPosition(firstObject)
-  firstObject.style.display = 'flex'
-  firstObject.setAttribute('aria-hidden', 'false')
-  lightboxContainer.focus()
-}
+  findPosition()
+  function findPosition(picture){
+  //   console.log(picture)
+  //   let pictureParent = picture.parentNode
+  //   let number = pictureParent.getAttribute('number')
+  //   console.log(number)
+  //   return number  
+  } 
+  }
 
-function findPosition(firstObject){
-  let firstClassName =firstObject.className;
-  let i = firstClassName.lastIndexOf('-')
-  let position =firstClassName.substring(i+1)
-  console.log(firstClassName)
-  console.log(firstObject)
-  console.log(position)
+// //navigation droite et gauche
+next.addEventListener('click', goToNext(2))
+function goToNext(media){
+ let total = media.length;
+ console.log(media)
+ const  currentImag = document.querySelector("[data-id='0']")
+ console.log(currentImag);
+  if(number < total){
+    
+  }
   
 }
-//navigation droite et gauche
-function goToNext(){
-  let allObjects = document.querySelectorAll('.lightbox_object')
   
-}
+  
+
+
 function goToPrevious(){
 
 }
 //fermer la lightbox
 buttonClose.addEventListener("click", closeLightbox)
-function closeLightbox(){
+function closeLightbox(e){
   lightBoxBg.setAttribute('aria-hidden', 'true')
   mainPage.setAttribute('aria-hidden', 'false')
   mainPage.setAttribute('tabindex', '0')
+  footerInfos.style.display='flex';
+  footerInfos.setAttribute('aria-hidden','false')
   lightboxContainer.setAttribute('tabindex', '-1')
 }
+// // lightbox grafikart
+// //propriet{htmlElement}element
+// class Lightbox{
+//   static init(){
+//      const articles = document.querySelectorAll('a')
+//      console.log(articles)
+//      .forEach(article => article.addEventListener('click', e =>{
+//      e.preventDefault()
+//      new Lightbox(e.currentTarget.getAttribute('href'))
+//      console.log(currentTarget)
+//   }))
+//   }
+//   //parametres{string}url de l 'image
+//   constructor(url){
+//     this.element= this.buildDOM(url)
+//     let div= document.querySelector('.lightbox-modal');
+//     div.appendChild(this.element)
+//   }
+//   //parameter{string}url de l' image
+//   //return{HtmlElement}
+//   buildDOM(url){
+//     const dom = document.createElement('div')
+//     dom.className = 'lightbox'
+//     dom.innerHTML=`<button class="lightbox_chevron-previous"
+//     id="lightbox_chevron-previous"
+//     aria-labelledby="previous"
+//     tabindex="0">
+// </button>
+//     <p class="previous"
+//     id="previous"
+//     aria-hidden="true">image précédente</p>
+//     <div class="lightbox_Container">
+//         <ul class="lightbox_Container--img">
+//             <li class="lightbox_object"
+
+//                 aria-hidden="true">
+//                 <figure class=" lightbox_figure"
+//                 aria-labelledby=\`image${mediaId.id}\`
+//                 tabindex="0">
+//                     <img class="image_lightbox"
+//                     id="src"
+//                     src="${url}"
+//                     width="1050">
+//                     <video class="video-lightbox"
+//                     id="video" src="controls"></video>
+//                     <figcaption class="title_image"
+//                     aria-hidden="true"></figcaption>
+//                 </figure>
+//             </li>
+//         </ul>
+//         <button class="lightbox_close">
+//             <p class="close_lightbox"
+//             id="close_lightbox"
+//             aria-hidden="true">fermer la lightbox</p>
+//         </button>
+//     </div>
+//     <button class="lightbox_chevron-next"
+//     id="lightbox_chevron-next"
+//     aria-labelledby="next"
+//     tabindex="0">
+//     </button>
+//      <p class="next"
+//     id="next"
+//     aria-hidden="true">image suivante</p> `
+//     return dom
+//   }
+// }
+// Lightbox.init()
+//trouver la position du 1er  media agrandi
+
+//   findPosition(firstObject)
+//   firstObject.style.display = 'flex'
+//   firstObject.setAttribute('aria-hidden', 'false')
+//   lightboxContainer.focus()
+// }
+
+
+
+
 
 
 

@@ -131,7 +131,7 @@
                             aria-required="true"
                             required
                         />
-                        <span class="error-msg" id="message-email">Veillez saisir une adresse email correcte : exemple@gmail.com</span>
+                        <span class="error-msg" id="message-email">Veillez saisir une adresse email correcte</span>
                     </div>
                     <div class="modal_form--formData">
                         <label for ="message" class="modal_formaData--label">Message</label><br/>
@@ -172,43 +172,45 @@
                     <button class="lightbox_chevron-previous"
                     id="lightbox_chevron-previous"
                     aria-labelledby="previous"
-                    tabindex="0"><i class="fa-solid fa-angle-left"></i></button>
-                    <!-- <p class="previous"
+                    tabindex="0">
+                </button>
+                    <p class="previous"
                     id="previous"
-                    aria-hidden="true">image précédente</p> -->
+                    aria-hidden="true">image précédente</p>
                     <div class="lightbox_Container">
                         <ul class="lightbox_Container--img">
-                            <!-- <li class="lightbox_object"
-                                id = `object${mediaId.id}` 
+                            <li class="lightbox_object" 
+                                   id = ""
+
                                 aria-hidden="true">
                                 <figure class=" lightbox_figure"
-                                aria-labelledby=`image${mediaId.id}`
+                                id =`image${mediaId.id}`
                                 tabindex="0">
                                     <img class="image_lightbox"
-                                    id=`image${mediaId.id}`
-                                    src="
+                                    id="src"
+                                    src=""
                                     width="1050">
+                                    <video class="video-lightbox"
+                                    id="video" src="controls"></video>
                                     <figcaption class="title_image"
                                     aria-hidden="true"></figcaption>
                                 </figure>
-                            </li> -->
+                            </li>
                         </ul>
                         <button class="lightbox_close">
-                            <i class="fa-solid fa-xmark"></i>
+                            <p class="close_lightbox"
+                            id="close_lightbox"
+                            aria-hidden="true">fermer la lightbox</p>
                         </button>
-                        <!-- <p class="close_lightbox"
-                        id="close_lightbox"
-                        aria-hidden="true">fermer la lightbox</p> -->
                     </div>
                     <button class="lightbox_chevron-next"
                     id="lightbox_chevron-next"
                     aria-labelledby="next"
                     tabindex="0">
-                    <i class="fa-solid fa-angle-right"></i>
                     </button>
-                    <!-- <p class="next"
+                     <p class="next"
                     id="next"
-                    aria-hidden="true">image suivante</p> -->
+                    aria-hidden="true">image suivante</p> 
                 </div>
 
                 </div>

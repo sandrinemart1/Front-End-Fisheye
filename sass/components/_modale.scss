@@ -52,12 +52,13 @@
     }
 }
  /* style pour apparition modale */
-.appear{
+.appear{ 
     display:block;
     position:absolute;
-    top: 60%;
-    left: -9%;
-    width: 100%;
+    top: 39%;
+    left: 0%;
+    top: 140px;
+    z-index: 15;
 }
 /* style pour message error */
 .error-msg{

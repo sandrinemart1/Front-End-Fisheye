@@ -68,7 +68,7 @@ affichage(photographersJson)
                     media.title);
 
             mediasJson.push(mediaJson);
-            console.log(mediaJson);
+            // console.log(mediaJson);
                  })
 
                 }else{
