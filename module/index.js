@@ -1,72 +1,96 @@
-// import {createCardDOM} from './factories/home-page-elements.js'
+
+import  {photographersJson , mediasJson} from './fetch.js'
 import { myFetch  } from './fetch.js'
-// import {getPhotographer}from'./factories/home-page-elements.js'
+// import {Element} from './elementDOM.js'
+class Element {
+  constructor(name, type, classname){
+      this.name = name
+      this.type = type
+      this.classname = classname
+  }
+  get el() {
+      return this.createEl()
+  }
+createEl() {
+      this.name = document.createElement(this.type)
+      this.name.className = this.classname
+      this.name.classList.add(this.classname)
+      return this.name
+  }
+}
 
-function affichage(photographersJson){
-  console.log(photographersJson,"aaaa")
-  console.log(photographersJson[0],'zzzzz')
-  let banner = document.querySelector("ul");
-  let photographer;
-  // exercice Ahmed
-  // for(photographer of photographersJson){
-  //   console.log(photographer.name);
-  //   banner.innerHTML+=`<li>${photographer.name}</li>`;
-  // }
-//INJECTION DES DATA PHOTOGRAPHER DANS PAGE ACCUEIL
-  photographersJson.forEach(photographerJson=> {
-    const article = document.createElement( 'article' );
-    article.className ='photographer_section--user';
-    const anchor = document.createElement('a') ;
-    //creation du lien url pour chaque photographe
-    anchor.setAttribute('href', '../photographer.html?id=' + `${photographerJson.id}`)
-    anchor.className ='photographer_section--link';
-    const imgBanner = document.createElement('div');
-    imgBanner.className ='photographer_section--banner';
+function createCardDOM(photographersJson) {
+  console.log(photographersJson.length)
+  for(let i =0 ; i< photographersJson.length;i++){
+  let article =new Element( 'article','article','photographer_section--user').el;
+  let anchor = new Element ( 'anchor', 'a','photographer_section--link').el;
+  let imgBanner =new Element ('imgBanner','div','photographer_section--banner').el;
+  let img = new Element('img','img', 'img').el;
+  let  h2 = new Element ('h2','h2','h2').el;
+  let paragraph =new Element ('paragraph','div','photographer_section--text').el;
+  let location = new Element('location','p','location').el;
+  let tagline = new Element ('tagline','p','tagline').el;
+  let price = new Element('price','p','price').el;
+// conteneur des cartes photographes
+  let cardDOMBanner= document.querySelector(".photographer_section");
+  
+  cardDOMBanner.appendChild(article);
+  article.appendChild(anchor);
+  article.appendChild(imgBanner);
+  article.appendChild(paragraph);
 
-    const img = document.createElement( 'img' );
-    img.setAttribute('src', `../../assets/images/Photographers ID Photos/${photographerJson.portrait}`);
-    img.setAttribute('alt',`portrait du photographe ${photographerJson.name}`)
-    img.setAttribute('width', '200');
-    img.setAttribute('height', '200');
-
-    const h2 = document.createElement( 'h2' );
-    h2.className ='h2';
-    h2.classList.add('h2');
-    h2.innerHTML =`${photographerJson.name}`;
-
-    const paragraph = document.createElement('div');
-    paragraph.className ='photographer_section--text';
-    const location =document.createElement('p');
-    location.className = 'location';
-    location.innerHTML= photographerJson.city+ ", " + photographerJson.country;
-    const tagline =document.createElement('p');
-    tagline.className= "tagline";
-    tagline.innerHTML= photographerJson.tagline
-    const price=document.createElement('p');
-    price.className = 'price';
-    price.innerHTML=`${photographerJson.price}€/jour`;
-
-    let cardDOMBanner= document.querySelector(".photographer_section");
-    console.log(cardDOMBanner);
-    cardDOMBanner.appendChild(article);
-    article.appendChild(anchor);
-    article.appendChild(imgBanner);
-    article.appendChild(paragraph);
-
-    anchor.appendChild(img);
-    anchor.appendChild(h2);
-
-    paragraph.appendChild(location);
-    paragraph.appendChild(tagline);
-    paragraph.appendChild(price); 
-
-    const photographersJson = { property : 'caractéristiques_par_défaut'};
-    console.log(photographersJson);
-		const des = Object.getOwnPropertyDescriptor(photographersJson,'property');
-		console.dir(des); 
-  }) 
+  anchor.appendChild(img);
+  anchor.appendChild(h2);
+  
+  paragraph.appendChild(location);
+  paragraph.appendChild(tagline);
+  paragraph.appendChild(price);
+  anchor.setAttribute('href', `../photographer.html?id=` + `${photographersJson[i].id}`)
+   //contenu de chaque carte 
+  img.setAttribute('src', `../../assets/images/Photographers ID Photos/${photographersJson[i].portrait}`);
+  img.setAttribute('alt',`portrait du photographe ${photographersJson[i].name}`)
+  img.setAttribute('width', '200');
+  img.setAttribute('height', '200');
+  h2.innerHTML =`${photographersJson[i].name}`;
+  location.innerHTML = `${photographersJson[i].city},${photographersJson[i].country}`;
+  tagline.innerHTML = `${photographersJson[i].tagline}`;
+  price.innerHTML =`${photographersJson[i].price}€/jour`;
   }
   
-  myFetch(affichage)
+
+}
+export {createCardDOM}
+myFetch()
+
+// function affichage(photographersJson){
+//   // console.log(photographersJson[0],'zzzzz')
+//   // let banner = document.querySelector("ul");
+//   // let photographer;
+//   // exercice Ahmed
+//   // for(photographer of photographersJson){
+//     // console.log(photographer.name);
+//   //   banner.innerHTML+=`<li>${photographer.name}</li>`;
+//   // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 

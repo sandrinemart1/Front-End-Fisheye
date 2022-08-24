@@ -1,4 +1,5 @@
-// import{ Element, createCardDOM}from './factories/home-page-elements.js'
+import {createCardDOM}from'./index.js'
+
 //fonction pour recuperer les donnees
 class Photographer{
     constructor( name, id, city, country, tagline,price,portrait,media){
@@ -31,45 +32,15 @@ async function myFetch(affichage){
     .then( async(response)=>{
         if (response.ok){
             const data=await  response.json()
-            console.log(data);
+            // console.log(data);
             const photographers = data.photographers;
             const media = data.media;
-            console.log(media);
-//recuperer les photographes dans un array photographersJson
-            // const photographersJson = [];
-            for(let photographer of data.photographers){
-                const photographerJson = new Photographer(
-                    photographer.name, 
-                    photographer.id, 
-                    photographer.city, 
-                    photographer.country, 
-                    photographer.tagline,
-                    photographer.price,
-                    photographer.portrait);  
+            // console.log(media);
 
-            photographersJson.push(photographerJson);
-            // console.log(photographerJson);
-            // console.log(photographerJson.portrait);
-                }
-affichage(photographersJson)
+dataInArray(photographers)
+dataInArray2(media)
+createCardDOM(photographersJson)
 
-
- //recuperer les medias dans un array mediasJson
-            //  const mediasJson =[];
-            //  for(let media of data.media){
-                media.forEach((media)=>{
-                 const mediaJson = new Media(
-                    media.date, 
-                    media.id, 
-                    media.image, 
-                    media.likes, 
-                    media.photographerId,
-                    media.price,
-                    media.title);
-
-            mediasJson.push(mediaJson);
-            // console.log(mediaJson);
-                 })
 
                 }else{
                     console.error('Retour du serveur :', response.status);
@@ -77,16 +48,43 @@ affichage(photographersJson)
                 
                 })
                 }
-                
-                // async function getData(){
-                // const data = await myFetch()
-                // console.log(data);
-                // }
-                // getData();
 
-//recuperer uniquement les photographes
-//injecter les données dans un tableau
 
+function dataInArray(photographers){
+    for(let photographer of photographers){
+        const photographerJson = new Photographer(
+            photographer.name, 
+            photographer.id, 
+            photographer.city, 
+            photographer.country, 
+            photographer.tagline,
+            photographer.price,
+            photographer.portrait);  
+
+    photographersJson.push(photographerJson);
+
+       }
+        return photographersJson
+
+}
+
+function dataInArray2(media){
+    media.forEach((media)=>{
+        const mediaJson = new Media(
+           media.date, 
+           media.id, 
+           media.image, 
+           media.likes, 
+           media.photographerId,
+           media.price,
+           media.title);
+
+   mediasJson.push(mediaJson);
+
+   return mediasJson
+        })
+}
 
 export { myFetch}
+export { dataInArray, dataInArray2}
 export{photographersJson , mediasJson}

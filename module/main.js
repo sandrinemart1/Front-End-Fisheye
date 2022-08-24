@@ -1,38 +1,46 @@
-//  function createDOM(mediaId){
-// //conteneur de chq image/video
-//     let sectionMedia = document.querySelector('.page_photographer-medias');
-//     let mediaAndAttributes=document.createElement('div');
-//     mediaAndAttributes.className=".page_photographer-media-attributes";
-//     sectionMedia.appendChild(mediaAndAttributes);
-//     let articleMedia =document.createElement('article');
-//     articleMedia.className='page_photographer-media';
-//     articleMedia .setAttribute('id',mediaId.id);
-//     mediaAndAttributes.appendChild(articleMedia);
-    // let linkMedia = document.createElement('a');
-    // articleMedia.appendChild(linkMedia);
-    // let imageMedia = document.querySelector('img');
-    // imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.image}` );
-    // imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.video}` );
-    // linkMedia.appendChild(imageMedia);
-    // console.log(imageMedia);
-//attributs de chaque photo/video
-//     let imageAttributes = document.createElement('div');
-//     imageAttributes.className = "img_attributes";
-//     imageAttributes.classList.add ('img_attributes')
-//     articleMedia.appendChild(imageAttributes);
-//     let imageTitle =document.createElement('h3');
-//     imageTitle.textContent = mediaId.title;
-//     imageAttributes.appendChild(imageTitle);
-//     // let imageLike = document.createElement('p');
-//     // imageLike.textContent =mediaId.likes;
-//     // imageAttributes.appendChild(imageLike);
-//     // let span = document.createElement('span')
-//     // imageAttributes.appendChild(span);
-//     // let imageHeart = document.createElement('i');
-//     // imageHeart.className= "fa-solid fa-heart";
-//     // span.appendChild(imageHeart);
-//     likes(mediaId) 
-//  }
+async function init(){
+    const {photographers} = await dataInArray();
+    const {medias} = await dataInArray2();
+  }
+  init();
+
+
+
+ function createDOM(mediaId){
+//conteneur de chq image/video
+    let sectionMedia = document.querySelector('.page_photographer-medias');
+    let mediaAndAttributes=document.createElement('div');
+    mediaAndAttributes.className=".page_photographer-media-attributes";
+    sectionMedia.appendChild(mediaAndAttributes);
+    let articleMedia =document.createElement('article');
+    articleMedia.className='page_photographer-media';
+    articleMedia .setAttribute('id',mediaId.id);
+    mediaAndAttributes.appendChild(articleMedia);
+    let linkMedia = document.createElement('a');
+    articleMedia.appendChild(linkMedia);
+    let imageMedia = document.querySelector('img');
+    imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.image}` );
+    imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.video}` );
+    linkMedia.appendChild(imageMedia);
+    console.log(imageMedia);
+attributs de chaque photo/video
+    let imageAttributes = document.createElement('div');
+    imageAttributes.className = "img_attributes";
+    imageAttributes.classList.add ('img_attributes')
+    articleMedia.appendChild(imageAttributes);
+    let imageTitle =document.createElement('h3');
+    imageTitle.textContent = mediaId.title;
+    imageAttributes.appendChild(imageTitle);
+    // let imageLike = document.createElement('p');
+    // imageLike.textContent =mediaId.likes;
+    // imageAttributes.appendChild(imageLike);
+    // let span = document.createElement('span')
+    // imageAttributes.appendChild(span);
+    // let imageHeart = document.createElement('i');
+    // imageHeart.className= "fa-solid fa-heart";
+    // span.appendChild(imageHeart);
+    likes(mediaId) 
+ }
 
 
 
@@ -66,64 +74,64 @@ function affichePhotographers(photographersJson){
     }
 }
 
-// function affichePhotographers(photographersJson){
-    //   for(let i =0; i<photographersJson.length;i++){
-    //     createCardDOM(photographerJson[i])
-    //     displayPhotographers(photographerJson[i])
+function affichePhotographers(photographersJson){
+      for(let i =0; i<photographersJson.length;i++){
+        createCardDOM(photographerJson[i])
+        displayPhotographers(photographerJson[i])
     
-    //   }
-    // } 
+      }
+    } 
   
-// async function simpleFetch(){
-//     const response = await fetch("../data/photographers.json")
-//     const data = await response.json()
-//     return data
-// }
-// async function getData(){
-//     const data = await simpleFetch()
-//     console.log( data)
-// }
+async function simpleFetch(){
+    const response = await fetch("../data/photographers.json")
+    const data = await response.json()
+    return data
+}
+async function getData(){
+    const data = await simpleFetch()
+    console.log( data)
+}
 
 /*               fetch */
 // //fonction pour recuperer les donnees
-// fetch("../../data/photographers.json")
-// .then((response)=>response.json())
-// .then((data)=>console.log(data))
-//ecrire la function en asynchrone vsgrafikart et 
-//separer les données photographes et les données medias
-// const getPhotographersAndMedia = async function(){
-//     let response = await fetch("../data/photographers.json");
-//     if (response.ok){
-//     let data = await response.json();
-//         console.table( data);
-//         const photographers =data.photographers;
-//         const medias =data.media;
-//         console.table(photographers);
-//         console.log(photographers[1].tagline);
-//         return data;
+fetch("../../data/photographers.json")
+.then((response)=>response.json())
+.then((data)=>console.log(data))
+ecrire la function en asynchrone vsgrafikart et 
+separer les données photographes et les données medias
+const getPhotographersAndMedia = async function(){
+    let response = await fetch("../data/photographers.json");
+    if (response.ok){
+    let data = await response.json();
+        console.table( data);
+        const photographers =data.photographers;
+        const medias =data.media;
+        console.table(photographers);
+        console.log(photographers[1].tagline);
+        return data;
 
-//     }else{
-//         console.error('Retour du serveur :', response.status);
-//     }
-// }
+    }else{
+        console.error('Retour du serveur :', response.status);
+    }
+}
 // definir variables pour chaque element
 
-// let photographerName = photographer.name;
-// let photographerId = photographer.id;
-// let photographerCity = photographer.city;
-// let photographerCountry = photographer.country;
-// let photographerTagline = photographer.tagline;
-// let photographerPrice = photographer.price;
-// let photographerPortrait = photographer.portrait;
-//             console.log(photographerName);
-//             console.log(photographerId);
-//             console.log(photographerCity);
-//             console.log(photographerCountry);
-//             console.log(photographerTagline);
-//             console.log(photographerPrice);
-//             console.log(photographerPortrait);
+let photographerName = photographer.name;
+let photographerId = photographer.id;
+let photographerCity = photographer.city;
+let photographerCountry = photographer.country;
+let photographerTagline = photographer.tagline;
+let photographerPrice = photographer.price;
+let photographerPortrait = photographer.portrait;
+            console.log(photographerName);
+            console.log(photographerId);
+            console.log(photographerCity);
+            console.log(photographerCountry);
+            console.log(photographerTagline);
+            console.log(photographerPrice);
+            console.log(photographerPortrait);
             
-//             console.log(photographer);
+            console.log(photographer);
             
             
 /*            Photographers*/

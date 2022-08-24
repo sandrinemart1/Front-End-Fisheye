@@ -366,17 +366,17 @@ function lightboxOpen(e){
   }
 
 // //navigation droite et gauche
-next.addEventListener('click', goToNext(2))
-function goToNext(media){
- let total = media.length;
- console.log(media)
- const  currentImag = document.querySelector("[data-id='0']")
- console.log(currentImag);
-  if(number < total){
+// next.addEventListener('click', goToNext(2))
+// function goToNext(media){
+//  let total = media.length;
+//  console.log(media)
+//  const  currentImag = document.querySelector("[data-id='0']")
+//  console.log(currentImag);
+//   if(number < total){
     
-  }
+//   }
   
-}
+// }
   
   
 
