@@ -1,5 +1,5 @@
-import {createCardDOM}from'./index.js'
-
+import {createCardDOM} from'./home-page-elements.js'
+// import {createCardDOM} from 
 //fonction pour recuperer les donnees
 class Photographer{
     constructor( name, id, city, country, tagline,price,portrait,media){
