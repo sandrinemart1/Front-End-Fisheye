@@ -1,6 +1,6 @@
 //class pour créer elements du DOM
 class Element {
-    constructor(name, type, classname){
+    constructor(name, type, classname,att){
         this.name = name
         this.type = type
         this.classname = classname
@@ -17,3 +17,13 @@ class Element {
   }
   
 export{Element}
+
+function ElementFactory(name, className,id,attributes){
+  var VignetteImage = {}
+  VignetteImage.name= name;
+  VignetteImage.className = className;
+  VignetteImage.id = id;
+  VignetteImage.setAttributes = attributes
+ return VignetteImage
+
+}

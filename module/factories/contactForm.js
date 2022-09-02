@@ -1,14 +1,13 @@
-import{getPhotographer} from './Photographer2.js'
+// import{getPhotographer} from './Photographer2.js'
 
-const mainPage = document.querySelector('.Photographer-Page-Main')
-const pageHeader =document.querySelector('.page_photographer-header')
-
-const modal = document.querySelector("#contact_modal");
+const mainPage = document.querySelector('.Photographer-Page-Main');
+const pageHeader =document.querySelector('.page_photographer-header');
+const modal = document.querySelector(".modal-background");
 const modalDiv = document.querySelector('.modal');
-// console.log(modalDiv);
 const modalButton =document.querySelector("#contact_button");
 const modalCross = document.querySelector('.modal-header_text span i')
-const footerInfos = document.querySelector('.infos')
+const footerInfos = document.querySelector('.infos');
+const submitButton = document.getElementById('submit-button')
 const msgAll = document.querySelectorAll('.error-msg');
 // console.log(msgAll[3])
 
@@ -29,39 +28,40 @@ const inputEmail = document.getElementById('email')
 const submit = document.getElementById('submit-button')
 
 //ouverture et fermeture de la modale
-
-
-modalButton.addEventListener('click',displayModal)
 function displayModal() {
-mainPage.style.position = "relative"
-modal.classList.add = "appear";
-console.log(mainPage)
-modal.setAttribute('aria-hidden', 'false')
-pageHeader.style.opacity ='0.4';
-pageHeader.setAttribute('aria-hidden', 'true')
-mainPage.style.opacity ='0.4';
-mainPage.setAttribute('aria-hidden', 'true')
-footerInfos.style.opacity='0.4';
-footerInfos.setAttribute('aria-hidden','true')
-firstName.focus()
-modalDiv.setAttribute('tabindex','0')
+  mainPage.style.position = "relative"
+  modal.classList.add('appear') 
+  // modal.setAttribute('aria-hidden', 'false')
+  pageHeader.style.opacity ='0.4'
+  // pageHeader.setAttribute('aria-hidden', 'true')
+  mainPage.style.opacity ='0.4'
+  mainPage.position = "relative"
+  // mainPage.setAttribute('aria-hidden', 'true')
+  footerInfos.style.opacity='0.4'
+  // footerInfos.setAttribute('aria-hidden','true')
+  firstName.focus()
+  // modalDiv.setAttribute('tabindex','0')
 }
 
-modalCross.addEventListener('click', closeModal)
+
 function closeModal() {
   modal.style.display = "none";
   modal.setAttribute('aria-hidden', 'true')
   pageHeader.style.display ='block';
+  pageHeader.style.opacity ='1';
   pageHeader.setAttribute('aria-hidden', 'false')
   mainPage.style.display ='block';
+  mainPage.style.opacity ='1';
   mainPage.setAttribute('aria-hidden', 'false')
   footerInfos.style.display='flex';
+  footerInfos.style.opacity='1';
   footerInfos.setAttribute('aria-hidden','false')
   modalButton.focus();
   modalDiv.setAttribute('tabindex','-1')
 }
+
 //fermeture clavier
-modal.addEventListener('keydown', closeOnKey)
+modalDiv.addEventListener('keydown', closeOnKey)
 function closeOnKey(e) {
   let keyname = e.key
   console.log(e.key)
@@ -210,6 +210,5 @@ const eMailRegex = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
 ;
     }
   }
-
-export {displayModal}
-export {closeModal}
+export {modal, modalButton,modalCross,submitButton,modalDiv}
+export {displayModal,closeModal}

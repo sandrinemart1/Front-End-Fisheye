@@ -23,7 +23,7 @@ async function init(){
     imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.video}` );
     linkMedia.appendChild(imageMedia);
     console.log(imageMedia);
-attributs de chaque photo/video
+// attributs de chaque photo/video
     let imageAttributes = document.createElement('div');
     imageAttributes.className = "img_attributes";
     imageAttributes.classList.add ('img_attributes')
@@ -97,8 +97,8 @@ async function getData(){
 fetch("../../data/photographers.json")
 .then((response)=>response.json())
 .then((data)=>console.log(data))
-ecrire la function en asynchrone vsgrafikart et 
-separer les données photographes et les données medias
+// ecrire la function en asynchrone vsgrafikart et 
+// separer les données photographes et les données medias
 const getPhotographersAndMedia = async function(){
     let response = await fetch("../data/photographers.json");
     if (response.ok){

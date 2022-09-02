@@ -27,6 +27,7 @@ class Media{
 const photographersJson = [];
 const mediasJson =[];
 let photographerJson;
+//fonction fetch pour page d'accueil
 async function myFetch(affichage){
     const response = await fetch("../../data/photographers.json")
     .then( async(response)=>{
@@ -84,7 +85,7 @@ function dataInArray2(media){
    return mediasJson
         })
 }
-
+export{Photographer,Media}
 export { myFetch}
 export { dataInArray, dataInArray2}
 export{photographersJson , mediasJson}

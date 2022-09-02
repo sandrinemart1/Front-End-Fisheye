@@ -2,14 +2,14 @@
 /*colors*/
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 /* modale de contact */
-#contact_modal {
+.modal-background {
   display: none;
 }
 
 .modal {
   border-radius: 5px;
   background-color: #DB8876;
-  width: 50%;
+  width: 669px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -77,10 +77,9 @@
 .appear {
   display: block;
   position: absolute;
-  top: 39%;
-  left: 0%;
-  top: 140px;
-  z-index: 15;
+  top: 15%;
+  left: 8%;
+  right: 16%;
 }
 
 /* style pour message error */
@@ -373,20 +372,6 @@ main {
   margin: 4px;
 }
 
-#contact_button {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 26px;
-  color: white;
-  padding: 11px;
-  width: 170px;
-  height: 70px;
-  border: none;
-  background-color: #901C1C;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 .photographer_section--banner {
   display: block;
 }
@@ -547,6 +532,27 @@ main {
 
 .img_attributes span:hover {
   cursor: pointer;
+}
+
+#contact_button {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901C1C;
+  border-radius: 5px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
 }
 
 .clicked {

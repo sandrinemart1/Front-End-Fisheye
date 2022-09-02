@@ -58,22 +58,7 @@ main{
         margin: 4px;
     }
 }     
-#contact_button {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 26px;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: $bg-1st-color;
-    border-radius: 5px;
-    cursor: pointer;
-//     display: flex;
-//     align-items: center;
-//     text-align: center;
-}
+
 
 .photographer_section--banner{
     display:block;
@@ -202,6 +187,22 @@ span{
         }
     }
  } 
+ #contact_button {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: $bg-1st-color;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
  //class pour faire tourner les coeurs likes
 .clicked {
     color:#DB8876;
