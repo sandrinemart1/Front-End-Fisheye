@@ -46,18 +46,18 @@ function displayModal() {
 
 function closeModal() {
   modal.style.display = "none";
-  modal.setAttribute('aria-hidden', 'true')
+  // modal.setAttribute('aria-hidden', 'true')
   pageHeader.style.display ='block';
-  pageHeader.style.opacity ='1';
-  pageHeader.setAttribute('aria-hidden', 'false')
+  // pageHeader.style.opacity ='1';
+  // pageHeader.setAttribute('aria-hidden', 'false')
   mainPage.style.display ='block';
-  mainPage.style.opacity ='1';
-  mainPage.setAttribute('aria-hidden', 'false')
+  // mainPage.style.opacity ='1';
+  // mainPage.setAttribute('aria-hidden', 'false')
   footerInfos.style.display='flex';
   footerInfos.style.opacity='1';
-  footerInfos.setAttribute('aria-hidden','false')
-  modalButton.focus();
-  modalDiv.setAttribute('tabindex','-1')
+  // footerInfos.setAttribute('aria-hidden','false')
+  // modalButton.focus();
+  // modalDiv.setAttribute('tabindex','-1')
 }
 
 //fermeture clavier

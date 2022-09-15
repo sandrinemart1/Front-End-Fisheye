@@ -15,15 +15,4 @@ class Element {
         return this.name
     }
   }
-  
 export{Element}
-
-function ElementFactory(name, className,id,attributes){
-  var VignetteImage = {}
-  VignetteImage.name= name;
-  VignetteImage.className = className;
-  VignetteImage.id = id;
-  VignetteImage.setAttributes = attributes
- return VignetteImage
-
-}

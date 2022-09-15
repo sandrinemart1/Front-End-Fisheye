@@ -1,4 +1,5 @@
-// import {photographer} from './Photographer2.js'
+import {photographer} from './Photographer2.js'
+const stock = JSON.parse(localStorage.getItem('photographerStock'))
 
 function like(){
     document.addEventListener('click',(e)=> {
@@ -19,16 +20,19 @@ function like(){
   
   
  
-      
-// function likeAdd(photographers){
-//     for(let i =0 ; i<photographer.media.length; i ++){
-//         let eachLikes = photographer.media[i].likes;
-//         let likesSum = 0;
-//         for(let i =0 ; i<photographer.media.length; i ++){ 
-//             likesSum +=photographer.media[i].likes
-//             document.querySelector('.infos_likes--count').textContent=likesSum;
-//         }
-//     }};
+/////            injecter likes totaux  et prix dans le footer //////////      
+function likeAdd(stock){
+ 
+    // for(let i =0 ; i<stock.length; i ++){
+    //     let eachLikes = stock[i].likes;
+    //     let likesSum = 0;
+    //     for(let i =0 ; i<stock[i].likes; i ++){ 
+    //         likesSum +=stock[i].likes
+    //         document.querySelector('.infos_likes--count').textContent=likesSum;
+    //     }
+    // }
+    // document.querySelector('.infos_price').textContent = `${photographer.price}€/j`;
+  };
             
 export{like}
-// export{likeAdd}
+export{likeAdd}
