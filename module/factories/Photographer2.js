@@ -53,7 +53,7 @@ function myFetch2() {
       }
     }
     getPhotographer(data.photographers)
-    console.log(photographer)
+    // console.log(photographer)
     localStorage.setItem('photographerStock', JSON.stringify(photographer));
   }
  export{getData}
@@ -382,8 +382,6 @@ media.classList.add(`media_${medias.indexOf(media)}`)
 
 }
 
-
-console.log(JSON.parse(localStorage.getItem('photographerStock')))
 let stock = JSON.parse(localStorage.getItem('photographerStock'))
 console.log(stock)
 
@@ -474,20 +472,19 @@ function lightboxOpen(e){
     mainPage.setAttribute('aria-hidden', 'true')
     mainPage.setAttribute('tabindex', '-1')
     modalButton.style.display ='none';
-    // footerInfos.style.display ='none';
-    // footerInfos.setAttribute('aria-hidden','true')
+    footerInfos.style.display ='none';
+    footerInfos.setAttribute('aria-hidden','true')
     lightboxContainer.setAttribute('tabindex', '0')
     let picture = window.event.target;
-  //  console.log(picture.parentNode)
     let id = findId(picture)
     let firstObject= document.getElementById(`object${id}`)
     firstObject.style.display ='flex' 
-  //  console.log(firstObject)
+   console.log(firstObject)
 
     position = giveThePosition(firstObject)
     return firstObject
   }
-  console.log(document.getElementById('src'))
+  // console.log(document.getElementById('src'))
 
  ////// trouver l 'id de l 'image cliquée ///////////
 function findId(picture) {
@@ -499,7 +496,6 @@ function findId(picture) {
     let divMedia2 = divMedia.parentNode
     let idDivMedia2 = divMedia2.getAttribute('id')
     let id = idDivMedia2.replace('divMedia2.id', 'number')
-    console.log(id)
     return id
   }
 
@@ -508,12 +504,9 @@ function findId(picture) {
 //////////// position de l'image dans la lightbox  ////////
 function giveThePosition(firstObject){
   let className = firstObject.className
-  // console.log(className)
   let i = className.lastIndexOf ('_')
   let positionSt = className.substr(i+1)
-  // console.log(positionSt)
   let position = parseInt(positionSt)
-  // console.log(position)
   return position
 }
 
@@ -534,7 +527,7 @@ function goToNext(){
   document.getElementById('src').src = `http://127.0.0.1:5502/assets/images/${firstName}/`+JSON.parse(localStorage.getItem('photographerStock')).media[position].image
   const currentObject = document.querySelector(`.object_${position}`)
   console.log(currentObject)
-  setNodeAttributes(lastObject,currentObject)
+  // setNodeAttributes(lastObject,currentObject)
 }else if (position === total){
   const lastObject = document.querySelector(`.object_${position}`)
   position = 0
@@ -556,28 +549,29 @@ function goToPrevious(){
     const currentObject = document.querySelector(`.object_${position}`)
     const lastObject = document.querySelector(`.object_${position + 1}`)
     console.log(currentObject)
-    // setNodeAttributes(lastObject, currentObject)
+    setNodeAttributes(lastObject, currentObject)
   } else {
     const lastObject = document.querySelector(`.object_${position}`)
     position = total
     const currentObject = document.querySelector(`.item-${position}`)
     console.log(JSON.parse(localStorage.getItem('photographerStock')).media[position])
     console.log(document.getElementById('src').src)
-    // setNodeAttributes(lastObject, currentObject)
+    setNodeAttributes(lastObject, currentObject)
   
 }
 }
 const setNodeAttributes = (lastObject, currentObject) => {
-  // lastObject.style.display = 'none'
-  // currentObject.style.display = 'flex'
-  // lastObject.setAttribute('aria-hidden', 'true')
-  // currentObject.setAttribute('aria-hidden', 'false')
+  lastObject.style.display = 'none'
+  currentObject.style.display = 'flex'
+  lastObject.setAttribute('aria-hidden', 'true')
+  currentObject.setAttribute('aria-hidden', 'false')
 }
 
 //fermeture lightbox
 buttonClose.addEventListener('click',()=>lightboxClose())
-lightBoxBg.addEventListener('keydown',(e) => onKey(e))
+document.body.addEventListener('keydown',(e) => onKey(e))
 function onKey(e){
+  console.log(e.target)
   let keyname = e.key
   if(keyname =='Escape'){
     lightboxClose()

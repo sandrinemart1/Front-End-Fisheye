@@ -16,18 +16,18 @@ function like(mediaId){
      }
     })
   }
+///////////////////////////////////
 
 
- 
 ///// injecter likes totaux  et prix dans le footer //////////      
-function likeAdd(stock){
+function likeAdd(stock,photographer){
  
     for(let i =0 ; i<stock.length; i ++){
-        // let likesSum = 0;
-        // for(let i =0 ; i<stock[i].likes; i ++){ 
-        //     likesSum +=stock[i].likes
-        //     document.querySelector('.infos_likes--count').textContent=likesSum;
-        // }
+      let total = 0;
+ const likeSum  =  stock.reduce ((a,b) =>{return a + b.likes},total)
+console.log(likeSum)
+            document.querySelector('.infos_likes--count').textContent=likeSum;
+    
     document.querySelector('.infos_price').textContent = `${stock[i].price}€/j`
   }
   };
