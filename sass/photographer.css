@@ -84,17 +84,19 @@
 
 /* style pour message error */
 .error-msg {
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: 400;
   text-align: right;
   margin-top: 10px;
 }
 
 .input-error {
-  border: #901C1C dashed 0.15rem;
+  border: #901C1C dashed 0.35rem;
+  font-size: 26px;
 }
 
 .input-ok {
-  border: #525252 solid 0.15rem;
+  border: #525252 solid 0.35rem;
 }
 
 form {
@@ -220,6 +222,12 @@ form textarea {
   list-style-type: none;
 }
 
+.lightbox_Container ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .image_lightbox {
   -o-object-fit: cover;
      object-fit: cover;
@@ -283,7 +291,7 @@ button:hover {
   font-weight: 400;
 }
 
-@-webkit-keyframes .lightboxOpen {
+@-webkit-keyframes lightboxOpen {
   from {
     opacity: 0;
   }
@@ -292,7 +300,7 @@ button:hover {
   }
 }
 
-@keyframes .lightboxOpen {
+@keyframes lightboxOpen {
   from {
     opacity: 0;
   }
@@ -391,10 +399,15 @@ main {
      object-position: center top;
 }
 
+.lightbox_figure {
+  max-width: 1050px;
+}
+
 .dropdown {
   display: inline-block;
   position: relative;
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .dropdown label {

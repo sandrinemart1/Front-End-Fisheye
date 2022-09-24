@@ -34,7 +34,11 @@
 }
 .lightbox_Container ul{
     list-style-type: none;
+    li{
+        display:flex;
+    }
 }
+
 .image_lightbox{
     object-fit: cover;
     object-position:center top;
@@ -88,7 +92,7 @@ button{
    font-weight: 400;
 }
 
-@keyframes .lightboxOpen{
+@keyframes lightboxOpen{
     from{opacity: 0;}
     to{opacity: 1;}
 }

@@ -5,16 +5,20 @@ import{Photographer,Media} from '../fetch.js'
 import{like} from './likes.js'
 import { likeAdd } from './likes.js'
 
-console.log(mediasJson)
+// import{Image,Video} from './factoryMediaPage.js'
+// import { SeparateCardImage } from './factoryMediaPage.js'
+// import{ dropDownOpen }from'./dropdown.js'
 
-//recuperer l 'id  de chq photographe avec l 'url
 const photographersJson = [];
 const mediasJson =[];
+
+
+//recuperer l 'id  de chq photographe avec l 'url
 //donner url à chq page photographe et filtrer le images en fct id du photographe
 let string = window.location.href;
 let url = new URL(string);
 let login = url.searchParams.get('id');
-
+// console.log(login);
 
 function myFetch2() {
     fetch("../../data/photographers.json")
@@ -28,14 +32,11 @@ function myFetch2() {
       }
     })
   }
-  
-  ///faire correspondre les medias avec les photographes adéquats
   myFetch2()
   function getData(data) {
     const photographers = data.photographers
     const media = data.media
-
-//recuperer les medias dans le photographe correspondant  
+    //recuperer les medias dans le photographe correspondant  
     for (let photographer of photographers) {
       let mediaList = []  
       
@@ -46,7 +47,7 @@ function myFetch2() {
       for (let mediaId of media) {
         if (photographer.id == mediaId.photographerId) {
           mediaList.push(mediaId);
-          console.log(mediaId);
+          // console.log(mediaId);
         }
       }
     }
@@ -54,10 +55,11 @@ function myFetch2() {
     console.log(photographer)
     localStorage.setItem('photographerStock', JSON.stringify(photographer));
   }
-
  export{getData}
-
 ///////   recuperer les photographes grâce à l'id dans un array photographer  ////
+let stock = JSON.parse(localStorage.getItem('photographerStock'))
+console.log(stock.media)
+
 let photographer
 function getPhotographer(photographers) {
   for (let i = 0; i < photographers.length; i++ ) {
@@ -74,41 +76,140 @@ function getPhotographer(photographers) {
       )
 
       firstName(photographers[i])
-      SeparateCardImage2(photographers[i].media)
-      displayPhotographer2(photographers[i])
+      SeparateCardImage(photographers[i].media)
+      displayPhotographer(photographers[i])
+      like(photographers[i].media)
+      likeAdd(photographers[i].media)
       return photographer
     }
   }
 }
+
 /////   function pour recuperer le  prenom du photographe affiché   ////
 function firstName(photographer) {
-    let fullName= photographer.name
-    let splitName =fullName.split(' ');
-    let firstName1= splitName[0];
-    firstName  =  firstName1.replace('-',' ');
-    // console.log(firstName);
-    return firstName
- }
+  let fullName= photographer.name
+  let splitName =fullName.split(' ');
+  let firstName1= splitName[0];
+  firstName  =  firstName1.replace('-',' ');
+  return firstName
+  
+}
 export{photographer,firstName}
+
+
+
 // // creer entête de la page de chq photographe
-function displayPhotographer2() {
-    //bandeau entête page photographe
-    document.querySelector('.photographer_text--name').textContent = photographer.name;
-    document.querySelector('.photographer_text--location').textContent = photographer.city+ ", " + photographer.country;
-    document.querySelector(".photographer_text--tagline").innerHTML= photographer.tagline;
-    document.getElementById('contact_button').textContent ='Contactez moi';
-    // console.log(document.getElementById('contact_button'))
-    document.querySelector('.photographer_section--banner >img').src =` ../../assets/images/Photographers ID Photos/${photographer.portrait}`;
-    //enregistrer le nom du photographe sur la modale
-    document.querySelector('.modal-header p').innerHTML = photographer.name;
-    
+function displayPhotographer() {
+  //bandeau entête page photographe
+  document.querySelector('.photographer_text--name').textContent = photographer.name;
+  document.querySelector('.photographer_text--location').textContent = photographer.city+ ", " + photographer.country;
+  document.querySelector(".photographer_text--tagline").innerHTML= photographer.tagline;
+  document.getElementById('contact_button').textContent ='Contactez moi';
+  // console.log(document.getElementById('contact_button'))
+  document.querySelector('.photographer_section--banner >img').src =` ../../assets/images/Photographers ID Photos/${photographer.portrait}`;
+  //enregistrer le nom du photographe sur la modale
+  document.querySelector('.modal-header p').innerHTML = photographer.name;
+  
+}
+
+
+
+
+
+///////////        ouverture et fermeture modale //////////
+const mainPage = document.querySelector('.Photographer-Page-Main');
+const pageHeader =document.querySelector('.page_photographer-header');
+
+
+const footerInfos = document.querySelector('.infos');
+
+
+document.addEventListener('click', (e)=>{
+  if (e.target === modalButton) {
+      displayModal()
   }
+})
 
-/////////////////testfactory//////////
-let sectionMedia = document.querySelector('.page_photographer-medias');
+modalDiv.addEventListener('click', (e)=>{
+  e.preventDefault()
+  if(e.target.classList.contains('fa-solid')){
+    console.log(e.target)
+    console.log(modalCross())
+    closeModal()
+  }
+})
+ 
+  //////////                 incrémentation des likes ////////////
 
-// creer un constructor conditionnel
-class FactoryMedia{
+  document.addEventListener('click', (e)=>{
+     if (e.target.tagName ==='I' && e.target.className ==='fa-solid fa-heart'){
+  like() 
+  }})
+
+
+
+
+
+
+;
+  
+
+ 
+   
+  
+ 
+  /////////////////////////////////////////////////////////////// 
+
+  function ElementFactory(name,type, className,id,attributes){
+    var element = {}
+  
+    element.name = name
+    element.type = document.createElement(type),
+    element.className = className
+    element.id = id, 
+    element.setAttribute = attributes
+   return element
+  
+  }
+  ////////essai factory fct avec copier coller  ligne 200 et 207// 
+  export{ElementFactory}
+
+  ////////////// essai separation 2 fonctions ////////
+  let sectionMedia = ElementFactory('sectionMedia','div','page_photographer-medias');
+  let mediaAndAttributes = ElementFactory('mediaAndAttributes','div','page_photographer-media-attributes');
+  sectionMedia.appendChild(mediaAndAttributes);
+ console.log(sectionMedia)
+  function createDomElements(mediaId){
+    
+    let article2 = ElementFactory('articleMedia2','article','page_photographer-media','mediaId.id');
+    console.log(article2)
+    mediaAndAttributes.appendChild(article2)
+    let figure2 = document.createElement('figure')
+    article2.appendChild(figure2)
+    let link2 = ElementFactory('link2','a','media_link',`${mediaId.title}-${mediaId.id}`)
+          // //avec un bandeau contenant des infos
+    let imageAttributes2 = ElementFactory('imageAttributes2','div','img_attributes','')
+
+        article2.appendChild(imageAttributes);
+        let imageTitle =document.createElement('h3');
+        imageTitle.textContent = mediaId.title;
+        imageAttributes2.appendChild(imageTitle);
+        let imageLike = document.createElement('p');
+        imageLike.setAttribute('id',mediaId.likes)
+        imageLike.textContent =mediaId.likes;
+        imageAttributes2.appendChild(imageLike);
+        let span = document.createElement('span')
+        span.setAttribute('id','spanHeart${mediaId.id')
+        imageAttributes2.appendChild(span);
+        let imageHeart = document.createElement('i');
+        imageHeart.className= "fa-solid fa-heart";
+        span.appendChild(imageHeart)
+    
+  }  
+  
+  
+  
+  class FactoryMedia{
     constructor() {
       this.createMedia = (type) => {
         let eachMedia
@@ -123,93 +224,103 @@ class FactoryMedia{
   }
   let ul = document.querySelector('.lightbox_Container--img');
   // console.log(ul)
-
-  class Image2{
-
-    createImage2(medium){
-      console.log(medium)
-      let linkMedia2 = document.getElementById(`${medium.title}-${medium}`);
-      let imageMedia2 = document.createElement('img');linkMedia2.appendChild(imageMedia2);
-      linkMedia2.setAttribute('href','javascript:void(0);')
-      imageMedia2.setAttribute('src',`../../assets/images/${firstName}/${medium.image}` );
-      imageMedia2.setAttribute('alt',"");
-      linkMedia2.addEventListener('click',(e) => lightboxOpen(e))
   
+  const factory= new FactoryMedia()
+  // creer une carte pour chq media image
+  class Image{
+    
+    ///////////// essai  separartion 2 fonctions ///////////////
+      createImage2(mediaId) {
+        let link2 = document.getElementById(`${mediaId.title}-${mediaId}`)
+        let image2 = document.createElement('img')
+        link2.appendChild(image2)
+        link2.setAttribute('href', 'javascript:void(0);')
+
+        image2.setAttribute('src', 'src',`../../assets/images/${firstName}/${mediaId.image}` )
+        image2.setAttribute('alt', `${mediaId.alt}`)
+        image2.setAttribute('id', `id${mediaId.id}`)
+        if(photographer.id == 82|| photographer.id == 925){
+          image2.classList.add('improved-image')
+        }
+        image2.setAttribute('width', '350')
+        image2.setAttribute('height', '300')
+    
+        link2.addEventListener('click', (e) => lightboxOpen(e))
+      }
+      createImage2Lightbox(mediaId){
+        let li = ElementFactory('li','li','lightbox_object',`object${mediaId.id}`)
+        li.style.display ='none';
+        ul.appendChild(li)
+
+        let figure = document.createElement('figure')
+        figure.className ='lightbox_figure'
+        li.appendChild(figure)
+
+        let image2 = ElementFactory('image2','img','image_lightbox',`image${mediaId.id}`)
+        image2.setAttribute('src',`../../assets/images/${firstName}/${mediaId.image}` );
+        figure.appendChild(image2)
+      
+        let figcaption = document.createElement('figcaption')
+        figcaption.className = "title_image"
+        figcaption.innerText = mediaId.title
+        figure.appendChild(figcaption)
+      }
+    }   
+
+    
+    //creer une image pour video
+    class Video{
+      createVideo2(mediaId) {
+      //// un lien contenant une image
+      let link2 = document.getElementById(`${mediaId.title}-${mediaId}`)
+  
+      let image2 = document.createElement('video');
+      link2.appendChild(image2);
+      image2.setAttribute('src', 'src',`../../assets/images/${firstName}/${mediaId.video}` )
+
+      image2.setAttribute('controls',true)
+      image2.className ='image-media'
+      link2.addEventListener('click',(e) => lightboxOpen(e))
+      }
+    createVideo2Lightbox(mediaId){
+      let li = ElementFactory('li','li','lightbox_object',`object${mediaId.id}`)
+      li.style.display ='none';
+      ul.appendChild(li)
+
+      let figure = document.createElement('figure')
+      figure.className ='lightbox_figure'
+      li.appendChild(figure)
+
+      let image2 = ElementFactory('image2','img','image_lightbox',`image${mediaId.id}`)
+      image2.setAttribute('src',`../../assets/images/${firstName}/${mediaId.video}` );
+      image2.setAttribute('controls',true)
+      image2.className ='image-media'
+      figure.appendChild(image2)
+    
+      let figcaption = document.createElement('figcaption')
+      figcaption.className = "title_image"
+      figcaption.innerText = mediaId.title
+      figure.appendChild(figcaption)
     }
-  // image lightbox
-  createImageLightbox2(medium){
-  let li2 = document.createElement('li')
-  li2.style.display ='none';
-  li.className ='lightbox_object'
-  li2.setAttribute('id', `object${medium.id}`)
-  ul2.appendChild(li)
-  let figure2 = document.createElement('figure')
-  figure2.className ='lightbox_figure'
-  li2.appendChild(figure2)
-  let image2 = document.createElement('img')
-  image2.className ='image_lightbox'
-  image2.setAttribute('src',`../../assets/images/${firstName}/${medium.image}` );
-  image2.setAttribute('id',`image${medium.id}`)
-  figure2.appendChild(image2)
-  let figcaption2 = document.createElement('figcaption')
-  figcaption2.className = "title_image"
-  figcaption2.innerText = medium.title
-  figure2.appendChild(figcaption2)
-  }
-  }
-  //creer une image pour video
-  class Video2{
-    createVideo2(medium) {
-  
-     // avec un lien contenant une image
-      let linkMedia2 = document.getElementById(`${medium.title}-${medium}`);
-      // articleMedia.appendChild(linkMedia);
-      let imageMedia2 = document.createElement('video');
-      linkMedia2.appendChild(imageMedia2);
-      imageMedia2.setAttribute('src',`../../assets/images/${firstName}/${medium.video}` );
-      imageMedia2.setAttribute('controls',true)
-      imageMedia2.className ='image-media'
-      //avec un bandeau contenant des infos
-    //   let imageAttributes = document.createElement('div');
-    //   imageAttributes.className = "img_attributes";
-    //   imageAttributes.classList.add ('img_attributes')
-    //   articleMedia.appendChild(imageAttributes);
-    //   let imageTitle =document.createElement('h3');
-    //   imageTitle.textContent = mediaId.title;
-    //   imageAttributes.appendChild(imageTitle);
-    //   let imageLike = document.createElement('p');
-    //   imageLike.setAttribute('id',mediaId.likes)
-    //   imageLike.textContent =mediaId.likes;
-    //   imageAttributes.appendChild(imageLike);
-    //   let span = document.createElement('span')
-    //   span.setAttribute('id','spanHeart${mediaId.id')
-    //   imageAttributes.appendChild(span);
-    //   let imageHeart = document.createElement('i');
-    //   imageHeart.className= "fa-solid fa-heart";
-    //   span.appendChild(imageHeart)
-    // return Video
-    linkMedia2.addEventListener('click',(e) => lightboxOpen(e))
-    // linkMedia.addEventListener('click',(e) => Lightbox.init)
-  
     }
-}
-const factory2 = new FactoryMedia()
 
-function SeparateCardImage2(media){
+  // //separer les videos des photos
+  
+function SeparateCardImage(media){
     console.log(media)
     // sectionMedia.innerHTML =''
-    media.forEach(medium =>{
-      createDomElements(medium)
+    media.forEach(mediaId =>{
+      createDomElements(mediaId)
       if(mediaId.image !== undefined){
           let card = factory.createMedia('image');
-          card.createImage(medium);
-          card.createImageLightbox(medium)
+          card.createImage(mediaId);
+          card.createImageLightbox(mediaId)
         }else{
           let card = factory.createMedia('video');
-          card.createVideo(medium);
+          card.createVideo(mediaId);
           
       }
-      return medium
+      return mediaId
     })
 
 let allObjects = document.querySelectorAll('.lightbox_object')
@@ -227,44 +338,12 @@ medias.forEach((media)=> {
 media.classList.add(`media_${medias.indexOf(media)}`)
 })
 
-  }
+}
+console.log(JSON.parse(localStorage.getItem('photographerStock')))
 
-   function createDomElements2(medium){
-    console.log(medium)
-    let articleMedia2 =document.createElement('article');
-    articleMedia2.className='page_photographer-media';
-    sectionMedia.appendChild(articleMedia2)
-    console.log(articleMedia2)
-    articleMedia2 .setAttribute('id', medium.id );
-       //DOM conteneur <figure>
-      let figure2 = document.createElement('figure')
-      articleMedia2.appendChild(figure2)
-      // DOM lien cliquable <a>
-      let linkMedia2 = document.createElement('a');
-      linkMedia2.className ="media_link";
-      linkMedia2.setAttribute('id',`${medium.title}-${medium.id}`)
-      figure2.appendChild(linkMedia2);
-    // Element DOM  bandeau explication image 
-      let imageAttributes2 = document.createElement('div');
-      imageAttributes2.className = "img_attributes";
-      imageAttributes2.classList.add ('img_attributes')
-      articleMedia2.appendChild(imageAttributes2);
-    // Element DOM pour le titre de l 'image
-          let imageTitle2 =document.createElement('h3');
-          imageTitle2.textContent = medium.title;
-          imageAttributes2.appendChild(imageTitle2);
-    //Element DOM pour les likes
-          let imageLike2 = document.createElement('p');
-          imageLike2.textContent =medium.likes;
-          imageLike2.setAttribute('id',medium.likes)
-          imageAttributes2.appendChild(imageLike2);
-    
-          let span2 = document.createElement('span');
-          span2.setAttribute('id','spanHeart${mediaId.id}');
-          imageAttributes2.appendChild(span2);
-          let imageHeart2 = document.createElement('i');
-          imageHeart2.className= "fa-solid fa-heart";
-          span2.appendChild(imageHeart2);
-    //Appel des likes
-          span2.addEventListener('click',(e)=>console.log(e.target))
-      }
+
+
+
+
+
+

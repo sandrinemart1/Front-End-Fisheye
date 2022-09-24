@@ -31,34 +31,34 @@ const submit = document.getElementById('submit-button')
 function displayModal() {
   mainPage.style.position = "relative"
   modal.classList.add('appear') 
-  // modal.setAttribute('aria-hidden', 'false')
+  modal.setAttribute('aria-hidden', 'false')
   pageHeader.style.opacity ='0.4'
-  // pageHeader.setAttribute('aria-hidden', 'true')
+  pageHeader.setAttribute('aria-hidden', 'true')
   mainPage.style.opacity ='0.4'
   mainPage.position = "relative"
-  // mainPage.setAttribute('aria-hidden', 'true')
+  mainPage.setAttribute('aria-hidden', 'true')
   footerInfos.style.opacity='0.4'
-  // footerInfos.setAttribute('aria-hidden','true')
+  footerInfos.setAttribute('aria-hidden','true')
   firstName.focus()
-  // modalDiv.setAttribute('tabindex','0')
+  modalDiv.setAttribute('tabindex','0')
 }
 
 
 function closeModal() {
-  modal.style.display = "none";
-  // modal.setAttribute('aria-hidden', 'true')
+  modal.classList.remove('appear')
+  modal.setAttribute('aria-hidden', 'true')
   pageHeader.style.display ='block';
-  // pageHeader.style.opacity ='1';
-  // pageHeader.setAttribute('aria-hidden', 'false')
+  pageHeader.style.opacity ='1';
+  pageHeader.setAttribute('aria-hidden', 'false')
   mainPage.style.display ='block';
-  // mainPage.style.opacity ='1';
-  // mainPage.setAttribute('aria-hidden', 'false')
+  mainPage.style.opacity ='1';
+  mainPage.setAttribute('aria-hidden', 'false')
   footerInfos.style.display='flex';
   footerInfos.style.opacity='1';
-  // footerInfos.setAttribute('aria-hidden','false')
-  // modalButton.focus();
-  // modalDiv.setAttribute('tabindex','-1')
-}
+  footerInfos.setAttribute('aria-hidden','false')
+  modalButton.focus();
+  modalDiv.setAttribute('tabindex','-1')
+} 
 
 //fermeture clavier
 modalDiv.addEventListener('keydown', closeOnKey)

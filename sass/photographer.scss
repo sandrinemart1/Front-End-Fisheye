@@ -75,10 +75,14 @@ main{
 .improved-image{
     object-position: center top;
 }
+.lightbox_figure{
+    max-width: 1050px;
+}
 .dropdown {
     display: inline-block;
     position: relative;
     margin-top: 50px;
+    margin-bottom: 50px;
     label{
         font-weight: 700;
         font-size: 18px;

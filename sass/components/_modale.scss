@@ -65,15 +65,18 @@
 }
 /* style pour message error */
 .error-msg{
-    font-size:18px;
+    font-size:22px;
+    font-weight: 400;
     text-align: right;
     margin-top:10px;
 }
 .input-error {
-    border: $bg-1st-color dashed 0.15rem;
+    border: $bg-1st-color dashed 0.35rem;
+    font-size: 26px;
+    
   }
 .input-ok{
-    border:$color-3rd-dark solid 0.15rem;
+    border:$color-3rd-dark solid 0.35rem;
 }
 
 form {

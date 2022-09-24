@@ -1,6 +1,6 @@
-// import{ dropDownOpen }from'./dropdown.js'
+
 import{displayModal,closeModal}from './contactForm.js'
-import{modalButton,modalCross,submitButton,modalDiv} from './contactForm.js '
+import{modal,modalButton,modalCross,submitButton,modalDiv} from './contactForm.js '
 
 import{Photographer,Media} from '../fetch.js'
 import{like} from './likes.js'
@@ -8,7 +8,7 @@ import { likeAdd } from './likes.js'
 
 // import{Image,Video} from './factoryMediaPage.js'
 // import { SeparateCardImage } from './factoryMediaPage.js'
-
+// import { dropDownOpen } from '../dropdown.js'
 
 
 
@@ -115,11 +115,11 @@ function displayPhotographer() {
 
 
 
-///////////        ouverture et fermeture modale //////////
 const mainPage = document.querySelector('.Photographer-Page-Main');
 const pageHeader =document.querySelector('.page_photographer-header');
 const footerInfos = document.querySelector('.infos');
 
+///////////   ouverture et fermeture modale //////////
 
 document.addEventListener('click', (e)=>{
   if (e.target === modalButton) {
@@ -127,92 +127,19 @@ document.addEventListener('click', (e)=>{
   }
 })
 
-modalDiv.addEventListener('click', (e)=>{
+modalCross.addEventListener('click', (e)=>{
   e.preventDefault()
-  if(e.target.classList.contains('fa-solid')){
-    console.log(e.target)
-    console.log(modalCross())
     closeModal()
-  }
-})
- 
-  //////////                 incrémentation des likes ////////////
+  })
+
+
+  //////////    incrémentation des likes ////////////
 
   document.addEventListener('click', (e)=>{
      if (e.target.tagName ==='I' && e.target.className ==='fa-solid fa-heart'){
   like() 
   }})
-
-
-
-
-
-
-;
-  
-
  
-   
-  
- 
-  /////////////////////////////////////////////////////////////// 
-
-  function ElementFactory(name,type, className,id,attributes){
-    var element = {}
-  
-    element.name = name
-    element.type = document.createElement(type),
-    element.className = className
-    element.id = id, 
-    element.setAttribute = attributes
-   return element
-  
-  }
-  ////////essai factory fct avec copier coller  ligne 200 et 207// 
-  ElementFactory()
-  let element2 = ElementFactory('articleMedia2','article','page_photographer-media','mediaId.id');
-  let mediaAndAttributes3 = ElementFactory('mediaAndAttributes','div','page_photographer-media-attributes')
-  let articleMedia3 = ElementFactory('articleMedia','article','page_photographer-media',`mediaId.id`,)
-  let linkMedia3 = ElementFactory('linKMedia','a','media_link','',`mediaId.title`-`mediaId`)
-
-////////////// essai separation 2 fonctions ////////
-  function createDomElements(mediaId){
-    // let articleMedia2 =document.createElement('article');
-    // articleMedia2.className='page_photographer-media';
-    // articleMedia2 .setAttribute('id',mediaId.id);
-    //  //DOM conteneur <figure>
-    // let figure2 = document.createElement('figure')
-    // articleMedia2.appendChild(figure2)
-    // // DOM lien cliquable <a>
-    // let linkMedia2 = document.createElement('a');
-    // linkMedia2.className ="media_link";
-    // linkMedia2.setAttribute=('id',`${mediaId.title}-${mediaId}`)
-    // figure2.appendChild(linkMedia2);
-   
-    // let imageAttributes2 = document.createElement('div');
-    // imageAttributes2.className = "img_attributes";
-    // imageAttributes2.classList.add ('img_attributes')
-    // articleMedia2.appendChild(imageAttributes2);
-  
-    //     let imageTitle2 =document.createElement('h3');
-    //     imageTitle2.textContent = mediaId.title;
-    //     imageAttributes2.appendChild(imageTitle2);
-  
-    //     let imageLike2 = document.createElement('p');
-    //     imageLike2.textContent =mediaId.likes;
-    //     imageLike2.setAttribute('id',mediaId.likes)
-    //     imageAttributes2.appendChild(imageLike2);
-  
-    //     let span2 = document.createElement('span');
-    //     span2.setAttribute('id','spanHeart${mediaId.id}');
-    //     imageAttributes2.appendChild(span2);
-    //     let imageHeart2 = document.createElement('i');
-    //     imageHeart2.className= "fa-solid fa-heart";
-    //     span2.appendChild(imageHeart2);
-    //     span2.addEventListener('click',(e)=>console.log(e.target))
-    }  
-
-
 
   class FactoryMedia{
       constructor() {
@@ -233,51 +160,22 @@ modalDiv.addEventListener('click', (e)=>{
     const factory= new FactoryMedia()
     // creer une carte pour chq media image
     class Image{
-
-///////////// essai  separartion 2 fonctions ///////////////
-      // createImage2(mediaId) {
-      //   let linkMedia2 = document.getElementById(`${mediaId.title}-${mediaId}`)
-      //   let image2 = document.createElement('img')
-      //   linkMedia2.appendChild(image2)
-      //   linkMedia2.setAttribute('href', 'javascript:void(0);')
-      //   imageMedia2.setAttribute('src', `./images/sample_photos/${nickName}/light/${medium.image}`)
-      //   imageMedia2.setAttribute('alt', `${mediaId.alt}`)
-      //   imageMedia2.setAttribute('id', `id${mediaId.id}`)
-      //   if(photographer.id == 82|| photographer.id == 925){
-      //     imageMedia2.classList.add('improved-image')
-      //   }
-      //   imageMedia2.setAttribute('width', '350')
-      //   imageMedia2.setAttribute('height', '300')
-    
-      //   linkMedia2.addEventListener('click', (e) => lightboxOpen(e))
-      // }
       createImage(mediaId){
-              // document.querySelector('.page_photographer-media-attributes').innerHTML = 
-              // `<article class="page_photographer-media" id= ``>
-              // <a href="lightbox-background" id= ``>
-              //     <img class='image-media'src=`` alt="">
-              // </a>
-              // <div class="img_attributes">
-              //     <h3 id ="">mediaId.title</h3>
-              //     <p id="">mediaId.likes</p>
-              //     <span><i class="fa-solid fa-heart"></i></span>
-              // </article>`
+
         let sectionMedia = document.querySelector('.page_photographer-medias');
         let mediaAndAttributes=document.querySelector('.page_photographer-media-attributes');
         sectionMedia.appendChild(mediaAndAttributes);
-        // let articleMedia = ElementFactory('articleMedia','article','page_photographer-media',`mediaId.id`)
-      //  console.log(articleMedia)
+
         let articleMedia =document.createElement('article');
         articleMedia.className='page_photographer-media';
         articleMedia .setAttribute('id',mediaId.id);
         // console.log(articleMedia)
         mediaAndAttributes.appendChild(articleMedia);
-        // let linkMedia = ElementFactory('linKMedia','a','media_link','',`${mediaId.title}-${mediaId}`)
-        // console.log(linkMedia)
+
         let linkMedia = document.createElement('a');
         linkMedia.className ="media_link";
         linkMedia.setAttribute('id',`${mediaId.title}-${mediaId.id}`)
-        // linkMedia.setAttribute =('href',`lightbox-background`)
+ 
         articleMedia.appendChild(linkMedia);
         let imageMedia = document.createElement('img');
         imageMedia.className ='image-media'
@@ -350,13 +248,16 @@ modalDiv.addEventListener('click', (e)=>{
         mediaAndAttributes.appendChild(articleMedia);
       //   // avec un lien contenant une image
         let linkMedia = document.createElement('a');
+        linkMedia.className ="media_link";
+        linkMedia.setAttribute('id',`${mediaId.title}-${mediaId.id}`)
         articleMedia.appendChild(linkMedia);
         let imageMedia = document.createElement('video');
         linkMedia.appendChild(imageMedia);
         imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.video}` );
-        // linkMedia.setAttribute =('href',`lightbox-background`)
+        imageMedia.setAttribute('id',`${mediaId.id}`)
         imageMedia.setAttribute('controls',true)
-        imageMedia.className ='image-media'
+        imageMedia.className ='image-media';
+        
         //avec un bandeau contenant des infos
         let imageAttributes = document.createElement('div');
         imageAttributes.className = "img_attributes";
@@ -375,18 +276,80 @@ modalDiv.addEventListener('click', (e)=>{
         let imageHeart = document.createElement('i');
         imageHeart.className= "fa-solid fa-heart";
         span.appendChild(imageHeart)
-    return Video
-       linkMedia.addEventListener('click',(e) => lightboxOpen(e))
-      // linkMedia.addEventListener('click',(e) => Lightbox.init)
-      }
     
+       linkMedia.addEventListener('click',(e) => lightboxOpen(e))
+     
+      }
+    createVideoLightbox(mediaId){
+      let li = document.createElement('li')
+        li.style.display ='none';
+        li.className ='lightbox_object'
+        li.setAttribute('id', `object${mediaId.id}`)
+        // li.setAttribute('aria-hidden', 'true')
+        ul.appendChild(li)
+        let figure = document.createElement('figure')
+        figure.className ='lightbox_figure'
+        figure.setAttribute('tabindex', '0')
+        li.appendChild(figure)
+        let image = document.createElement('video')
+        image.className ='image_lightbox'
+        image.setAttribute('src',`../../assets/images/${firstName}/${mediaId.video}` );
+        image.setAttribute('controls',true)
+        image.setAttribute('id',`image${mediaId.id}`)
+        figure.appendChild(image)
+        let figcaption = document.createElement('figcaption')
+        figcaption.className = "title_image"
+        figcaption.innerText = mediaId.title
+        figure.appendChild(figcaption)
     }
+    }
+    //Masquer les controles video le tem
+  //   let video = document.getElementsByTagName('video')
+    
+  //   video.hover(function toggleControls() {
+  //     if (this.hasAttribute("controls")) {
+  //         this.removeAttribute("controls")
+  //     } else {
+  //         this.setAttribute("controls", "controls")
+  //     }
+  // })
 
-  // //separer les videos des photos
-  
+
+
+
+
+  function createDomElements(mediaId){
+    // let article2 = ElementFactory('articleMedia2','article','page_photographer-media','mediaId.id');
+    // console.log(article2)
+    // mediaAndAttributes.appendChild(article2)
+    // let figure2 = document.createElement('figure')
+    // article2.appendChild(figure2)
+    // let link2 = ElementFactory('link2','a','media_link',`${mediaId.title}-${mediaId.id}`)
+    //       // //avec un bandeau contenant des infos
+    // let imageAttributes2 = ElementFactory('imageAttributes2','div','img_attributes','')
+
+    //     article2.appendChild(imageAttributes);
+    //     let imageTitle =document.createElement('h3');
+    //     imageTitle.textContent = mediaId.title;
+    //     imageAttributes2.appendChild(imageTitle);
+    //     let imageLike = document.createElement('p');
+    //     imageLike.setAttribute('id',mediaId.likes)
+    //     imageLike.textContent =mediaId.likes;
+    //     imageAttributes2.appendChild(imageLike);
+    //     let span = document.createElement('span')
+    //     span.setAttribute('id','spanHeart${mediaId.id')
+    //     imageAttributes2.appendChild(span);
+    //     let imageHeart = document.createElement('i');
+    //     imageHeart.className= "fa-solid fa-heart";
+    //     span.appendChild(imageHeart)
+    
+  }  
   function SeparateCardImage(media){
-    console.log(media)
-    // sectionMedia.innerHTML =''
+    // console.log(media)
+    
+    let mediaAndAttributes=document.querySelector('.page_photographer-media-attributes');
+    mediaAndAttributes.innerHTML =''
+
     media.forEach(mediaId =>{
       createDomElements(mediaId)
       if(mediaId.image !== undefined){
@@ -396,6 +359,7 @@ modalDiv.addEventListener('click', (e)=>{
         }else{
           let card = factory.createMedia('video');
           card.createVideo(mediaId);
+          card.createVideoLightbox(mediaId)
           
       }
       return mediaId
@@ -404,20 +368,83 @@ modalDiv.addEventListener('click', (e)=>{
 let allObjects = document.querySelectorAll('.lightbox_object')
 // console.log(allObjects)
 let objects = Array.from(allObjects);
-console.log(objects)
+// console.log(objects)
 objects.forEach((object)=>{
   object.classList.add(`object_${objects.indexOf(object)}`)
 })
 let allMedias = document.querySelectorAll('.media_link')
 // console.log(allMedias)
 let medias = Array.from(allMedias);
-console.log(medias)
+// console.log(medias)
 medias.forEach((media)=> {
 media.classList.add(`media_${medias.indexOf(media)}`)
 })
 
+}
+
+
+console.log(JSON.parse(localStorage.getItem('photographerStock')))
+let stock = JSON.parse(localStorage.getItem('photographerStock'))
+console.log(stock)
+
+
+
+//// appel  dropdown///////////////
+
+
+let dropDownPopularityButton =document.querySelector("#dropDownPopularityButton");
+let dropDownDiv = document.querySelector("#dropdown-button");
+let chevron = document.getElementById("chevron")
+let date = document.getElementById("date");
+let titre = document.getElementById("titre");
+let arrow = document.querySelector("#chevron i");
+
+dropDownPopularityButton.addEventListener('click', () => popularitySort(stock.media))
+arrow.addEventListener("click",()=>dropDownOpen())
+
+// dropDownPopularityButton.addEventListener("click" ,dropDownOpen)
+
+function dropDownOpen(){
+  dropDownDiv.style.display ='block';
+  if(chevron.className !=='drop-down-open'){
+ dropDownDiv.style.display=" block";
+ chevron.className='drop-down-open';
+  }else{
+    dropDownDiv.style.display=" none";
+    chevron.className='drop-down-close';
   }
-////
+}
+///////  fonctions de tri  //////////////
+////// bouton 'populaire' //////////////
+dropDownPopularityButton.addEventListener('click', () => popularitySort(stock.media))
+function popularitySort(media) {
+  function tri(a,b) {
+    return ((a.likes < b.likes) ? 1 : (a.likes == b.likes) ? 0 : -1)
+  }
+  media.sort(tri)
+  SeparateCardImage(media)
+  }
+//////  bouton 'titre' //////////////
+titre.addEventListener('click', () => titleSort(stock.media))
+function titleSort(media){
+
+  function tri(a,b){
+    let titreA = a.title.split(' ').join('')
+    a= titreA.toLowerCase()
+    let titreB = b.title.split(' ').join('')
+    b = titreB.toLowerCase()
+    return (a < b) ? -1 : 1
+  }
+  media.sort(tri)
+SeparateCardImage(stock.media)
+}
+
+
+
+
+
+
+
 ////////////////////     lightbox //////////
 
 
@@ -429,48 +456,48 @@ let previous = document.querySelector('.lightbox_chevron-previous')
 let imagesLightBox = document.getElementsByClassName('image-media')
 let position
 // console.log(imagesLightBox)
+document.addEventListener('click', (e)=>{console.log(e.target)})
+
+
 document.addEventListener('click', (e)=>{
-  if(e.target.tagName === 'IMG' && e.target.className ==='image-media'){
+  if((e.target.tagName === 'IMG'||'VIDEO') && e.target.className ==='image-media')
     lightboxOpen(e)
   }
-  });
+  );
 
 //   // ouvrir la lightbox
 function lightboxOpen(e){
-  // let nodeListArticle = document.querySelectorAll('.page_photographer-media')
-  // let articles = Array.from(nodeListArticle)
-  // articles.forEach(article =>{
+  
     e.preventDefault()
     lightBoxBg.style.display = 'flex'
     lightBoxBg.setAttribute('aria-hidden', 'false')
     mainPage.setAttribute('aria-hidden', 'true')
     mainPage.setAttribute('tabindex', '-1')
     modalButton.style.display ='none';
-    footerInfos.style.display ='none';
-    footerInfos.setAttribute('aria-hidden','true')
+    // footerInfos.style.display ='none';
+    // footerInfos.setAttribute('aria-hidden','true')
     lightboxContainer.setAttribute('tabindex', '0')
     let picture = window.event.target;
-   console.log(picture.parentNode)
+  //  console.log(picture.parentNode)
     let id = findId(picture)
     let firstObject= document.getElementById(`object${id}`)
-    // let firstObject = document.getElementsByTagName('li[number]')
-    // firstObject.style.display='flex';
-    console.log(firstObject)
+    firstObject.style.display ='flex' 
+  //  console.log(firstObject)
 
     position = giveThePosition(firstObject)
     return firstObject
   }
+  console.log(document.getElementById('src'))
+
  ////// trouver l 'id de l 'image cliquée ///////////
 function findId(picture) {
   if(picture.tagName !=='A'){
+    console.log(document.querySelector("#src"))
     document.querySelector("#src").src = picture.src;
-    // console.log(picture.src)
+    console.log(picture.src)
     let divMedia = picture.parentNode
-    // console.log(divMedia)
     let divMedia2 = divMedia.parentNode
-    // console.log(divMedia2)
     let idDivMedia2 = divMedia2.getAttribute('id')
-    // console.log(idDivMedia2)
     let id = idDivMedia2.replace('divMedia2.id', 'number')
     console.log(id)
     return id
@@ -481,12 +508,12 @@ function findId(picture) {
 //////////// position de l'image dans la lightbox  ////////
 function giveThePosition(firstObject){
   let className = firstObject.className
-  console.log(className)
+  // console.log(className)
   let i = className.lastIndexOf ('_')
   let positionSt = className.substr(i+1)
-  console.log(positionSt)
+  // console.log(positionSt)
   let position = parseInt(positionSt)
-  console.log(position)
+  // console.log(position)
   return position
 }
 
@@ -495,30 +522,80 @@ function giveThePosition(firstObject){
 next.addEventListener('click',() =>goToNext());
 function goToNext(){
   let allObjects = document.querySelectorAll('.lightbox_object')
-  console.log(allObjects.length)
+  // console.log(allObjects)
   let total = allObjects.length-1
-  console.log(position)
+  // console.log(position)
   if (position< total){
-    const lastObject = document.querySelector(`.allObject-${position}`)
+    const lastObject = document.querySelector(`.object_${position}`)
     console.log(lastObject)
     position++
     console.log(JSON.parse(localStorage.getItem('photographerStock')).media[position])
     console.log(document.getElementById('src').src)
-  document.getElementById('src').src = 'http://127.0.0.1:5502/assets/images/Tracy/'+JSON.parse(localStorage.getItem('photographerStock')).media[position].image
-  const currentObject = document.querySelector(`.allObject-${position}`)
-  // console.log(currentObject)
+  document.getElementById('src').src = `http://127.0.0.1:5502/assets/images/${firstName}/`+JSON.parse(localStorage.getItem('photographerStock')).media[position].image
+  const currentObject = document.querySelector(`.object_${position}`)
+  console.log(currentObject)
   setNodeAttributes(lastObject,currentObject)
 }else if (position === total){
-  const lastObject = document.querySelector(`.allObject-${position}`)
+  const lastObject = document.querySelector(`.object_${position}`)
   position = 0
-  const currentObject = document.querySelector(`.allObject-${position}`)
+  const currentObject = document.querySelector(`.object_${position}`)
   setNodeAttributes(lastObject,currentObject) 
 }
 }
 
-const setNodeAttributes = (lastObject, currentObject) =>{
-  lastObject.childNodes.style.display ='none'
-  currentObject.childNodes.style= 'flex'
-  lastObject.setAttribute('aria-hidden', 'true')
-  currentObject.setAttribute('aria-hidden', 'false')
+
+previous.addEventListener('click',() =>goToPrevious());
+
+function goToPrevious(){
+  let allObjects = document.querySelectorAll('.lightbox_object')
+  let total = allObjects.length-1;
+  console.log(position)
+  if (position - 1 >= 0) {
+    position -= 1
+    document.getElementById('src').src =`http://127.0.0.1:5502/assets/images/${firstName}/`+JSON.parse(localStorage.getItem('photographerStock')).media[position].image
+    const currentObject = document.querySelector(`.object_${position}`)
+    const lastObject = document.querySelector(`.object_${position + 1}`)
+    console.log(currentObject)
+    // setNodeAttributes(lastObject, currentObject)
+  } else {
+    const lastObject = document.querySelector(`.object_${position}`)
+    position = total
+    const currentObject = document.querySelector(`.item-${position}`)
+    console.log(JSON.parse(localStorage.getItem('photographerStock')).media[position])
+    console.log(document.getElementById('src').src)
+    // setNodeAttributes(lastObject, currentObject)
+  
 }
+}
+const setNodeAttributes = (lastObject, currentObject) => {
+  // lastObject.style.display = 'none'
+  // currentObject.style.display = 'flex'
+  // lastObject.setAttribute('aria-hidden', 'true')
+  // currentObject.setAttribute('aria-hidden', 'false')
+}
+
+//fermeture lightbox
+buttonClose.addEventListener('click',()=>lightboxClose())
+lightBoxBg.addEventListener('keydown',(e) => onKey(e))
+function onKey(e){
+  let keyname = e.key
+  if(keyname =='Escape'){
+    lightboxClose()
+  }
+}
+
+function lightboxClose(){
+  
+  lightBoxBg.style.display = 'none'
+  lightBoxBg.setAttribute('aria-hidden', 'true')
+  mainPage.setAttribute('aria-hidden', 'false')
+  mainPage.setAttribute('tabindex', '0')
+  modalButton.style.display ='flex';
+  footerInfos.style.display ='flex';
+  footerInfos.setAttribute('aria-hidden','false')
+}
+// lightboxContainer.removeEventListener('keydown', onKeyUp)
+//   next.removeEventListener('click', () => goToNextSlide())
+//   prev.removeEventListener('click', () => goToPreviousSlide())
+export {SeparateCardImage}
+
