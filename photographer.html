@@ -2,38 +2,41 @@
 <html lang="fr-FR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type = "image/png" href = "./assets/favicon.png/camera-solid.svg" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--information SEO-->
     <title>Fisheyes-page-photographe</title>
+    <meta name="description" content="photographes freelances" />
     <!-- feuilles de styles -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="./sass/photographer.css">
+    <link rel="stylesheet" href="sass/style.css" >
 </head>
 <body class="Photographer-Page-Body">
     
     <div class="page_photographer"   >
         <!-- header -->
-        <header class="page_photographer-header">
-            <a href="/index.html"aria-label="Page d'accueil de Fisheye">
-                <img src="assets/images/logo.png" class ="logo" alt="logo-Fisheye-Aller à la page d'accueil"/>
+        <header class="page_photographer-header" role="banner">
+            <a href="/index.html" aria-label="Page d'accueil de Fisheye">
+                <img src="assets/images/logo.png" id ="logo2" aria-label ="logo-Fisheye-Aller à la page d'accueil" lang="en-GB"/>
             </a>
         </header>
         <!-- corps de page -->
-        <main class='Photographer-Page-Main' id='Photographer-Page-Main'>
+        <main class='Photographer-Page-Main' id='Photographer-Page-Main' role="main">
             <!-- section présentation photographe -->
-            <section class ="page_photographer-informations">
+            <section class ="page_photographer-informations" role="presentation">
                     <div class="page_photographer_text">
-                        <h1 class="photographer_text--name">Mimi Keel</h1>  
-                        <p class="photographer_text--location">London,UK</p>
-                        <p class="photographer_text--tagline">Voir le beau dans le quotidien</p>
+                        <h1 class="photographer_text--name" >Nom du photographe</h1>  
+                        <p class="photographer_text--location" id ="location">London,UK</p>
+                        <p class="photographer_text--tagline" id="tagline">Voir le beau dans le quotidien</p>
                         
                     </div>
-                    <button id="contact_button">Contactez-moi</button>
+                    <button id="contact_button" type="button" role="button" tabindex="0">Contactez-moi</button>
                     <picture class="photographer_section--banner">
-                            <img src="./assets/images/Photographers ID Photos/MimiKeel.jpg" alt=""/>
+                            <img src="./assets/images/Photographers ID Photos/MimiKeel.jpg" alt="photo portrait de chaque photographe"/>
                         </picture>
             </section>
                             
@@ -53,7 +56,7 @@
 
 
             <!-- section medias -->
-            <section class="page_photographer-medias">
+            <section class="page_photographer-medias" id="media" role="region" aria-label="ensembles des photos et videos prises par le photographe" tabindex="-1">
                 <div class="page_photographer-media-attributes">
                     <!-- <article class="page_photographer-media" id=" ">
                         <a href="lightbox-background" >
@@ -67,25 +70,38 @@
             </div>
             </section>
             
-            <!-- footer -->
-            <footer class="footer-infos" id ="footer">    
+            <!-- footer du main-->
+       
+            <footer class="infos" id="footer-infos">
+                <div class="infos_likes">
+                    <p class="infos_likes--count"></p>
+                    <span class="infos_likes--icon">
+                    <i class="fa-solid fa-heart"></i>
+                    </span>
+                </div>
+                <p class="infos_price"></p>
             </footer>
         </main>
+
+
         <!-- formulaire  modale-->
         <div class="modal-background" >
             <div class="modal" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="form">
                 <div class ="modal-header">
                     <div class="modal-header_text">
                         <h2 class="modal__title">Contactez-moi</h2>
-                        <span class="close closeModal"id="closeModal" aria-labelledby="close" tabindex="0"><i class="fa-solid fa-xmark"></i></span>
+                        <span class="close closeModal"id="closeModal" aria-labelledby="close" tabindex="0">
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
+                        <p class="sr-only" id="close">fermer</p>
                     </div>
-                    <p>nom</p>
+                    <p id="form__name">nom du photographe</p>
                 </div>
             
                 <form  
                 name="contact" 
                 method ="GET" 
-                action=""
+                action="#"
                 class="modal_form" 
                 id="form"
                 aria-label="formulaire de contact"
@@ -100,9 +116,9 @@
                             tabindex="0"
                             aria-labelledby="message-firstname"
                             aria-required="true"
-                            required
-                        />
-                        <span class="error-msg" id="message-firstName">Veuillez saisir votre prénom(2 lettres minimum) </span>
+                            required />
+                        
+                        <span class="error-msg" id="message-firstName">Veuillez saisir votre prénom (2 lettres minimum) </span>
                     </div>
                     <div class="modal_form--formData">
                         <label for ="lastname" class="modal_formaData--label">Nom</label><br/>
@@ -156,7 +172,7 @@
                         type="submit"
                         value="Envoyer"
                         aria-label="soumettre">
-                        <span class="error-msg" id="message-validation"></span>
+
                     </div>
                 </form >            
             </div>
@@ -166,15 +182,16 @@
             <div class="lightbox-modal" aria-modal="true" 
             role="dialog"
             id="lightbox-library"
-            aria-label="lightbox media en gros plan" 
+            aria-label="lightbox, realisations en gros plan" 
             tabindex="-1">
                 <div  class="lightbox" id="lightbox">
-                    <button class="lightbox_chevron-previous"
+                    <button class="lightbox_chevron--previous"
                     id="lightbox_chevron-previous"
+                    type="button"
                     aria-labelledby="previous"
                     tabindex="0">
                 </button>
-                    <p class="previous"
+                    <p class="previous" class="sr-only"
                     id="previous"
                     aria-hidden="true">image précédente</p>
                     <div class="lightbox_Container">
@@ -197,18 +214,18 @@
                                 </figure>
                             </li>
                         </ul>
-                        <button class="lightbox_close">
-                            <p class="close_lightbox"
-                            id="close_lightbox"
+                        <button class="lightbox_close"
+                            id="close_lightbox" type="button" aria-labelledby="close-lightbox" tabindex="0">
+                            <p id="close_lightbox" class="sr-only"
                             aria-hidden="true">fermer la lightbox</p>
                         </button>
                     </div>
-                    <button class="lightbox_chevron-next"
+                    <button class="lightbox_chevron--next" type="button"
                     id="lightbox_chevron-next"
                     aria-labelledby="next"
                     tabindex="0">
                     </button>
-                     <p class="next"
+                     <p class="sr-only" 
                     id="next"
                     aria-hidden="true">image suivante</p> 
                 </div>
@@ -218,15 +235,7 @@
         </div>
 
     </div>
-    <footer class="infos" id="infos">
-        <div class="infos_likes">
-            <p class="infos_likes--count"></p>
-            <span class="infos_likes--icon">
-            <i class="fa-solid fa-heart"></i>
-            </span>
-        </div>
-        <p class="infos_price"></p>
-    </footer>
+ 
 
     <script type ="module"src ="./module/factories/Photographer2.js"></script>
 </body>

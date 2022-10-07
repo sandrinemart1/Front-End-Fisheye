@@ -1,7 +1,8 @@
-@import "utils/variables";
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import "components/modale";
-@import "components/lightbox";
+@import "../components/modale";
+@import "../components/lightbox";
+@import "../components/dropdown";
 body {
     font-family:$font-family;
     margin: 0;
@@ -10,21 +11,24 @@ body {
     max-width: 1440px;
     background-color:$white ;
     font-weight: 400;
-}
-a{
-    text-decoration: none;
-    outline: none;
-    color: black;
-}
-.logo {
-    height: 50px;
-    margin:43px 100px;
-}
+} 
 .page_photographer{
-    margin:0 auto;
+    padding: 15px 10vw 40px;
+    margin: auto;
+    max-width: 1400px;
+}
+a:focus{
+    text-decoration: none;
+    color: black;
+    background-color:$bg-3d-color ;
 }
 main{
     margin: 0 100px;
+}
+#logo2{
+    max-width: 13rem;
+    align-self: flex-start;
+    object-fit: contain;
 }
 .page_photographer-informations{
     width: 1240px;
@@ -58,8 +62,6 @@ main{
         margin: 4px;
     }
 }     
-
-
 .photographer_section--banner{
     display:block;
     img {
@@ -78,77 +80,8 @@ main{
 .lightbox_figure{
     max-width: 1050px;
 }
-.dropdown {
-    display: inline-block;
-    position: relative;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    label{
-        font-weight: 700;
-        font-size: 18px;
-
-    }
-}
-#dropdown{
-    position:absolute;
-    width:170px;
-    top:-20px;
-    left:185px;
-    border-style: none;
-    button{
-        background: $bg-1st-color;
-        padding:20px;
-        font-size: 18px;
-        color: $white;
-        width:100%;
-        text-align: left;
-        }
-    }
-#dropDownPopularityButton{
-    display:flex;
-    justify-content: space-between;
-    border-top-left-radius:5px ;
-    border-top-right-radius: 5px;
-span{
-    // transform: rotate(0turn);
-    color: $white;
-    display:block;
-    margin-left: 20px;
-    }
-}
 
 
-#dropdown-button{
-    display:none;
-    overflow: auto;
-    position:absolute;
-    border-style: none;
-    width: 170px;
-    #titre{
-    border-bottom-left-radius:5px ;
-    border-bottom-right-radius: 5px;
-    box-shadow: inset 0 2px 0 white;
-    }
-    #date{
-        box-shadow: inset 0 2px 0 white;
-    }
-
-}
-.drop-down-open{
-    transform: rotate(0deg);
-    // &:focus, &:hover  {
-        transform: rotate(180deg);
-        transition: 0.4s ease-in-out ;
-    }
-// }
-.drop-down-close{
-    transform: rotate(180deg);
-    // &:focus, &:hover {
-    transform: rotate(0deg);
-    transition: 0.4s ease-in-out ;
-    }
-// }
-    // https://blog.hubspot.com/website/html-dropdown
 .page_photographer-medias{
     width: 1240px;
     padding: 0 50px;
@@ -166,7 +99,7 @@ span{
         object-fit:cover;
         width: 350px;
         height:300px;
-     }
+    }
 }
 .img_attributes{
     display: flex;
@@ -206,6 +139,12 @@ span{
     display: flex;
     align-items: center;
     text-align: center;
+    &:hover, &:focus{
+        background-color: $bg-medium;
+
+        color:#000000;
+        font-weight: 700;
+    }
 }
  //class pour faire tourner les coeurs likes
 .clicked {

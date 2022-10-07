@@ -1,0 +1,49 @@
+
+
+body {
+    font-family:$font-family;
+    margin:auto;
+    color:#000000;
+    max-width: 1440px;
+    background-color:$white ;
+    font-weight: 400;
+}
+a {
+    text-decoration:none;
+    color: black;
+}
+a:focus, :active{
+    text-decoration: none;
+    color: black;
+    background-color:$bg-3d-color ;
+}
+img{
+    width:100%;
+    object-fit: cover;
+    box-sizing: border-box;
+}
+button{
+    cursor:pointer;
+}
+
+h1,h3 {
+    
+    font: size 2.2rem; ;
+    color: $bg-1st-color;
+    margin-right: 100px;
+}
+
+h3{
+    font-size:1.5rem;
+}
+.sr-only {
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip-path :rect(0,0,0,0);
+    white-space:nowrap;
+    border:0
+}

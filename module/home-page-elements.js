@@ -29,7 +29,7 @@ function createCardDOM(photographersJson) {
   anchor.setAttribute('href', `../photographer.html?id=` + `${photographersJson[i].id}`)
    //contenu de chaque carte 
   img.setAttribute('src', `../../assets/images/Photographers ID Photos/${photographersJson[i].portrait}`);
-  img.setAttribute('alt',`portrait du photographe ${photographersJson[i].name}`)
+  img.setAttribute('alt',`portrait du photographe $, {photographersJson[i].name}`)
   img.setAttribute('width', '200');
   img.setAttribute('height', '200');
   h2.innerHTML =`${photographersJson[i].name}`;

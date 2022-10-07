@@ -104,10 +104,10 @@ function displayPhotographer() {
   document.querySelector('.photographer_text--location').textContent = photographer.city+ ", " + photographer.country;
   document.querySelector(".photographer_text--tagline").innerHTML= photographer.tagline;
   document.getElementById('contact_button').textContent ='Contactez moi';
-  // console.log(document.getElementById('contact_button'))
   document.querySelector('.photographer_section--banner >img').src =` ../../assets/images/Photographers ID Photos/${photographer.portrait}`;
+  document.querySelector('.photographer_section--banner >img').setAttribute('alt',`portrait du photographe ${photographer.name}`)
   //enregistrer le nom du photographe sur la modale
-  document.querySelector('.modal-header p').innerHTML = photographer.name;
+  document.querySelector('#form__name').innerHTML = photographer.name;
   
 }
 
@@ -161,7 +161,7 @@ modalCross.addEventListener('click', (e)=>{
     // creer une carte pour chq media image
     class Image{
       createImage(mediaId){
-
+console.log(mediaId.images)
         let sectionMedia = document.querySelector('.page_photographer-medias');
         let mediaAndAttributes=document.querySelector('.page_photographer-media-attributes');
         sectionMedia.appendChild(mediaAndAttributes);
@@ -173,7 +173,7 @@ modalCross.addEventListener('click', (e)=>{
         mediaAndAttributes.appendChild(articleMedia);
 
         let linkMedia = document.createElement('a');
-        linkMedia.className ="media_link";
+        linkMedia.className ="media__link";
         linkMedia.setAttribute('id',`${mediaId.title}-${mediaId.id}`)
  
         articleMedia.appendChild(linkMedia);
@@ -185,7 +185,8 @@ modalCross.addEventListener('click', (e)=>{
         }
         linkMedia.appendChild(imageMedia);
         imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.image}` );
-        imageMedia.setAttribute('alt',"");
+        imageMedia.setAttribute('alt',`${mediaId.alt}`);
+        // imageMedia.setAttribute('alt',`${mediaId.image}`);
         imageMedia.setAttribute('id',`${mediaId.id}`)
         let imageAttributes = document.createElement('div');
         imageAttributes.className = "img_attributes";
@@ -207,6 +208,7 @@ modalCross.addEventListener('click', (e)=>{
         // span.addEventListener('click',()=>console.error)
         linkMedia.addEventListener('click',(e) => lightboxOpen(e))  
       }
+
 //creer une image pour la lightbox
       createImageLightbox(mediaId){
         let li = document.createElement('li')
@@ -383,7 +385,33 @@ media.classList.add(`media_${medias.indexOf(media)}`)
 }
 
 let stock = JSON.parse(localStorage.getItem('photographerStock'))
-console.log(stock)
+
+console.log(stock.name)
+
+// essai changement attribut alt
+
+// Requiring fs module
+const fs = require("fs");
+  
+// Storing the JSON format data in myObject
+const data = fs.readFileSync("data.json");
+ let photo0 = stock.media[0]
+// Defining new data to be added
+let newData0a = {
+  alt: "Ensemble sportswear : femme sur la plage, ensemble jaune, haut court",
+}; 
+// Adding the new data to our object
+if(stock.name == 'Tracy Galindo') { 
+  photo0.push(newData0a)
+}; 
+// Writing to our JSON file
+let newData0b = JSON.stringify(photo0);
+fs.writeFile("data0b.json", newData0b, (err) => {
+  // Error checking
+  if (err) throw err;
+  console.log("New data added");
+});
+
 
 
 
@@ -449,8 +477,8 @@ SeparateCardImage(stock.media)
 let lightBoxBg=document.querySelector('#lightbox-background');
 let lightboxContainer =document.querySelector(".lightbox-modal")
 let buttonClose =document.querySelector(".lightbox_close");
-let next = document.querySelector('.lightbox_chevron-next')
-let previous = document.querySelector('.lightbox_chevron-previous')
+let next = document.querySelector('.lightbox_chevron--next')
+let previous = document.querySelector('.lightbox_chevron--previous')
 let imagesLightBox = document.getElementsByClassName('image-media')
 let position
 // console.log(imagesLightBox)
@@ -465,7 +493,11 @@ document.addEventListener('click', (e)=>{
 
 //   // ouvrir la lightbox
 function lightboxOpen(e){
-  
+  let lightBoxBg=document.querySelector('#lightbox-background');
+  let lightboxContainer =document.querySelector(".lightbox-modal")
+  let position
+// console.log(imagesLightBox)
+document.addEventListener('click', (e)=>{console.log(e.target)})
     e.preventDefault()
     lightBoxBg.style.display = 'flex'
     lightBoxBg.setAttribute('aria-hidden', 'false')

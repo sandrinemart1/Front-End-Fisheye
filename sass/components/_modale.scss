@@ -1,4 +1,6 @@
-/* modale de contact */
+@import "../utils/variables";
+
+
 .modal-background{
     display:none;   
 }
@@ -13,6 +15,7 @@
     justify-content: space-between;
     padding:25px 35px;
     margin: auto;
+    box-sizing: border-box;
 }
 .modal-header{
     width: 100%;
@@ -65,10 +68,15 @@
 }
 /* style pour message error */
 .error-msg{
+    color:white;
+    background-color: $bg-1st-color; 
     font-size:22px;
     font-weight: 400;
     text-align: right;
     margin-top:10px;
+    padding: 0.2rem 2rem ;
+    width: 90%;
+    border-radius: 3px;
 }
 .input-error {
     border: $bg-1st-color dashed 0.35rem;
@@ -86,7 +94,9 @@ form {
     align-items: flex-start;
     margin-top: 35px;
 }
-
+.modal_form--formData{
+    display: flex;
+}
 form label {
     color: #312E2E;
     font-size: 36px;

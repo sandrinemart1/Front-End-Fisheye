@@ -1,0 +1,141 @@
+html{
+    scroll-behavior: smooth;
+}
+body {
+    font-family:$font-family;
+    max-width: 1440px;
+    margin:auto;
+}
+.page__accueil{
+    max-width: 1400px;
+    padding:15px 5vw 40px;
+
+}
+header{
+    box-sizing: border-box;
+}
+.header {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+}
+.contenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    &_link {
+      display: none;
+      position: fixed;
+      top: .5rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 0.5rem 0.8rem;
+      background-color: $bg-2nd-color;
+      border-radius: 5px;
+      z-index: 5;
+    }
+}
+#logo {
+    max-width: 13.5rem;
+    display: flex;
+    object-fit: contain;
+    margin-left: 100px;
+    transform: scale(1);
+    transition: transform 0.4s ease-in-out;
+    &:hover, &:focus {
+      transform: scale(1.3);
+    }
+}
+
+/******************************************/
+.photographer_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;        
+}
+.photographer_section--user{
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.photographer_section--banner{
+    display:block;
+}
+.photographer_section--link{
+    text-decoration :none;
+    border: 3px, solid ,black;
+    border-radius: 2px;   
+}
+
+.photographer_section article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    
+    h2 {
+        color:$bg-2nd-color;
+        font-size: 2.25rem;
+        line-height: 47px;
+        margin: 0;
+        }
+    img {
+        width: 100%;
+        object-fit: cover;
+        box-sizing: border-box;        height:200px;
+        width: 200px;
+        border-radius: 50%;
+    }
+}
+.photographer_section--text{
+    text-align: center;
+    .location{
+        font-size: 13px;
+        color: $bg-1st-color;
+        margin: 4px;
+        }
+        
+    .tagline{
+        font-size: 10px;
+        margin: 4px;
+    }   
+    .price{
+        font-size: 9px;
+        color:$color-black-light;
+        margin: 4px;
+    }
+}
+
+/**************************************/
+@media screen and(max-width:650px){
+    .tagline .price {
+    font-style: 15px;
+}
+}
+ //h2   
+
+@media  screen and (max-width: 1055px){
+    h2 {
+    font-size: 2rem;
+    }
+}
+//photographer section
+@media screen and (max-width: 845px ) {
+    .photographer_section{
+    grid-template-columns: 1fr 1fr;
+    gap:60px;
+    }
+ }
+ @media screen and(max-width: 650px){
+    .photographer_section{
+     grid-template-columns :1fr;
+    }
+ }

@@ -3,6 +3,9 @@
   <head>
     <link href="sass/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type = "image/png" href = "./assets/favicon.png/camera-solid.svg" />
+    <!--feuilles de style-->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -11,19 +14,29 @@
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
+    <!--information SEO-->
     <title>Fisheye</title>
+    <meta name="description" content="photographes freelances" />
   </head>
   <body>
+    <div class="page__accueil">
     <!-- header -->
-    <header>
-      <a href="/index.html">
+    <header role = "banner">
+      <div class="contenu">
+        <a href="photographersMap"
+        class="contenu_link"
+        aria-label="passer au contenu">Passer au contenu</a>
+      </div>
+      <div class="header">
+      <a href="/index.html" class="header_link" aria-label="fisheye page d'accueil">
         <img src="assets/images/logo.png" id="logo" alt="" />
       </a>
       <h1>Nos photographes</h1>
+      </div>
     </header>
     <!-- corps de page -->
     <main id="main">
-      <div class="photographer_section">
+      <section  id="photographersMap" class="photographer_section" aria-label="index de tous les photographes" role="region" >
         <!-- <article class="photographer_section--user">
           <a  href="" class="photographer_section--link">
             <div class="photographer_section--banner">
@@ -37,9 +50,9 @@
              <p class="price">400€/j</p>
            </div>
         </article> -->
-        </div>
+      </section>
     </main>
     <script type="module" src ="./module/index.js"></script>
-  
+  </div>
   </body>
 </html>
