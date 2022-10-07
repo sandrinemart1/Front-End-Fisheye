@@ -1,73 +1,138 @@
-.dropdown {
-    display: inline-block;
+.select_filter {
+    display: flex;
+    align-items: flex-start;
     position: relative;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    label{
-        font-weight: 700;
-        font-size: 18px;
+    margin-left:50px;
+    button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: none;
+      background-color: $bg-1st-color;
+      color: white;
+      font-size: 1.15rem;
+      padding: 0.9rem 0.6rem;
+      border-radius: 0.3rem;
+      box-sizing: border-box;
     }
-}
-#dropdown{
-    position:absolute;
-    width:170px;
-    top:-20px;
-    left:185px;
-    border-style: none;
-    button{
-        background: $bg-1st-color;
-        padding:20px;
-        font-size: 18px;
-        color: $white;
-        width:100%;
-        text-align: left;
+  }
+  .dropdownlist {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: $bg-1st-color;
+    border-radius: 0.3rem;
+    padding: 0 0.6rem;
+    cursor: pointer;
+    position: absolute;
+    top:-1rem;
+    z-index: 3;
+    &_choice {
+      display: flex;
+      align-items: center;
+      width: 9.5rem;
+      height: 3.2rem;
+      color: white;
+      &:nth-child(2) {
+        border-bottom: solid 0.05rem white;
+        border-top: solid 0.05rem white;
+      }
     }
-}
- #dropDownPopularityButton{
-    display:flex;
-    justify-content: space-between;
-    border-top-left-radius:5px ;
-    border-top-right-radius: 5px;
-    &:hover, &:focus{
-        background-color: $bg-medium;
-        color:#000000;
-        font-weight: 700;
-    }
-span{
-    color: $white;
-    display:block;
-    margin-left: 20px;
-    }
-}
-#dropdown-button{
-    display:none;
-    overflow: auto;
-    position:absolute;
-    border-style: none;
-    width: 170px;
-    #titre{
-    border-bottom-left-radius:5px ;
-    border-bottom-right-radius: 5px;
-    box-shadow: inset 0 2px 0 white;
-    }
-    #date{
-        box-shadow: inset 0 2px 0 white;
-    }
-    &:hover, &:focus{
-        background-color: $bg-medium;
-        color:#000000;
-        font-weight: 700;
-    }
-}
-.drop-down-open{
-    transform: rotate(0deg);
-        transform: rotate(180deg);
-        transition: 0.4s ease-in-out ;
-}
+  }
+  .arrows {
+    cursor: pointer;
+    padding: .5rem;
+  }
+  .fa-chevron-down {
+    color: white;
+    padding: 0 .9rem 0 1.7rem;
+  }
+  .fa-chevron-up {
+    color: white;
+    padding: 0 .6rem 0 1rem;
+  }
+  .container {
+    position: absolute;
+    display: none;
+  }
+  #button-dropup {
+    position: absolute;
+    left: 6.7rem;
+    z-index: 3;
+  }
+  
+  
 
-.drop-down-close{
-    transform: rotate(180deg);
-    transform: rotate(0deg);
-    transition: 0.4s ease-in-out ;
-}
+// .dropdown {
+//     display: inline-block;
+//     position: relative;
+//     margin-top: 50px;
+//     margin-bottom: 50px;
+//     label{
+//         font-weight: 700;
+//         font-size: 18px;
+//     }
+// }
+// #dropdown{
+//     position:absolute;
+//     width:170px;
+//     top:-20px;
+//     left:185px;
+//     border-style: none;
+//     button{
+//         background: $bg-1st-color;
+//         padding:20px;
+//         font-size: 18px;
+//         color: $white;
+//         width:100%;
+//         text-align: left;
+//     }
+// }
+//  #dropDownPopularityButton{
+//     display:flex;
+//     justify-content: space-between;
+//     border-top-left-radius:5px ;
+//     border-top-right-radius: 5px;
+//     &:hover, &:focus{
+//         background-color: $bg-medium;
+//         color:#000000;
+//         font-weight: 700;
+//     }
+// span{
+//     color: $white;
+//     display:block;
+//     margin-left: 20px;
+//     }
+// }
+// #dropdown-button{
+//     display:none;
+//     overflow: auto;
+//     position:absolute;
+//     border-style: none;
+//     width: 170px;
+//     #titre{
+//     border-bottom-left-radius:5px ;
+//     border-bottom-right-radius: 5px;
+//     box-shadow: inset 0 2px 0 white;
+//     }
+//     #date{
+//         box-shadow: inset 0 2px 0 white;
+//     }
+//     &:hover, &:focus{
+//         background-color: $bg-medium;
+//         color:#000000;
+//         font-weight: 700;
+//     }
+// }
+// .drop-down-open{
+//     transform: rotate(0deg);
+//         transform: rotate(180deg);
+//         transition: 0.4s ease-in-out ;
+// }
+
+// .drop-down-close{
+//     transform: rotate(180deg);
+//     transform: rotate(0deg);
+//     transition: 0.4s ease-in-out ;
+// }
     // https://blog.hubspot.com/website/html-dropdown

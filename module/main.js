@@ -268,3 +268,86 @@ async function displayData(photographers) {
 // };
 
 // init();
+// .dropdown {
+//     display: inline-block;
+//     position: relative;
+//     margin-top: 50px;
+//     margin-bottom: 50px;
+//     label{
+//         font-weight: 700;
+//         font-size: 18px;
+//     }
+// }
+////css dropdown
+// #dropdown{
+//     position:absolute;
+//     width:170px;
+//     top:-20px;
+//     left:185px;
+//     border-style: none;
+//     button{
+//         background: $bg-1st-color;
+//         padding:20px;
+//         font-size: 18px;
+//         color: $white;
+//         width:100%;
+//         text-align: left;
+//     }
+// }
+//  #dropDownPopularityButton{
+//     display:flex;
+//     justify-content: space-between;
+//     border-top-left-radius:5px ;
+//     border-top-right-radius: 5px;
+//     &:hover, &:focus{
+//         background-color: $bg-medium;
+//         color:#000000;
+//         font-weight: 700;
+//     }
+// span{
+//     color: $white;
+//     display:block;
+//     margin-left: 20px;
+//     }
+// }
+// #dropdown-button{
+//     display:none;
+//     overflow: auto;
+//     position:absolute;
+//     border-style: none;
+//     width: 170px;
+//     #titre{
+//     border-bottom-left-radius:5px ;
+//     border-bottom-right-radius: 5px;
+//     box-shadow: inset 0 2px 0 white;
+//     }
+//     #date{
+//         box-shadow: inset 0 2px 0 white;
+//     }
+//     &:hover, &:focus{
+//         background-color: $bg-medium;
+//         color:#000000;
+//         font-weight: 700;
+//     }
+// }
+// .drop-down-open{
+//     transform: rotate(0deg);
+//         transform: rotate(180deg);
+//         transition: 0.4s ease-in-out ;
+// }
+
+// .drop-down-close{
+//     transform: rotate(180deg);
+//     transform: rotate(0deg);
+//     transition: 0.4s ease-in-out ;
+// }
+
+/////js dropdown
+//   dropDownDiv.style.display ='block';
+//   if(chevron.className !=='drop-down-open'){
+//  dropDownDiv.style.display=" block";
+//  chevron.className='drop-down-open';
+//   }else{
+//     dropDownDiv.style.display=" none";
+//     chevron.className='drop-down-close';
+//   }

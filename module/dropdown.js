@@ -1,27 +1,29 @@
 // import{SeparateCardImage} from './Photographer2.js'
 let stock = JSON.parse(localStorage.getItem('photographerStock'))
 
-console.log(stock)
 //////dropdown//////////
-let dropDownPopularityButton =document.querySelector("#dropDownPopularityButton");
-let dropDownDiv = document.querySelector("#dropdown-button");
-let chevron = document.getElementById("chevron")
-let date = document.getElementById("date");
-let titre = document.getElementById("titre");
-let arrow = document.querySelector("#chevron i");
+
+let dropDownDiv = document.querySelector(".container");
+let chevronDown = document.getElementById("button-dropdown")
+let chevronUp = document.getElementById("button-dropup")
+let popularity = document.getElementById("option1");
+let date = document.getElementById("option2");
+let titre = document.getElementById("option3");
 
 
+console.log(dropDownDiv)
 function dropDownOpen(){
-  dropDownDiv.style.display ='block';
-  if(chevron.className !=='drop-down-open'){
- dropDownDiv.style.display=" block";
- chevron.className='drop-down-open';
-  }else{
-    dropDownDiv.style.display=" none";
-    chevron.className='drop-down-close';
-  }
+  dropDownDiv.style.display ='flex'
+  chevronDown.setAttribute('aria-expanded', 'true')
+  popularity.focus()
 }
 
+
+function dropDownClose(){
+  dropDownDiv.style.display = 'none'
+  chevronDown.setAttribute('aria-expanded', 'false')
+  chevronDown.focus()
+}
 ///////  fonctions de tri  //////////////
 ////// tri par  'populaire' //////////////
 
@@ -57,4 +59,4 @@ function titleSort(media){
 SeparateCardImage(stock.media)
 }
 // export{dropDownOpen}
-export{dropDownOpen, popularitySort, dateSort, titleSort}
+export{dropDownOpen, dropDownClose,  popularitySort, dateSort, titleSort}

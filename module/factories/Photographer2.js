@@ -8,7 +8,7 @@ import { likeAdd } from './likes.js'
 
 // import{Image,Video} from './factoryMediaPage.js'
 // import { SeparateCardImage } from './factoryMediaPage.js'
-import { dropDownOpen, popularitySort, dateSort, titleSort} from '../dropdown.js'
+import { dropDownOpen,dropDownClose, popularitySort, dateSort, titleSort} from '../dropdown.js'
 
 
 
@@ -416,26 +416,37 @@ console.log(stock)
 
 //// DROPDOWN  APPEL ///////////////
 
-let dropDownPopularityButton =document.querySelector("#dropDownPopularityButton");
-let dropDownDiv = document.querySelector("#dropdown-button");
-let chevron = document.getElementById("chevron")
-let date = document.getElementById("date");
-let titre = document.getElementById("titre");
-let arrow = document.querySelector("#chevron i");
+let chevronDown = document.getElementById("button-dropdown")
+let popularity = document.getElementById("option1");
+let date = document.getElementById("option2");
+let titre = document.getElementById("option3");
+let chevronUp = document.getElementById("button-dropup")
 
-dropDownPopularityButton.addEventListener('click', () => popularitySort(stock.media))
-arrow.addEventListener("click",()=>dropDownOpen())
+console.log(chevronUp)
 
-// dropDownPopularityButton.addEventListener("click" ,dropDownOpen)
-
-
+chevronDown.addEventListener("click",()=>dropDownOpen())
+chevronUp.addEventListener('click', () =>dropDownClose())
 ///////  fonctions de tri avec boutons :'populaire' 'date' 'titre' //////////////
-
-dropDownPopularityButton.addEventListener('click', () => popularitySort(stock.media))
+popularity.addEventListener('click', () => popularitySort(stock.media))
+popularity.addEventListener('keydown',(e)=>{
+  if(e.key ==='Enter'){
+    popularitySort(stock.media)
+  }
+})
 date.addEventListener('click',()=> dateSort(stock.media))
+date.addEventListener('keydown',(e)=>{
+  if(e.key ==='Enter'){
+    dateSort(stock.media)
+  }
+})
 titre.addEventListener('click', () => titleSort(stock.media))
+titre.addEventListener('keydown',(e)=>{
+  if(e.key ==='Enter'){
+    titleSort(stock.media)
+  }
+})
 
-////////////////////     lightbox //////////
+////////////////////     LIGHTBOX //////////
 
 
 let lightBoxBg=document.querySelector('#lightbox-background');
@@ -446,7 +457,7 @@ let previous = document.querySelector('.lightbox_chevron--previous')
 let imagesLightBox = document.getElementsByClassName('image-media')
 let position
 // console.log(imagesLightBox)
-document.addEventListener('click', (e)=>{console.log(e.target)})
+document.addEventListener('click', (e)=>{console.log(e.key)})
 
 
 document.addEventListener('click', (e)=>{

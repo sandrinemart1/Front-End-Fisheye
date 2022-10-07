@@ -39,7 +39,7 @@ function displayModal() {
   mainPage.setAttribute('aria-hidden', 'true')
   footerInfos.style.opacity='0.4'
   footerInfos.setAttribute('aria-hidden','true')
-  firstName.focus()
+  inputFirstName.focus()
   modalDiv.setAttribute('tabindex','0')
 }
 

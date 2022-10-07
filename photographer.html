@@ -45,7 +45,25 @@
                 <h2>
                     <label for="dropdown" id ="dropdown-label">Trier par</label>
                 </h2>
-                <div id ="dropdown">
+                <div class="select_filter" id="select_filter">
+                    <button type="button" role="button" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-label="trier par filtres" class="select_filters--button" id="button-dropdown">
+                      <span class="option1">Popularité</span>
+                      <span class="arrows fas fa-chevron-down"></span> 
+                    </button>
+                    <div class="container" id="listContainer">
+                      <ul role="listbox" aria-expanded="true" class="dropdownlist" id="dropdown" aria-activedescendant="option1" tabindex="0">
+                        <li class="dropdownlist_choice" id="option1" role="option" aria-label="trier par popularité" tabindex="0">&ensp;Popularité</li>
+                        <li class="dropdownlist_choice" id="option2" role="option" aria-label="trier par date" tabindex="0">&ensp;Date</li>
+                        <li class="dropdownlist_choice" id="option3" role="option" aria-label="trier par titre" tabindex="0">&ensp;Titre</li> 
+                      </ul> 
+                      <button type="button" role="button" aria-haspopup="true" aria-expanded="true" tabindex="0" aria-label="fermer le choix de filtres" class="select_filters--button" id="button-dropup">
+                        <span class="arrows fas fa-chevron-up"></span>   
+                      </button>
+                    </div>     
+                  </div>
+              
+                 
+                <!-- <div id ="dropdown">
                     <button id="dropDownPopularityButton" value="popularité" role="button">Popularité
                         <span id="chevron" aria-label="trier par popularité"><i class="fa-solid fa-chevron-down"></i></span>
                     </button>
@@ -53,7 +71,7 @@
                         <button id="date" value="date" role="button" aria-label="trier par date">Date</button>
                         <button id="titre" value="titre" role="button" aria-label="trier par titre">Titre</button>
                     </div>
-                </div>
+                </div> -->
             </section>
 
 

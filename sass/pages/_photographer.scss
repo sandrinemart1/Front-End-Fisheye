@@ -69,6 +69,12 @@ a:focus{
         line-height: 23px;
         margin: 4px;
     }
+}
+.dropdown{
+    display: flex;
+    align-items: baseline;
+    padding: 25px 0 50px;
+    position: relative;
 }     
 .photographer_section--banner{
     display:block;
