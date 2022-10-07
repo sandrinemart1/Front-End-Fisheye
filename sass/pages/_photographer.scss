@@ -3,7 +3,7 @@
 @import "../components/modale";
 @import "../components/lightbox";
 @import "../components/dropdown";
-body {
+.photographer-page-body{
     font-family:$font-family;
     margin: 0;
     padding: 0;
@@ -13,22 +13,30 @@ body {
     font-weight: 400;
 } 
 .page_photographer{
-    padding: 15px 10vw 40px;
+    padding: 15px 7vw 40px;
     margin: auto;
     max-width: 1400px;
 }
+
+
 a:focus{
     text-decoration: none;
     color: black;
     background-color:$bg-3d-color ;
 }
-main{
-    margin: 0 100px;
+.page_photographer-header{
+    display:flex;
+    justify-content: space-between;
 }
-#logo2{
+.page_photographer-header img{
     max-width: 13rem;
     align-self: flex-start;
     object-fit: contain;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+    &:hover {
+      transform: scale(1.1);
+    }
 }
 .page_photographer-informations{
     width: 1240px;

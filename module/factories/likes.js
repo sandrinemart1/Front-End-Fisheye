@@ -25,7 +25,6 @@ function likeAdd(stock,photographer){
     for(let i =0 ; i<stock.length; i ++){
       let total = 0;
  const likeSum  =  stock.reduce ((a,b) =>{return a + b.likes},total)
-console.log(likeSum)
             document.querySelector('.infos_likes--count').textContent=likeSum;
     
     document.querySelector('.infos_price').textContent = `${stock[i].price}€/j`

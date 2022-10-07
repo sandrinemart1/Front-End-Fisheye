@@ -15,7 +15,7 @@
     />
     <link rel="stylesheet" href="sass/style.css" >
 </head>
-<body class="Photographer-Page-Body">
+<body class="photographer-page-body">
     
     <div class="page_photographer"   >
         <!-- header -->
@@ -42,14 +42,16 @@
                             
             <!-- section dropdown             -->
             <section class="dropdown">
-                <label for="dropdown">Trier par</label>
+                <h2>
+                    <label for="dropdown" id ="dropdown-label">Trier par</label>
+                </h2>
                 <div id ="dropdown">
-                    <button id="dropDownPopularityButton" value="popularité">Popularité
-                        <span id="chevron" ><i class="fa-solid fa-chevron-down"></i></span>
+                    <button id="dropDownPopularityButton" value="popularité" role="button">Popularité
+                        <span id="chevron" aria-label="trier par popularité"><i class="fa-solid fa-chevron-down"></i></span>
                     </button>
                     <div id="dropdown-button">
-                        <button id="date" value="date">Date</button>
-                        <button id="titre" value="titre">Titre</button>
+                        <button id="date" value="date" role="button" aria-label="trier par date">Date</button>
+                        <button id="titre" value="titre" role="button" aria-label="trier par titre">Titre</button>
                     </div>
                 </div>
             </section>

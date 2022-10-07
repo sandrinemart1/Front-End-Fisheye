@@ -1,7 +1,6 @@
 import {Element} from './elementDOM.js'
 
 function createCardDOM(photographersJson) {
-  console.log(photographersJson.length)
   for(let i =0 ; i< photographersJson.length;i++){
   let article =new Element( 'article','article','photographer_section--user').el;
   let anchor = new Element ( 'anchor', 'a','photographer_section--link').el;

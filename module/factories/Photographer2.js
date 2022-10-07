@@ -8,7 +8,7 @@ import { likeAdd } from './likes.js'
 
 // import{Image,Video} from './factoryMediaPage.js'
 // import { SeparateCardImage } from './factoryMediaPage.js'
-// import { dropDownOpen } from '../dropdown.js'
+import { dropDownOpen, popularitySort, dateSort, titleSort} from '../dropdown.js'
 
 
 
@@ -165,17 +165,13 @@ console.log(mediaId.images)
         let sectionMedia = document.querySelector('.page_photographer-medias');
         let mediaAndAttributes=document.querySelector('.page_photographer-media-attributes');
         sectionMedia.appendChild(mediaAndAttributes);
-
         let articleMedia =document.createElement('article');
         articleMedia.className='page_photographer-media';
         articleMedia .setAttribute('id',mediaId.id);
-        // console.log(articleMedia)
         mediaAndAttributes.appendChild(articleMedia);
-
         let linkMedia = document.createElement('a');
         linkMedia.className ="media__link";
         linkMedia.setAttribute('id',`${mediaId.title}-${mediaId.id}`)
- 
         articleMedia.appendChild(linkMedia);
         let imageMedia = document.createElement('img');
         imageMedia.className ='image-media'
@@ -185,7 +181,7 @@ console.log(mediaId.images)
         }
         linkMedia.appendChild(imageMedia);
         imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.image}` );
-        imageMedia.setAttribute('alt',`${mediaId.alt}`);
+        imageMedia.setAttribute('alt',`image portant le titre "${mediaId.title}" réalisée par ${photographer.name}`);
         // imageMedia.setAttribute('alt',`${mediaId.image}`);
         imageMedia.setAttribute('id',`${mediaId.id}`)
         let imageAttributes = document.createElement('div');
@@ -223,6 +219,7 @@ console.log(mediaId.images)
         image.className ='image_lightbox'
         image.setAttribute('src',`../../assets/images/${firstName}/${mediaId.image}` );
         image.setAttribute('id',`image${mediaId.id}`)
+        image.setAttribute('alt',`image portant le titre "${mediaId.title}" réalisée par ${photographer.name}`)
         figure.appendChild(image)
         let figcaption = document.createElement('figcaption')
         figcaption.className = "title_image"
@@ -257,6 +254,7 @@ console.log(mediaId.images)
         linkMedia.appendChild(imageMedia);
         imageMedia.setAttribute('src',`../../assets/images/${firstName}/${mediaId.video}` );
         imageMedia.setAttribute('id',`${mediaId.id}`)
+        imageMedia.setAttribute('alt',`vidéo portant le titre "${mediaId.title}" réalisée par ${photographer.name}`)
         imageMedia.setAttribute('controls',true)
         imageMedia.className ='image-media';
         
@@ -298,6 +296,7 @@ console.log(mediaId.images)
         image.setAttribute('src',`../../assets/images/${firstName}/${mediaId.video}` );
         image.setAttribute('controls',true)
         image.setAttribute('id',`image${mediaId.id}`)
+        image.setAttribute('alt',`vidéo portant le titre "${mediaId.title}" réalisée par ${photographer.name}`)
         figure.appendChild(image)
         let figcaption = document.createElement('figcaption')
         figcaption.className = "title_image"
@@ -384,39 +383,38 @@ media.classList.add(`media_${medias.indexOf(media)}`)
 
 }
 
-let stock = JSON.parse(localStorage.getItem('photographerStock'))
+let stock = JSON.parse(localStorage.getItem('photographerStock'));
 
-console.log(stock.name)
+console.log(stock)
 
-// essai changement attribut alt
+// // essai ajout attribut alt
 
-// Requiring fs module
-const fs = require("fs");
+// // Requiring fs module
+// const fs = require("fs");
   
-// Storing the JSON format data in myObject
-const data = fs.readFileSync("data.json");
- let photo0 = stock.media[0]
-// Defining new data to be added
-let newData0a = {
-  alt: "Ensemble sportswear : femme sur la plage, ensemble jaune, haut court",
-}; 
-// Adding the new data to our object
-if(stock.name == 'Tracy Galindo') { 
-  photo0.push(newData0a)
-}; 
-// Writing to our JSON file
-let newData0b = JSON.stringify(photo0);
-fs.writeFile("data0b.json", newData0b, (err) => {
-  // Error checking
-  if (err) throw err;
-  console.log("New data added");
-});
+// // Storing the JSON format data in myObject
+// const data = fs.readFileSync("data.json");
+//  let photo0 = stock.media[0]
+// // Defining new data to be added
+// let newData0a = {
+//   alt: "Ensemble sportswear : femme sur la plage, ensemble jaune, haut court",
+// }; 
+// // Adding the new data to our object
+// if(stock.name == 'Tracy Galindo') { 
+//   photo0.push(newData0a)
+// }; 
+// // Writing to our JSON file
+// let newData0b = JSON.stringify(photo0);
+// fs.writeFile("data0b.json", newData0b, (err) => {
+//   // Error checking
+//   if (err) throw err;
+//   console.log("New data added");
+// });
 
 
 
 
-//// appel  dropdown///////////////
-
+//// DROPDOWN  APPEL ///////////////
 
 let dropDownPopularityButton =document.querySelector("#dropDownPopularityButton");
 let dropDownDiv = document.querySelector("#dropdown-button");
@@ -430,46 +428,12 @@ arrow.addEventListener("click",()=>dropDownOpen())
 
 // dropDownPopularityButton.addEventListener("click" ,dropDownOpen)
 
-function dropDownOpen(){
-  dropDownDiv.style.display ='block';
-  if(chevron.className !=='drop-down-open'){
- dropDownDiv.style.display=" block";
- chevron.className='drop-down-open';
-  }else{
-    dropDownDiv.style.display=" none";
-    chevron.className='drop-down-close';
-  }
-}
-///////  fonctions de tri  //////////////
-////// bouton 'populaire' //////////////
+
+///////  fonctions de tri avec boutons :'populaire' 'date' 'titre' //////////////
+
 dropDownPopularityButton.addEventListener('click', () => popularitySort(stock.media))
-function popularitySort(media) {
-  function tri(a,b) {
-    return ((a.likes < b.likes) ? 1 : (a.likes == b.likes) ? 0 : -1)
-  }
-  media.sort(tri)
-  SeparateCardImage(media)
-  }
-//////  bouton 'titre' //////////////
+date.addEventListener('click',()=> dateSort(stock.media))
 titre.addEventListener('click', () => titleSort(stock.media))
-function titleSort(media){
-
-  function tri(a,b){
-    let titreA = a.title.split(' ').join('')
-    a= titreA.toLowerCase()
-    let titreB = b.title.split(' ').join('')
-    b = titreB.toLowerCase()
-    return (a < b) ? -1 : 1
-  }
-  media.sort(tri)
-SeparateCardImage(stock.media)
-}
-
-
-
-
-
-
 
 ////////////////////     lightbox //////////
 

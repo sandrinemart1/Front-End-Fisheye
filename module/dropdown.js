@@ -1,6 +1,7 @@
-// let stock = JSON.parse(localStorage.getItem('photographerStock'))
+// import{SeparateCardImage} from './Photographer2.js'
+let stock = JSON.parse(localStorage.getItem('photographerStock'))
 
-
+console.log(stock)
 //////dropdown//////////
 let dropDownPopularityButton =document.querySelector("#dropDownPopularityButton");
 let dropDownDiv = document.querySelector("#dropdown-button");
@@ -9,8 +10,6 @@ let date = document.getElementById("date");
 let titre = document.getElementById("titre");
 let arrow = document.querySelector("#chevron i");
 
-
-dropDownPopularityButton.addEventListener("click" ,dropDownOpen)
 
 function dropDownOpen(){
   dropDownDiv.style.display ='block';
@@ -22,9 +21,10 @@ function dropDownOpen(){
     chevron.className='drop-down-close';
   }
 }
+
 ///////  fonctions de tri  //////////////
-////// bouton 'populaire' //////////////
-dropDownPopularityButton.addEventListener('click', () => popularitySort(stock.media))
+////// tri par  'populaire' //////////////
+
 function popularitySort(media) {
   function tri(a,b) {
     return ((a.likes < b.likes) ? 1 : (a.likes == b.likes) ? 0 : -1)
@@ -32,8 +32,18 @@ function popularitySort(media) {
   media.sort(tri)
   SeparateCardImage(media)
   }
-//////  bouton 'titre' //////////////
-titre.addEventListener('click', () => titleSort(stock.media))
+///////  tri par 'date'  //////////////
+function dateSort(media){
+  function tri(a,b){
+    let dateA = new Date(a.date)
+    console.log(dateA)
+    let dateB = new Date(b.date)
+    return ((dateA < dateB) ? 1 : (dateA == dateB) ? 0 : -1)
+  }
+  media.sort(tri)
+SeparateCardImage(stock.media)
+}
+//////  tri par  'titre' //////////////
 function titleSort(media){
 
   function tri(a,b){
@@ -46,6 +56,5 @@ function titleSort(media){
   media.sort(tri)
 SeparateCardImage(stock.media)
 }
-////////  bouton' date'  /////////////
 // export{dropDownOpen}
-// export{popularitySort}
+export{dropDownOpen, popularitySort, dateSort, titleSort}
