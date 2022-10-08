@@ -1,162 +1,169 @@
-function findId(picture) {
-    if(picture.tagName =='IMG'){
-      document.querySelector("#src").src = picture.src;
-      let divMedia = picture.parentNode
-      let divMedia2 = divMedia.parentNode
-      let idDivMedia2 = divMedia2.getAttribute('id')
-      // let id = idDivMedia2.replace('divMedia2.id', 'number')
-      console.log(idDivMedia2)
-    }
-    if(picture.tagName =='VIDEO'){
-      document.querySelector("#video").src = picture.src;
-      console.log(picture.src)
-    }
-  }
-//////lightbox//////
-let lightBoxBg=document.querySelector('#lightbox-background');
 const mainPage = document.querySelector('.Photographer-Page-Main');
+const modalButton =document.querySelector("#contact_button");
+const footerInfos = document.querySelector('.infos');
+const filterDiv = document.querySelector('.select_filter')
+let lightBoxBg=document.querySelector('#lightbox-background');
 let lightboxContainer =document.querySelector(".lightbox-modal")
 let buttonClose =document.querySelector(".lightbox_close");
-const footerInfos = document.querySelector('.infos')
-console.log(buttonClose);
-let next = document.querySelector('.lightbox_chevron-next')
-let previous = document.querySelector('.lightbox_chevron-previous')
+let next = document.querySelector('.lightbox_chevron--next')
+let previous = document.querySelector('.lightbox_chevron--previous')
+let imagesLightBox = document.getElementsByClassName('image-media')
+let position
+// console.log(imagesLightBox)
+document.addEventListener('click', (e)=>{console.log(e.key)})
 
-// console.log(picture)
-  // ouvrir la lightbox
+
+document.addEventListener('click', (e)=>{
+  if((e.target.tagName === 'IMG'||'VIDEO') && e.target.className ==='image-media')
+    lightboxOpen(e)
+  }
+  );
+
+//   // ouvrir la lightbox
 function lightboxOpen(e){
-  let nodeListArticle = document.querySelectorAll('.page_photographer-media')
-  let articles = Array.from(nodeListArticle)
-  articles.forEach(article =>{
+  let lightBoxBg=document.querySelector('#lightbox-background');
+  let lightboxContainer =document.querySelector(".lightbox-modal")
+  let position
+// console.log(imagesLightBox)
+document.addEventListener('click', (e)=>{console.log(e.target)})
     e.preventDefault()
     lightBoxBg.style.display = 'flex'
     lightBoxBg.setAttribute('aria-hidden', 'false')
     mainPage.setAttribute('aria-hidden', 'true')
     mainPage.setAttribute('tabindex', '-1')
+    modalButton.style.display ='none';
+    filterDiv.style.display ='none';
+    filterDiv.setAttribute('aria-hidden','true')
     footerInfos.style.display ='none';
     footerInfos.setAttribute('aria-hidden','true')
     lightboxContainer.setAttribute('tabindex', '0')
-    let picture = window.event.target;
-    // console.log(picture);
-    let id = findId(picture)
-    // let firstObject= document.getElementById(`image${mediaId.id}`)
-    let firstObject = document.getElementsByTagName('li[number]')
-    console.log(firstObject)
-  })
-}
-  findPosition()
-  function findPosition(picture){
-  //   console.log(picture)
-  //   let pictureParent = picture.parentNode
-  //   let number = pictureParent.getAttribute('number')
-  //   console.log(number)
-  //   return number  
-  } 
-  
-// //navigation droite et gauche
-// next.addEventListener('click', goToNext(2))
-// function goToNext(media){
-//  let total = media.length;
-//  console.log(media)
-//  const  currentImag = document.querySelector("[data-id='0']")
-//  console.log(currentImag);
-//   if(number < total){
-    
-//   }
-  
-// }
-  
-  
+    lightboxContainer.focus()
 
+    let picture = window.event.target;
+    let id = findId(picture)
+    let firstObject= document.getElementById(`object${id}`)
+    firstObject.style.display ='flex' 
+  //  console.log(firstObject)
+
+    position = giveThePosition(firstObject)
+    return firstObject
+  }
+  // console.log(document.getElementById('src'))
+
+ ////// trouver l 'id de l 'image cliquée ///////////
+function findId(picture) {
+  if(picture.tagName !=='A'){
+    console.log(document.querySelector("#src"))
+    document.querySelector("#src").src = picture.src;
+    // console.log(picture.src)
+    let divMedia = picture.parentNode
+    let divMedia2 = divMedia.parentNode
+    let idDivMedia2 = divMedia2.getAttribute('id')
+    let id = idDivMedia2.replace('divMedia2.id', 'number')
+    return id
+  }
+
+}   
+
+//////////// position de l'image dans la lightbox  ////////
+function giveThePosition(firstObject){
+  let className = firstObject.className
+  let i = className.lastIndexOf ('_')
+  let positionSt = className.substr(i+1)
+  let position = parseInt(positionSt)
+  return position
+}
+
+
+//Navigation droite gauche dans la lightbox
+next.addEventListener('click',() =>goToNext());
+function goToNext(){
+  let allObjects = document.querySelectorAll('.lightbox_object')
+  // console.log(allObjects)
+  let total = allObjects.length-1
+  // console.log(position)
+  if (position< total){
+    const lastObject = document.querySelector(`.object_${position}`)
+    console.log(lastObject)
+    position++
+    console.log(JSON.parse(localStorage.getItem('photographerStock')).media[position])
+    console.log(document.getElementById('src').src)
+  // document.getElementById('src').src = `http://127.0.0.1:5502/assets/images/${firstName}/`+JSON.parse(localStorage.getItem('photographerStock')).media[position].image
+  const currentObject = document.querySelector(`.object_${position}`)
+  console.log(currentObject)
+  // setNodeAttributes(lastObject,currentObject)
+}else if (position === total){
+  const lastObject = document.querySelector(`.object_${position}`)
+  position = 0
+  const currentObject = document.querySelector(`.object_${position}`)
+  setNodeAttributes(lastObject,currentObject) 
+}
+}
+
+
+previous.addEventListener('click',() =>goToPrevious());
 
 function goToPrevious(){
+  let allObjects = document.querySelectorAll('.lightbox_object')
+  let total = allObjects.length-1;
+  console.log(position)
+  if (position - 1 >= 0) {
+    position -= 1
+    // document.getElementById('src').src =`http://127.0.0.1:5502/assets/images/${firstName}/`+JSON.parse(localStorage.getItem('photographerStock')).media[position].image
+    const currentObject = document.querySelector(`.object_${position}`)
+    const lastObject = document.querySelector(`.object_${position + 1}`)
+    console.log(currentObject)
+    setNodeAttributes(lastObject, currentObject)
+  } else {
+    const lastObject = document.querySelector(`.object_${position}`)
+    position = total
+    const currentObject = document.querySelector(`.item-${position}`)
+    console.log(JSON.parse(localStorage.getItem('photographerStock')).media[position])
+    console.log(document.getElementById('src').src)
+    setNodeAttributes(lastObject, currentObject)
+  
+}
+}
+const setNodeAttributes = (lastObject, currentObject) => {
+  lastObject.style.display = 'none'
+  currentObject.style.display = 'flex'
+  lastObject.setAttribute('aria-hidden', 'true')
+  currentObject.setAttribute('aria-hidden', 'false')
+}
+
+//fermeture lightbox
+buttonClose.addEventListener('click',()=>lightboxClose())
+document.body.addEventListener('keydown',(e) => onKey(e))
+function onKey(e){
+  // console.log(e.target)
+  let keyname = e.key
+  console.log (keyname)
+  if(keyname =='Escape'){
+    lightboxClose()
+  }
+  else if(keyname =='ArrowRight'){
+    goToNext()
+  }
+  else if(keyname =='ArrowLeft'){
+    goToPrevious()
+  }
 
 }
-//fermer la lightbox
-buttonClose.addEventListener("click", closeLightbox)
-function closeLightbox(e){
+
+function lightboxClose(){
+  
+  lightBoxBg.style.display = 'none'
   lightBoxBg.setAttribute('aria-hidden', 'true')
   mainPage.setAttribute('aria-hidden', 'false')
   mainPage.setAttribute('tabindex', '0')
-  footerInfos.style.display='flex';
+  modalButton.style.display ='flex';
+  filterDiv.style.display ='flex';
+  filterDiv.setAttribute('aria-hidden','false')
+  footerInfos.style.display ='flex';
   footerInfos.setAttribute('aria-hidden','false')
-  lightboxContainer.setAttribute('tabindex', '-1')
 }
-// // lightbox grafikart
-// //propriet{htmlElement}element
-// class Lightbox{
-//   static init(){
-//      const articles = document.querySelectorAll('a')
-//      console.log(articles)
-//      .forEach(article => article.addEventListener('click', e =>{
-//      e.preventDefault()
-//      new Lightbox(e.currentTarget.getAttribute('href'))
-//      console.log(currentTarget)
-//   }))
-//   }
-//   //parametres{string}url de l 'image
-//   constructor(url){
-//     this.element= this.buildDOM(url)
-//     let div= document.querySelector('.lightbox-modal');
-//     div.appendChild(this.element)
-//   }
-//   //parameter{string}url de l' image
-//   //return{HtmlElement}
-//   buildDOM(url){
-//     const dom = document.createElement('div')
-//     dom.className = 'lightbox'
-//     dom.innerHTML=`<button class="lightbox_chevron-previous"
-//     id="lightbox_chevron-previous"
-//     aria-labelledby="previous"
-//     tabindex="0">
-// </button>
-//     <p class="previous"
-//     id="previous"
-//     aria-hidden="true">image précédente</p>
-//     <div class="lightbox_Container">
-//         <ul class="lightbox_Container--img">
-//             <li class="lightbox_object"
+export{lightboxOpen}
 
-//                 aria-hidden="true">
-//                 <figure class=" lightbox_figure"
-//                 aria-labelledby=\`image${mediaId.id}\`
-//                 tabindex="0">
-//                     <img class="image_lightbox"
-//                     id="src"
-//                     src="${url}"
-//                     width="1050">
-//                     <video class="video-lightbox"
-//                     id="video" src="controls"></video>
-//                     <figcaption class="title_image"
-//                     aria-hidden="true"></figcaption>
-//                 </figure>
-//             </li>
-//         </ul>
-//         <button class="lightbox_close">
-//             <p class="close_lightbox"
-//             id="close_lightbox"
-//             aria-hidden="true">fermer la lightbox</p>
-//         </button>
-//     </div>
-//     <button class="lightbox_chevron-next"
-//     id="lightbox_chevron-next"
-//     aria-labelledby="next"
-//     tabindex="0">
-//     </button>
-//      <p class="next"
-//     id="next"
-//     aria-hidden="true">image suivante</p> `
-//     return dom
-//   }
-// }
-// Lightbox.init()
-//trouver la position du 1er  media agrandi
-
-//   findPosition(firstObject)
-//   firstObject.style.display = 'flex'
-//   firstObject.setAttribute('aria-hidden', 'false')
-//   lightboxContainer.focus()
-// }
 
 
 

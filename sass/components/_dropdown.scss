@@ -10,12 +10,18 @@
       border: none;
       background-color: $bg-1st-color;
       color: white;
-      font-size: 1.15rem;
+      font-size: 1.20rem;
       padding: 0.9rem 0.6rem;
       border-radius: 0.3rem;
       box-sizing: border-box;
+      &:hover, &:focus{
+        background-color: $bg-medium;
+        color:#000000;
+        font-weight: 700;
+      }
     }
   }
+  
   .dropdownlist {
     display: flex;
     flex-direction: column;
@@ -45,11 +51,11 @@
   }
   .fa-chevron-down {
     color: white;
-    padding: 0 .9rem 0 1.7rem;
+    padding: 0 0.9rem 0 1.7rem;
   }
   .fa-chevron-up {
     color: white;
-    padding: 0 .6rem 0 1rem;
+    padding: 0 0.6rem 0 1rem;
   }
   .container {
     position: absolute;
@@ -60,79 +66,3 @@
     left: 6.7rem;
     z-index: 3;
   }
-  
-  
-
-// .dropdown {
-//     display: inline-block;
-//     position: relative;
-//     margin-top: 50px;
-//     margin-bottom: 50px;
-//     label{
-//         font-weight: 700;
-//         font-size: 18px;
-//     }
-// }
-// #dropdown{
-//     position:absolute;
-//     width:170px;
-//     top:-20px;
-//     left:185px;
-//     border-style: none;
-//     button{
-//         background: $bg-1st-color;
-//         padding:20px;
-//         font-size: 18px;
-//         color: $white;
-//         width:100%;
-//         text-align: left;
-//     }
-// }
-//  #dropDownPopularityButton{
-//     display:flex;
-//     justify-content: space-between;
-//     border-top-left-radius:5px ;
-//     border-top-right-radius: 5px;
-//     &:hover, &:focus{
-//         background-color: $bg-medium;
-//         color:#000000;
-//         font-weight: 700;
-//     }
-// span{
-//     color: $white;
-//     display:block;
-//     margin-left: 20px;
-//     }
-// }
-// #dropdown-button{
-//     display:none;
-//     overflow: auto;
-//     position:absolute;
-//     border-style: none;
-//     width: 170px;
-//     #titre{
-//     border-bottom-left-radius:5px ;
-//     border-bottom-right-radius: 5px;
-//     box-shadow: inset 0 2px 0 white;
-//     }
-//     #date{
-//         box-shadow: inset 0 2px 0 white;
-//     }
-//     &:hover, &:focus{
-//         background-color: $bg-medium;
-//         color:#000000;
-//         font-weight: 700;
-//     }
-// }
-// .drop-down-open{
-//     transform: rotate(0deg);
-//         transform: rotate(180deg);
-//         transition: 0.4s ease-in-out ;
-// }
-
-// .drop-down-close{
-//     transform: rotate(180deg);
-//     transform: rotate(0deg);
-//     transition: 0.4s ease-in-out ;
-// }
-    // https://blog.hubspot.com/website/html-dropdown

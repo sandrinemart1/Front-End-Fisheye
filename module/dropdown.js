@@ -1,4 +1,4 @@
-// import{SeparateCardImage} from './Photographer2.js'
+import{SeparateCardImage} from './factories/factoryMediaPage.js'
 let stock = JSON.parse(localStorage.getItem('photographerStock'))
 
 //////dropdown//////////
@@ -38,7 +38,6 @@ function popularitySort(media) {
 function dateSort(media){
   function tri(a,b){
     let dateA = new Date(a.date)
-    console.log(dateA)
     let dateB = new Date(b.date)
     return ((dateA < dateB) ? 1 : (dateA == dateB) ? 0 : -1)
   }

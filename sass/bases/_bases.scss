@@ -15,11 +15,9 @@ a {
 a:focus, :active{
     text-decoration: none;
     color: black;
-    background-color:$bg-3d-color ;
+    border: 3px black solid;
 }
-.media_link:focus, .media_link:active{
-    text-decoration: dashed 5px #000000;
-}
+
 ul{
     list-style-type: none;
 }

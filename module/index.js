@@ -1,4 +1,3 @@
-
 import  {photographersJson , mediasJson} from './fetch.js'
 import { myFetch  } from './fetch.js'
 
@@ -14,26 +13,3 @@ myFetch()
 //     // console.log(photographer.name);
 //   //   banner.innerHTML+=`<li>${photographer.name}</li>`;
 //   // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-

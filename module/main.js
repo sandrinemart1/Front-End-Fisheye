@@ -195,10 +195,10 @@ let photographerPortrait = photographer.portrait;
 
 
 
-let url= window.location.search;
-const id = newURLSearchParams(url)
-console.log(id.get('id)'));
-photographers= data.photographers;
+// let url= window.location.search;
+// const id = newURLSearchParams(url)
+// console.log(id.get('id)'));
+// photographers= data.photographers;
 // function displayDatas(photographer){
 //     for (photographer of photographers){
 //     img.setAttribute ('src',`../../assets/images/Photographers ID Photos/${portrait} `);
@@ -351,3 +351,4 @@ async function displayData(photographers) {
 //     dropDownDiv.style.display=" none";
 //     chevron.className='drop-down-close';
 //   }
+ // https://blog.hubspot.com/website/html-dropdown

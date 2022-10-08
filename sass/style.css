@@ -19,12 +19,7 @@ a {
 a:focus, :active {
   text-decoration: none;
   color: black;
-  background-color: #E5E5E5;
-}
-
-.media_link:focus, .media_link:active {
-  -webkit-text-decoration: dashed 5px #000000;
-          text-decoration: dashed 5px #000000;
+  border: 3px black solid;
 }
 
 ul {
@@ -412,11 +407,17 @@ button:hover {
   border: none;
   background-color: #901C1C;
   color: white;
-  font-size: 1.15rem;
+  font-size: 1.20rem;
   padding: 0.9rem 0.6rem;
   border-radius: 0.3rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+.select_filter button:hover, .select_filter button:focus {
+  background-color: #DB8876;
+  color: #000000;
+  font-weight: 700;
 }
 
 .dropdownlist {
@@ -463,12 +464,12 @@ button:hover {
 
 .fa-chevron-down {
   color: white;
-  padding: 0 .9rem 0 1.7rem;
+  padding: 0 0.9rem 0 1.7rem;
 }
 
 .fa-chevron-up {
   color: white;
-  padding: 0 .6rem 0 1rem;
+  padding: 0 0.6rem 0 1rem;
 }
 
 .container {
@@ -608,13 +609,34 @@ a:focus {
   max-width: 1050px;
 }
 
+.media__link:active {
+  border: 3px black solid;
+  opacity: 1;
+  -webkit-transition: opacity 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.media__link:activeimg {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: opacity 0.2s 100ms, -webkit-transform 0.3s ease-in-out;
+  transition: opacity 0.2s 100ms, -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.2s 100ms;
+  transition: transform 0.3s ease-in-out, opacity 0.2s 100ms, -webkit-transform 0.3s ease-in-out;
+}
+
+.media__link:activeimg:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  opacity: 0.8;
+}
+
 .page_photographer-medias {
   width: 1240px;
   padding: 0 50px;
 }
 
 .page_photographer-media-attributes {
-  width: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 350px 350px 350px;
@@ -659,6 +681,10 @@ a:focus {
   font-family: 'Roboto', sans-serif;
 }
 
+.img_attributes i {
+  color: #901C1C;
+}
+
 .img_attributes span {
   display: block;
 }
@@ -690,6 +716,7 @@ a:focus {
 
 #contact_button:hover, #contact_button:focus {
   background-color: #DB8876;
+  border: 4px black solid;
   color: #000000;
   font-weight: 700;
 }
